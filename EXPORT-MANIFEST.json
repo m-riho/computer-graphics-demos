@@ -1,0 +1,237 @@
+{
+  "format": "cg-public-export-v1",
+  "files": [
+    {
+      "path": ".github/workflows/deploy.yml",
+      "sha256": "0f8c00d75b6ee1d1146c880d90ce103545007bf87b5cf7f8baa940a713968556"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "d15f232be465c9c8646f8af762131180e79f266aaac444919a5493efcaa4cb38"
+    },
+    {
+      "path": "components/common/DemoFrame.vue",
+      "sha256": "cb15487329f2bf3ae489b28d6f5618c4f19e004c39773236fefe38f2592b5bbf"
+    },
+    {
+      "path": "components/common/imageTools.ts",
+      "sha256": "7630514294bbfc9af97ac2f86e227b0bf248c9fed0f7876ea2b71200d58bf437"
+    },
+    {
+      "path": "components/lecture02/AliasingDemo.vue",
+      "sha256": "431845f0e75522055556c6b8cdfd873db4f335ac16db0bd06443d60fc1712928"
+    },
+    {
+      "path": "components/lecture02/ColorModelDemo.vue",
+      "sha256": "d968d6e280030fbeb2798573a5993afcde376d12c9f81b11a6dc446040f22fdf"
+    },
+    {
+      "path": "components/lecture02/ConeResponseDemo.vue",
+      "sha256": "fc239f9f180ff32922617c932012318bff13823212e858dd804b0d75a53da910"
+    },
+    {
+      "path": "components/lecture02/GammaDemo.vue",
+      "sha256": "b1f7d991cfc752946cc222a9a07011cb207aa773a34c7bb972493782786d7c63"
+    },
+    {
+      "path": "components/lecture02/JpegBlockDemo.vue",
+      "sha256": "bb0ec71b13df89450bacb41ef74c34ac660f388e65abb71be7481deeb37529a1"
+    },
+    {
+      "path": "components/lecture02/JpegCompressionDemo.vue",
+      "sha256": "76624d8169b6640a61e598e59af1e86377ffa28b79c908f537247473587a4f63"
+    },
+    {
+      "path": "components/lecture02/RGBMixingDemo.vue",
+      "sha256": "b44b312a00173839c14ce08560093f428ebae08f5febdf9270a546a0ff2fd250"
+    },
+    {
+      "path": "components/lecture02/SamplingQuantizationDemo.vue",
+      "sha256": "58d8673b6dc5df6c1c8cba43ad2e85e4cbcfb40f685bbff7d9ee5418b3794522"
+    },
+    {
+      "path": "components/lecture02/ToneMappingDemo.vue",
+      "sha256": "3cee6d647639dad069d70914bcd58f7e40d5e47b907844a964191ee5b1f84bdc"
+    },
+    {
+      "path": "examples/02-color-image/aliasing.ts",
+      "sha256": "770cba2c340a901b741b5fb40c53fd6dd6e3dc9641474c8ab047666ea169e5b2"
+    },
+    {
+      "path": "examples/02-color-image/colorMath.ts",
+      "sha256": "bcfede6a16ac940ce36eab6ec9079c1c78c6ebde7c3467cd42e809c9f694031c"
+    },
+    {
+      "path": "examples/02-color-image/cone-response.ts",
+      "sha256": "fe5d80102e40dff5403247011bf057ea4bd6f2b8af3c23016244282d051145fd"
+    },
+    {
+      "path": "examples/02-color-image/gamma.ts",
+      "sha256": "41868bdade6458ef87e7c6eafa7417a0123b4076ef4a8677e2bf30a778d617a0"
+    },
+    {
+      "path": "examples/02-color-image/jpeg-compression.ts",
+      "sha256": "9af37aa939f2925da7d6fa26dd7ab459e3e1b31a69c80dce2a846894306e60ea"
+    },
+    {
+      "path": "examples/02-color-image/quantization.ts",
+      "sha256": "ab8effe0f2cfa3670eb4d8845354032c2e6a377109132869b086b3e95b213f74"
+    },
+    {
+      "path": "examples/02-color-image/README.md",
+      "sha256": "59f70aebcb418728f986f6f0e4f30860883ba91f108e5bd9278cb9766b03f868"
+    },
+    {
+      "path": "examples/02-color-image/rgb-hsv.ts",
+      "sha256": "2946aa02a8f7e030a88a96819ae929c65e89eb7861377b7b09c40e2b74c56c67"
+    },
+    {
+      "path": "examples/02-color-image/rgb-mixing.ts",
+      "sha256": "21ae19f2e982291fb01ff4e4acbfff845fe7b2ec37c44a044aa0f21e109feeac"
+    },
+    {
+      "path": "examples/02-color-image/sampling.ts",
+      "sha256": "3fbea2c231c40191e5948b0447221749f47c3dcef94c8793047e6f083f196a46"
+    },
+    {
+      "path": "examples/02-color-image/tone-mapping.ts",
+      "sha256": "faeb08bb0663ff7602d133ef4c2cc85e0fce91f5a4a5bbb195baba549ba89633"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "6d410e809e04ecb61ed590241d3eb7353ddb3beca01854ca7d9d156e8c7907f4"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "fbc87276e50fff2ff6bc10b02b6693a3f0eee98ae63186f294ada42593d74c36"
+    },
+    {
+      "path": "package.json",
+      "sha256": "4faf95d14fa24777b87a7d5b071f523019da6901a6f55f99848411f6ab8acae5"
+    },
+    {
+      "path": "packages/cg-algorithms/package.json",
+      "sha256": "d73b5a1e0d0533da34957fd2db72b47fdb8f692f91626258832aebccdccbf549"
+    },
+    {
+      "path": "packages/cg-algorithms/src/aliasing.ts",
+      "sha256": "f7839280ae38988ff867b9e5caa309d53cc01f029c511412b7f5d8a4cd09e676"
+    },
+    {
+      "path": "packages/cg-algorithms/src/color.ts",
+      "sha256": "e6a1892037c3058400e79efde83ad46510a44738963f481c81181a9547dde4c5"
+    },
+    {
+      "path": "packages/cg-algorithms/src/cone-response.ts",
+      "sha256": "15b9acdc958920b9bf1910be90e493c015516da1a7720dea33a9647a63237685"
+    },
+    {
+      "path": "packages/cg-algorithms/src/gamma.ts",
+      "sha256": "9f08f039ea0829173b4740ea71924c73ae8eb5a790b96e8278e3db4268be6251"
+    },
+    {
+      "path": "packages/cg-algorithms/src/index.ts",
+      "sha256": "408950a5d7867b02db802f8cb1f9b8abbe5ccc30b5a6dc9aab5646d4f5aab0f3"
+    },
+    {
+      "path": "packages/cg-algorithms/src/jpeg.ts",
+      "sha256": "3efc227566cfd19747c54ddca2654995439575df79d0efe61a5527207c2423ac"
+    },
+    {
+      "path": "packages/cg-algorithms/src/number.ts",
+      "sha256": "89ee26f18ccde21c0a93533fcebd631b8b25a347880f2a4c7065f6f918ad69c6"
+    },
+    {
+      "path": "packages/cg-algorithms/src/quantization.ts",
+      "sha256": "90bc044e8487e661c07482ff4510d9289decd7b8ce665df6cb23777dd2ee6338"
+    },
+    {
+      "path": "packages/cg-algorithms/src/raster.ts",
+      "sha256": "81a338a30b9b83a4bd16c1e67a64570c515bdf1865edf1c532fd87e84b7354e1"
+    },
+    {
+      "path": "packages/cg-algorithms/src/sampling.ts",
+      "sha256": "d1c378f8a00d4f3c2d9ecacfd5eaff443f1a79c2fd17f0917b4c6c160fe604a5"
+    },
+    {
+      "path": "packages/cg-algorithms/src/tone-mapping.ts",
+      "sha256": "b2a7682a74a7d9afede4ad816a0d807c7939b5b25af54098d34e243c86937315"
+    },
+    {
+      "path": "public-site/index.html",
+      "sha256": "767f455e6405472aab5a77e949b17ef7baf6d5d0a3d9256e64ad8bdb29fc6075"
+    },
+    {
+      "path": "public-site/publish/LICENSE",
+      "sha256": "6d410e809e04ecb61ed590241d3eb7353ddb3beca01854ca7d9d156e8c7907f4"
+    },
+    {
+      "path": "public-site/publish/THIRD_PARTY_NOTICES.md",
+      "sha256": "6bf140e63b09372f8d8b0d0b80a57f776310637159d27bdd0d0d4f1b35ca750a"
+    },
+    {
+      "path": "public-site/publish/VUE-LICENSE.md",
+      "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
+    },
+    {
+      "path": "public-site/src/App.vue",
+      "sha256": "7db306455817f366a7632abad4948c551b3846603a61d4fc99e93b151ce83cfa"
+    },
+    {
+      "path": "public-site/src/main.ts",
+      "sha256": "f92c9aa1c7edab655d33c114220a125ed6b7471200a652bf8cfdabf7c86fcd7e"
+    },
+    {
+      "path": "public-site/src/routing.ts",
+      "sha256": "341b36049fde8fa53c281a5c0e19d56f6885cc4d954943c67b7832825f09b28b"
+    },
+    {
+      "path": "public-site/src/session-model.ts",
+      "sha256": "f248f5dd548c128556324c43db52f21f77625e61f39880477bfc7c11bd2b6517"
+    },
+    {
+      "path": "public-site/src/sessions.ts",
+      "sha256": "95ee3b0aaca6343f520275949702c3148f5d4ea34968840a9c299fe5fb669aa0"
+    },
+    {
+      "path": "public-site/src/sessions/02-color-image.ts",
+      "sha256": "13d046b6f68edc0a376804c11fca9096eb242c5b5991c1847b3d641c551053c0"
+    },
+    {
+      "path": "public-site/src/style.css",
+      "sha256": "ea01ce66870d16aeae170d785bb8873805cbccbe9214b362154d0cc64393dc97"
+    },
+    {
+      "path": "public-site/tsconfig.json",
+      "sha256": "b4613d5cdd6b6673a189d2677dd8ff2b8adf68403b111f717754fad3134b119b"
+    },
+    {
+      "path": "public-site/vite.config.ts",
+      "sha256": "133e44b465251ad1f7b360ace806e6ad23b2db550e62fef841e3c4ec3f3c69bd"
+    },
+    {
+      "path": "README.md",
+      "sha256": "dc4a96b634abf1d9384d41c21b0a26e7863ce24539ff3ab1695c065af30550f5"
+    },
+    {
+      "path": "scripts/colorMath.test.mjs",
+      "sha256": "97903aebabde4ce248ca264898dd41f5e4254fdcd9fa18cd16762d8495fbf9ec"
+    },
+    {
+      "path": "scripts/public-algorithms.test.mjs",
+      "sha256": "2332304fc9631097ab4c757b81261b959b9d8052d9db7d96c342fec3f6b95e30"
+    },
+    {
+      "path": "scripts/public-routing.test.mjs",
+      "sha256": "958aa4c8b0ca5341524df7e0fdf919b10ecaa4ee4cf14a657c4981404b51cc78"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "6bf140e63b09372f8d8b0d0b80a57f776310637159d27bdd0d0d4f1b35ca750a"
+    },
+    {
+      "path": "VUE-LICENSE.md",
+      "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
+    }
+  ]
+}

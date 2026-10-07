@@ -1,0 +1,25 @@
+{
+  "name": "computer-graphics-demos",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "vite --config public-site/vite.config.ts",
+    "build": "vue-tsc --noEmit -p public-site/tsconfig.json && vite build --config public-site/vite.config.ts",
+    "preview": "vite preview --config public-site/vite.config.ts",
+    "test": "node --experimental-strip-types --test scripts/colorMath.test.mjs scripts/public-algorithms.test.mjs scripts/public-routing.test.mjs"
+  },
+  "dependencies": {
+    "vue": "3.5.43"
+  },
+  "devDependencies": {
+    "vite": "8.3.0",
+    "@vitejs/plugin-vue": "6.0.9",
+    "typescript": "5.9.3",
+    "vue-tsc": "^3.1.0"
+  }
+}
