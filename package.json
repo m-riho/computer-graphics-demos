@@ -11,7 +11,7 @@
     "dev": "vite --config public-site/vite.config.ts",
     "build": "vue-tsc --noEmit -p public-site/tsconfig.json && vite build --config public-site/vite.config.ts",
     "preview": "vite preview --config public-site/vite.config.ts",
-    "test": "node --experimental-strip-types --test scripts/colorMath.test.mjs scripts/public-algorithms.test.mjs scripts/public-routing.test.mjs"
+    "test": "node --experimental-strip-types --test scripts/colorMath.test.mjs scripts/public-algorithms.test.mjs scripts/public-routing.test.mjs scripts/sampling-theorem.test.mjs"
   },
   "dependencies": {
     "vue": "3.5.43"

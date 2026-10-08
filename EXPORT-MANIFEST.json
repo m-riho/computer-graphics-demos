@@ -50,6 +50,14 @@
       "sha256": "58d8673b6dc5df6c1c8cba43ad2e85e4cbcfb40f685bbff7d9ee5418b3794522"
     },
     {
+      "path": "components/lecture02/SamplingSignalPlot.vue",
+      "sha256": "5632b84c7d11096d5b562edf6d8ebc06d1539f274475018d540713dc7807c8c3"
+    },
+    {
+      "path": "components/lecture02/SamplingTheoremDemo.vue",
+      "sha256": "9f4b766a4515ea859b80e912908ec7597ddcd9547336b626c48d9c2a9d9bedcb"
+    },
+    {
       "path": "components/lecture02/ToneMappingDemo.vue",
       "sha256": "3cee6d647639dad069d70914bcd58f7e40d5e47b907844a964191ee5b1f84bdc"
     },
@@ -90,6 +98,10 @@
       "sha256": "21ae19f2e982291fb01ff4e4acbfff845fe7b2ec37c44a044aa0f21e109feeac"
     },
     {
+      "path": "examples/02-color-image/sampling-theorem.ts",
+      "sha256": "a297787fc68954aa5699399a76160e08c9fca7fec40670ca28afc61f1c370aab"
+    },
+    {
       "path": "examples/02-color-image/sampling.ts",
       "sha256": "3fbea2c231c40191e5948b0447221749f47c3dcef94c8793047e6f083f196a46"
     },
@@ -107,7 +119,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "4faf95d14fa24777b87a7d5b071f523019da6901a6f55f99848411f6ab8acae5"
+      "sha256": "390181d06508d5c2993b43d0e78e0f1d388a04b16274f79c808f994354958d30"
     },
     {
       "path": "packages/cg-algorithms/package.json",
@@ -131,7 +143,7 @@
     },
     {
       "path": "packages/cg-algorithms/src/index.ts",
-      "sha256": "408950a5d7867b02db802f8cb1f9b8abbe5ccc30b5a6dc9aab5646d4f5aab0f3"
+      "sha256": "71f6db224f4fad78359b122c5a14af9ddbf5fa1e7448ae743428ffa8bab9ceb2"
     },
     {
       "path": "packages/cg-algorithms/src/jpeg.ts",
@@ -148,6 +160,10 @@
     {
       "path": "packages/cg-algorithms/src/raster.ts",
       "sha256": "81a338a30b9b83a4bd16c1e67a64570c515bdf1865edf1c532fd87e84b7354e1"
+    },
+    {
+      "path": "packages/cg-algorithms/src/sampling-theorem.ts",
+      "sha256": "3e26932876f4e5b16736bcea126b5bc062dc11fc52ea793cce1ec57cc4b96989"
     },
     {
       "path": "packages/cg-algorithms/src/sampling.ts",
@@ -167,7 +183,7 @@
     },
     {
       "path": "public-site/publish/THIRD_PARTY_NOTICES.md",
-      "sha256": "6bf140e63b09372f8d8b0d0b80a57f776310637159d27bdd0d0d4f1b35ca750a"
+      "sha256": "6a38ff94609bfdfb7f46c4f6642031cd8d6c932b6f5b8ac395b9fe191ed77b95"
     },
     {
       "path": "public-site/publish/VUE-LICENSE.md",
@@ -195,7 +211,7 @@
     },
     {
       "path": "public-site/src/sessions/02-color-image.ts",
-      "sha256": "13d046b6f68edc0a376804c11fca9096eb242c5b5991c1847b3d641c551053c0"
+      "sha256": "c09d5dba2a977a3896b85cff2789a732fc93c43c9064de3e6b156aa4cff1eb94"
     },
     {
       "path": "public-site/src/style.css",
@@ -211,7 +227,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "dc4a96b634abf1d9384d41c21b0a26e7863ce24539ff3ab1695c065af30550f5"
+      "sha256": "7211f0bce296210f50c3036f25b800687b288b98831f81c5e4dfee93f0ecebae"
     },
     {
       "path": "scripts/colorMath.test.mjs",
@@ -226,8 +242,12 @@
       "sha256": "958aa4c8b0ca5341524df7e0fdf919b10ecaa4ee4cf14a657c4981404b51cc78"
     },
     {
+      "path": "scripts/sampling-theorem.test.mjs",
+      "sha256": "57aaeb2bdef18865f33316697e9fb5083ec86c7015d8ce0bbe859afebcf23fbd"
+    },
+    {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "6bf140e63b09372f8d8b0d0b80a57f776310637159d27bdd0d0d4f1b35ca750a"
+      "sha256": "6a38ff94609bfdfb7f46c4f6642031cd8d6c932b6f5b8ac395b9fe191ed77b95"
     },
     {
       "path": "VUE-LICENSE.md",

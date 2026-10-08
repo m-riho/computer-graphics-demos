@@ -21,3 +21,5 @@
 - トーンマッピング：[Reinhard et al. (2002)](https://www.cs.utah.edu/docs/techreports/2002/pdf/UUCS-02-001.pdf)。教材では基本的なL/(1+L)の形を用います。
 
 上記資料から文章・図・データを転載したものではありません。
+
+- 標本化：[PBRT 4e, Sampling Theory](https://pbr-book.org/4ed/Sampling_and_Reconstruction/Sampling_Theory)。標本化不足、帯域制限、エイリアシングの説明を確認。波形・回転・縞・画素図は自作。車輪の代表速度は同一スポークの回転対称性から計算します。
