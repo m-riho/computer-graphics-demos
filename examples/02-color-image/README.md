@@ -15,3 +15,5 @@
 | tone-mapping.ts | 露出・Reinhard・クリップ | tone-mapping.ts |
 
 `colorMath.ts` は既存コードの互換用re-exportで、独自の計算処理を持ちません。実験の条件を変える際はこれらの共通関数を呼び、同じアルゴリズムを別ファイルへコピーしないでください。
+
+- `alpha-blending.ts`：同じ赤を不透明な青へ重ね、α=0〜1による合成RGBの違いを確認。

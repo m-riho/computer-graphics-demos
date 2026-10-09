@@ -23,3 +23,10 @@
 上記資料から文章・図・データを転載したものではありません。
 
 - 標本化：[PBRT 4e, Sampling Theory](https://pbr-book.org/4ed/Sampling_and_Reconstruction/Sampling_Theory)。標本化不足、帯域制限、エイリアシングの説明を確認。波形・回転・縞・画素図は自作。車輪の代表速度は同一スポークの回転対称性から計算します。
+
+- RGB値と不透明度：[W3C CSS Color 4](https://www.w3.org/TR/css-color-4/#rgb-functions)。RGBA比較図は同じ赤をα=0・0.5・1で重ねた自作図。
+
+### アルファ合成デモ（2026年10月9日追加）
+
+- W3C, Compositing and Blending Level 1, Simple alpha compositing: https://www.w3.org/TR/compositing-1/#simplealphacompositing
+- 不透明な背景へのsource-over合成を説明。図はHTML/CSSによる自作。前景・背景のsRGB符号値を重み付けする教材例で、線形光での計算とは区別。
