@@ -70,6 +70,50 @@
       "sha256": "3cee6d647639dad069d70914bcd58f7e40d5e47b907844a964191ee5b1f84bdc"
     },
     {
+      "path": "components/lecture03/CameraObjectDemo.vue",
+      "sha256": "19914796e58e93d795ecc5e6766270529f70edecfef2c9fdcc94d31aefd952c8"
+    },
+    {
+      "path": "components/lecture03/CavalierCabinetDemo.vue",
+      "sha256": "e1ae074baebfdb4182f225521c100377d5dc6399d6192e97a1b8a00d93baf900"
+    },
+    {
+      "path": "components/lecture03/CoordinatePipelineDemo.vue",
+      "sha256": "257cfa2f5bf0a286e123f8da82cbc921209edfe7350d4a2fd905b4453a9f26b7"
+    },
+    {
+      "path": "components/lecture03/lecture03.css",
+      "sha256": "a8528ec349d1df2cfdadc616438ba35240ea87b2fa9010f46b723682ee127e5f"
+    },
+    {
+      "path": "components/lecture03/MatrixReadout.vue",
+      "sha256": "b1d2ec9f4361e8f87845e3fde6ea8f60420d8da9ad81fcf69d3f6e84199109bc"
+    },
+    {
+      "path": "components/lecture03/ObliqueDiscoveryDemo.vue",
+      "sha256": "f5a6c6e63d0a851a2d6038ed6577f4420bf7e3ceacfd6f7538a64132429518b2"
+    },
+    {
+      "path": "components/lecture03/ProjectionComparisonDemo.vue",
+      "sha256": "441a09168dcedef3abe92fe82c3ef5d9f33e51efe7e13319018f0d2bdb226f52"
+    },
+    {
+      "path": "components/lecture03/ProjectionPointDemo.vue",
+      "sha256": "87137738b0953374ddc789c6c4de9d32d3874a4d7fb17c8f5d5054bdb9a65d0c"
+    },
+    {
+      "path": "components/lecture03/TransformMatrixDemo.vue",
+      "sha256": "b4de8087f0494851c7e310b45c9fb7ebe1c2eedd58d1af2c5798ddb35f14c861"
+    },
+    {
+      "path": "components/lecture03/TransformOrderDemo.vue",
+      "sha256": "d60243946fe0b77fdca21f4d35f364cfeff8d28de2e5d7a4ef5376c092e8a406"
+    },
+    {
+      "path": "components/lecture03/WireScene.vue",
+      "sha256": "971673463e3a9203075fcef3afa7c6e7dc1465e2035cb71b63b864f630c5fa51"
+    },
+    {
       "path": "examples/02-color-image/aliasing.ts",
       "sha256": "770cba2c340a901b741b5fb40c53fd6dd6e3dc9641474c8ab047666ea169e5b2"
     },
@@ -122,6 +166,42 @@
       "sha256": "faeb08bb0663ff7602d133ef4c2cc85e0fce91f5a4a5bbb195baba549ba89633"
     },
     {
+      "path": "examples/03-projection-transform/camera-object.ts",
+      "sha256": "59bd92cd71e03beb360b56cc092518a6810fbf4482e72050647a47b16f902d5f"
+    },
+    {
+      "path": "examples/03-projection-transform/cavalier-cabinet.ts",
+      "sha256": "225565fed77c71736e8db99049aa651b4d36b715686564fe6026f6a203a73139"
+    },
+    {
+      "path": "examples/03-projection-transform/coordinate-pipeline.ts",
+      "sha256": "747acecab8ee4e6bf248ed94c473f219ffb4ca7b7d855ca6a99f838b06c93947"
+    },
+    {
+      "path": "examples/03-projection-transform/depth-offset-projection.ts",
+      "sha256": "588ddf7ea7e17f8d22414064dcd858a7e7f936dd127e430ad4c10e9b7a7c060f"
+    },
+    {
+      "path": "examples/03-projection-transform/parallel-perspective.ts",
+      "sha256": "7dedb3b81dc829ad470c8c4a0553501ef0313cefabcf6a12f4166e8c2ae366ee"
+    },
+    {
+      "path": "examples/03-projection-transform/project-point.ts",
+      "sha256": "5826691a53ba251d8bf708bd7c286892a1ff93f5b7abc34f9539429a31fe484b"
+    },
+    {
+      "path": "examples/03-projection-transform/README.md",
+      "sha256": "7ba9042eaa9e5d64e8e64da23236f292b878521653fbbd1363351dc288ed806a"
+    },
+    {
+      "path": "examples/03-projection-transform/transform-matrix.ts",
+      "sha256": "66c8d3b269918693c6f6c5ed6b94454ca24494e5269e6e84487e44e22545c83c"
+    },
+    {
+      "path": "examples/03-projection-transform/transform-order.ts",
+      "sha256": "8bba42a884093643dc1fa320dae9448d283d5f123e03cd44547b0ab12cf895e2"
+    },
+    {
       "path": "LICENSE",
       "sha256": "6d410e809e04ecb61ed590241d3eb7353ddb3beca01854ca7d9d156e8c7907f4"
     },
@@ -131,7 +211,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "69fcae84f3440926ea3bee7634aa1e13f7d117ed4ab8f58e1b52e337767c08b0"
+      "sha256": "3cb9f9310bb5e96d3f51762f7e7d8100cb52f42366e014fad0a57468dfbac86c"
     },
     {
       "path": "packages/cg-algorithms/package.json",
@@ -146,6 +226,10 @@
       "sha256": "a2c5fc2b58b054b0b4cde5e85fd907df10796ad9d18cbd69f81ffecf8f1f2e76"
     },
     {
+      "path": "packages/cg-algorithms/src/camera.ts",
+      "sha256": "2089bde44db72da5ec231118b7d4e9ed252a77ffbe9ae5d67e6c5cc4bdfe18d1"
+    },
+    {
       "path": "packages/cg-algorithms/src/color.ts",
       "sha256": "e6a1892037c3058400e79efde83ad46510a44738963f481c81181a9547dde4c5"
     },
@@ -158,16 +242,32 @@
       "sha256": "9f08f039ea0829173b4740ea71924c73ae8eb5a790b96e8278e3db4268be6251"
     },
     {
+      "path": "packages/cg-algorithms/src/geometry3d.ts",
+      "sha256": "2e4002a7146d4d2484e0a3d3e63a28276282017287d1144bf192537a3ecdca35"
+    },
+    {
       "path": "packages/cg-algorithms/src/index.ts",
-      "sha256": "0f8e1b119cafe5ca0c90ac26334d8505cdd951c96234a58a0c03e137a78372da"
+      "sha256": "2a432d7461829bc95523b93fbce19d7c2e5ea1a5f34ed70e2e415af2350dd121"
     },
     {
       "path": "packages/cg-algorithms/src/jpeg.ts",
       "sha256": "3efc227566cfd19747c54ddca2654995439575df79d0efe61a5527207c2423ac"
     },
     {
+      "path": "packages/cg-algorithms/src/matrix4.ts",
+      "sha256": "9aeb96711104e11d65bb3f2926551bac9ea5d918a93fbc16649a06d3836da52f"
+    },
+    {
       "path": "packages/cg-algorithms/src/number.ts",
       "sha256": "89ee26f18ccde21c0a93533fcebd631b8b25a347880f2a4c7065f6f918ad69c6"
+    },
+    {
+      "path": "packages/cg-algorithms/src/oblique-projection.ts",
+      "sha256": "32354a5c7699a4dd5d02e46aa40a324ac92a8140f094ef83389e7a8ec5a8293b"
+    },
+    {
+      "path": "packages/cg-algorithms/src/projection.ts",
+      "sha256": "6d20fd5b0a5117d4fe518dc073e02bb5d33d8fd505b04c0ab1e6d4a593bccf25"
     },
     {
       "path": "packages/cg-algorithms/src/quantization.ts",
@@ -190,6 +290,10 @@
       "sha256": "b2a7682a74a7d9afede4ad816a0d807c7939b5b25af54098d34e243c86937315"
     },
     {
+      "path": "packages/cg-algorithms/src/transforms3d.ts",
+      "sha256": "700be48141e0bbc4d9baafc99689291ca5e2e674d74dc02f43326f4e69e5c5d7"
+    },
+    {
       "path": "public-site/index.html",
       "sha256": "767f455e6405472aab5a77e949b17ef7baf6d5d0a3d9256e64ad8bdb29fc6075"
     },
@@ -207,7 +311,7 @@
     },
     {
       "path": "public-site/src/App.vue",
-      "sha256": "7db306455817f366a7632abad4948c551b3846603a61d4fc99e93b151ce83cfa"
+      "sha256": "953edf4bf26f0d8d3bd48ba997d9a242c57755ee5dcc97f872107ab109025792"
     },
     {
       "path": "public-site/src/main.ts",
@@ -219,19 +323,23 @@
     },
     {
       "path": "public-site/src/session-model.ts",
-      "sha256": "f248f5dd548c128556324c43db52f21f77625e61f39880477bfc7c11bd2b6517"
+      "sha256": "e16b0164be14bad2a74b1bb75fefdd64ba3cbed542e87ce3746447ded3ef65cf"
     },
     {
       "path": "public-site/src/sessions.ts",
-      "sha256": "95ee3b0aaca6343f520275949702c3148f5d4ea34968840a9c299fe5fb669aa0"
+      "sha256": "ece8e8d476d8b983ed12935200ffea5ffca9e18a950c19aa3c45acd1e14cdd48"
     },
     {
       "path": "public-site/src/sessions/02-color-image.ts",
       "sha256": "fc4328f33215fda5f884006394578a8b66193e800740b4417f8eb59d45727591"
     },
     {
+      "path": "public-site/src/sessions/03-projection-transform.ts",
+      "sha256": "cd787ad7386478c25253262b4955793f27ab413231bd5fe87d25e9682336e3a2"
+    },
+    {
       "path": "public-site/src/style.css",
-      "sha256": "0a4422e255141ccde343bec8e617ae0a319cd3f8d31853c488cad2e0b8b2f48b"
+      "sha256": "0831a80a0865403f8b852ca4db65f3c051bed3589f163c284037ad1739cb95c6"
     },
     {
       "path": "public-site/tsconfig.json",
@@ -243,7 +351,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "f08e9160f845e8e3c0d8badd060314f376b3c844a86dbbf54d3692923b16e6f7"
+      "sha256": "ba5c1e968171f80af7d48ee55392e2a0f43286cee57cdd3585108ac13f6c38c6"
     },
     {
       "path": "scripts/alpha-blending.test.mjs",
@@ -252,6 +360,10 @@
     {
       "path": "scripts/colorMath.test.mjs",
       "sha256": "97903aebabde4ce248ca264898dd41f5e4254fdcd9fa18cd16762d8495fbf9ec"
+    },
+    {
+      "path": "scripts/projection-transform.test.mjs",
+      "sha256": "8dd64574c5530473bdb343c9240d572bbf90637c8d5538ed81356db1d3c26dfe"
     },
     {
       "path": "scripts/public-algorithms.test.mjs",

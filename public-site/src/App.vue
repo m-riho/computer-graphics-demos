@@ -5,7 +5,7 @@ import {resolveRoute,sessionHref,topicHref} from './routing'
 import license from '../publish/LICENSE?raw'
 import vueLicense from '../publish/VUE-LICENSE.md?raw'
 import notices from '../publish/THIRD_PARTY_NOTICES.md?raw'
-const path=ref(location.hash.slice(1)||'/'),heading=ref<HTMLElement>()
+const path=ref(location.hash.slice(1)||'/'),heading=ref<HTMLElement>(),codeRevealed=ref(false)
 const route=computed(()=>resolveRoute(path.value,sessions))
 const session=computed(()=>{const r=route.value;return r.kind==='session'||r.kind==='topic'?r.session:undefined})
 const topic=computed(()=>{const r=route.value;return r.kind==='topic'?r.topic:undefined})
@@ -13,7 +13,7 @@ const mode=computed(()=>{const r=route.value;return r.kind==='topic'?r.mode:'dem
 const sessionLabel=computed(()=>session.value?`第${session.value.number}回 / ${session.value.title}`:'授業回から選ぶCG教材')
 const output=computed(()=>topic.value?JSON.stringify(topic.value.run(),(_,v)=>typeof v==='number'?Number(v.toFixed(5)):v,2):'')
 function updateTitle(){document.title=[topic.value?.title,session.value?`第${session.value.number}回 ${session.value.title}`:undefined,'CGを、触って学ぶ。'].filter(Boolean).join(' | ')}
-async function navigate(){path.value=location.hash.slice(1)||'/';updateTitle();await nextTick();window.scrollTo(0,0);heading.value?.focus({preventScroll:true})}
+async function navigate(){codeRevealed.value=false;path.value=location.hash.slice(1)||'/';updateTitle();await nextTick();window.scrollTo(0,0);heading.value?.focus({preventScroll:true})}
 onMounted(()=>{window.addEventListener('hashchange',navigate);updateTitle()})
 onUnmounted(()=>window.removeEventListener('hashchange',navigate))
 </script>
@@ -36,6 +36,7 @@ onUnmounted(()=>window.removeEventListener('hashchange',navigate))
 <section class="lesson-heading"><p class="eyebrow">{{mode==='demo'?'INTERACTIVE DEMO':'ALGORITHM EXAMPLE'}}</p><h1 ref="heading" tabindex="-1">{{topic.title}}</h1><p>{{topic.purpose}}</p></section>
 <nav class="lesson-tabs" aria-label="学び方"><a :href="topicHref(session,topic,'demo')" :aria-current="mode==='demo'?'page':undefined">▶ 操作して理解する</a><a :href="topicHref(session,topic,'code')" :aria-current="mode==='code'?'page':undefined">&lt;/&gt; コードで理解する</a></nav>
 <template v-if="mode==='demo'"><div class="lesson-guidance"><section><h2>操作してみよう</h2><p>{{topic.operation}}</p></section><section><h2>ここを観察</h2><p>{{topic.observe}}</p></section></div><div class="site-demo"><component :is="topic.demo" :key="`${session.id}/${topic.id}`" v-bind="topic.demoProps ?? {}" /></div><section class="think"><h2>なぜだろう？</h2><p>{{topic.think}}</p><a class="primary-link" :href="topicHref(session,topic,'code')">コードで仕組みを確かめる →</a></section></template>
+<template v-else-if="topic.codeReveal && !codeRevealed"><section class="code-intro"><h2>図形を観察してからコードへ</h2><p>{{topic.codeReveal}}</p><button class="code-reveal" @click="codeRevealed=true">観察を終えてコードを見る</button><p><a :href="topicHref(session,topic,'demo')">操作版で観察する →</a></p></section></template>
 <template v-else><section class="code-intro"><h2>このコードで確かめること</h2><p>{{topic.explanation}}</p><p>入力値を変え、同じ計算からどんな結果が得られるか考えてみましょう。</p></section><div class="code-columns"><section><h2>短い実験コード <span>TypeScript</span></h2><pre class="source-code" tabindex="0" aria-label="実験コード"><code>{{topic.example}}</code></pre></section><section><h2>実行結果</h2><pre class="result-code" tabindex="0" aria-label="実行結果"><code>{{output}}</code></pre><p class="result-note">表示中の共通関数を実行した値です。小数は5桁に丸めています。</p></section></div><details class="core-code"><summary>計算の実装も読む：{{topic.coreName}}</summary><p>操作版と上の実験が共通で使う関数です。入力から結果までを追ってみましょう。</p><pre class="source-code" tabindex="0" aria-label="共通アルゴリズム"><code>{{topic.core}}</code></pre></details><section class="think"><h2>コードと観察をつなぐ</h2><p>{{topic.think}}</p><a class="primary-link" :href="topicHref(session,topic,'demo')">操作版でもう一度確かめる →</a></section></template>
 </template>
 <section v-else class="not-found"><h1 ref="heading" tabindex="-1">ページが見つかりません</h1><a href="#/">授業回一覧に戻る</a></section>

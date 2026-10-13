@@ -14,6 +14,7 @@ export interface Topic {
   example:string
   core:string
   coreName:string
+  codeReveal?:string
   run:()=>unknown
 }
 export interface CourseSession {
