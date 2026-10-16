@@ -70,6 +70,10 @@
       "sha256": "3cee6d647639dad069d70914bcd58f7e40d5e47b907844a964191ee5b1f84bdc"
     },
     {
+      "path": "components/lecture03/BasisMapDemo.vue",
+      "sha256": "4d52ae8a71737dfe02fa9b7c39f99d72c8184f0077d2ea36f4a6715c4ffa3bd6"
+    },
+    {
       "path": "components/lecture03/CameraObjectDemo.vue",
       "sha256": "19914796e58e93d795ecc5e6766270529f70edecfef2c9fdcc94d31aefd952c8"
     },
@@ -166,6 +170,10 @@
       "sha256": "faeb08bb0663ff7602d133ef4c2cc85e0fce91f5a4a5bbb195baba549ba89633"
     },
     {
+      "path": "examples/03-projection-transform/basis-linear-map.ts",
+      "sha256": "8a4991d904dff0b809328277c4b28e775998ff79d9d1b3e10c8468c26cc94c12"
+    },
+    {
       "path": "examples/03-projection-transform/camera-object.ts",
       "sha256": "59bd92cd71e03beb360b56cc092518a6810fbf4482e72050647a47b16f902d5f"
     },
@@ -191,7 +199,7 @@
     },
     {
       "path": "examples/03-projection-transform/README.md",
-      "sha256": "7ba9042eaa9e5d64e8e64da23236f292b878521653fbbd1363351dc288ed806a"
+      "sha256": "f5022b26e625356bec24c44ebd7b77decf0b42655cefb52c7bf4d0f14ca0a7c7"
     },
     {
       "path": "examples/03-projection-transform/transform-matrix.ts",
@@ -211,7 +219,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "3cb9f9310bb5e96d3f51762f7e7d8100cb52f42366e014fad0a57468dfbac86c"
+      "sha256": "bc2005f551186949725bdc9b56c1f4a9f6f9a7f697fc13586cbcc05f5a16d8ce"
     },
     {
       "path": "packages/cg-algorithms/package.json",
@@ -247,11 +255,15 @@
     },
     {
       "path": "packages/cg-algorithms/src/index.ts",
-      "sha256": "2a432d7461829bc95523b93fbce19d7c2e5ea1a5f34ed70e2e415af2350dd121"
+      "sha256": "34c300cc3bd2c73d9cf97d40958d96bc1eb2eb69953e455ae1970af7a9111dc1"
     },
     {
       "path": "packages/cg-algorithms/src/jpeg.ts",
       "sha256": "3efc227566cfd19747c54ddca2654995439575df79d0efe61a5527207c2423ac"
+    },
+    {
+      "path": "packages/cg-algorithms/src/linear-map2d.ts",
+      "sha256": "b6a1828fdeee0ce3bd6a028101adb7ad6b95487549ee78fb6a5f05ef8cc5214a"
     },
     {
       "path": "packages/cg-algorithms/src/matrix4.ts",
@@ -335,7 +347,7 @@
     },
     {
       "path": "public-site/src/sessions/03-projection-transform.ts",
-      "sha256": "cd787ad7386478c25253262b4955793f27ab413231bd5fe87d25e9682336e3a2"
+      "sha256": "18272dab9bcc6b5181443734a5436735aa162d93769f609bbeb0f9765b607590"
     },
     {
       "path": "public-site/src/style.css",
@@ -351,7 +363,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "ba5c1e968171f80af7d48ee55392e2a0f43286cee57cdd3585108ac13f6c38c6"
+      "sha256": "3bb2c08d28e44bbd32543799bc5a36bfe0e335f8b246ea262040db9b3f017eea"
     },
     {
       "path": "scripts/alpha-blending.test.mjs",
@@ -360,6 +372,10 @@
     {
       "path": "scripts/colorMath.test.mjs",
       "sha256": "97903aebabde4ce248ca264898dd41f5e4254fdcd9fa18cd16762d8495fbf9ec"
+    },
+    {
+      "path": "scripts/linear-map2d.test.mjs",
+      "sha256": "8662c82e7b42dee86ad88dfb63914c63bd3cfa786cf1b2a09f51fddb9f6efcb7"
     },
     {
       "path": "scripts/projection-transform.test.mjs",
