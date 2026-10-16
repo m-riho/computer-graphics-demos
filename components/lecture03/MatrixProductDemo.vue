@@ -3,12 +3,14 @@ import { computed, ref } from 'vue'
 import DemoFrame from '../common/DemoFrame.vue'
 import MatrixMultiplicationSteps from './MatrixMultiplicationSteps.vue'
 
-type Preset = 'vector2' | 'rotation3' | 'translation4' | 'matrix2'
+type Preset = 'vector2' | 'rotation3' | 'translation4' | 'matrix2' | 'matrix3' | 'matrix4'
 const preset = ref<Preset>('vector2'), revision = ref(0)
 const descriptions: Record<Preset, string> = {
   vector2: '2×2行列と2成分の列ベクトル。左の1行と右の列で、結果の1成分を計算します。',
   rotation3: 'Z軸まわりに90°回転する3×3行列。(1, 2, 3) が (−2, 1, 3) へ移ります。',
   translation4: '移動量 (3, −1, 2) の4×4行列。点はw = 1、方向はw = 0として、最後の成分が計算にどう効くか比べます。',
+  matrix3: '3×3行列同士の積。1つの成分につき3組の積を足し、全部で9個の成分を求めます。右の列を進め、1行が終わったら左の次の行へ移ります。',
+  matrix4: '4×4行列同士の積TR。1つの成分につき4組の積を足し、全部で16個の成分を求めます。列ベクトルに作用させると、右側のRで回転してから、左側のTで平行移動します。',
   matrix2: '行列同士でも同じ規則です。左の行と右の列を選び、その積の和を結果の対応する位置へ入れます。',
 }
 const description = computed(() => descriptions[preset.value])
@@ -24,11 +26,13 @@ function reset() { preset.value = 'vector2'; revision.value++ }
           <option value="rotation3">3×3行列 × ベクトル（回転）</option>
           <option value="translation4">4×4行列 × ベクトル（平行移動）</option>
           <option value="matrix2">2×2行列 × 2×2行列</option>
+          <option value="matrix3">3×3行列 × 3×3行列</option>
+          <option value="matrix4">4×4行列 × 4×4行列</option>
         </select>
       </label>
     </div>
     <p class="example-description">{{ description }}</p>
-    <MatrixMultiplicationSteps :key="`${preset}-${revision}`" :preset="preset" :active="true" />
+    <MatrixMultiplicationSteps :key="`${preset}-${revision}`" :preset="preset" :active="true" :class="{'wide-product': preset === 'matrix3' || preset === 'matrix4'}" />
     <p class="hint">同じ位置の成分を掛け、その積をすべて足します。まず「次へ」で1組ずつ確認し、「再生」で計算全体を追いましょう。「最初から」は今の例を、Resetは最初の2×2の例をやり直します。</p>
   </DemoFrame>
 </template>
@@ -40,6 +44,10 @@ function reset() { preset.value = 'vector2'; revision.value++ }
 .example-description{font-size:18px;line-height:1.6;margin:12px 0 20px}
 .matrix-product-demo :deep(.product-controls){gap:10px}
 .matrix-product-demo :deep(.product-controls button){font-size:18px;min-height:44px}
+@container(max-width:900px){
+  .matrix-product-demo :deep(.wide-product .product-equation){flex-direction:column;gap:10px}
+  .matrix-product-demo :deep(.wide-product .product-operator){padding-top:0}
+}
 @container(max-width:620px){
   .matrix-product-demo :deep(.product-equation){flex-direction:column;gap:10px}
   .matrix-product-demo :deep(.product-operator){padding-top:0}

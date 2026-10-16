@@ -91,11 +91,11 @@
     },
     {
       "path": "components/lecture03/MatrixMultiplicationSteps.vue",
-      "sha256": "e3306c6484e753d3800913d8bfce8ab4b6fc161d9bde8de6ca539fa820fe47a4"
+      "sha256": "e912414291bfee7a25ae81e28e736471ea11ecf265f9bd59ffc0c522601c3331"
     },
     {
       "path": "components/lecture03/MatrixProductDemo.vue",
-      "sha256": "633dfcb7a166262fda0fbda338b46ad29a830f24353a3d898ba80196821023f2"
+      "sha256": "1cb63c20cd74d4460327e40c4f7684535e059a97f1e550d21c0f8eb242aa6492"
     },
     {
       "path": "components/lecture03/MatrixReadout.vue",
@@ -199,7 +199,7 @@
     },
     {
       "path": "examples/03-projection-transform/matrix-product.ts",
-      "sha256": "f3ad9e0501cfa62ca31ab6ff5cddfd6c628ef30f751314058a99ea2d54dff9b0"
+      "sha256": "d1274bf7a82df145b0b4ed57e8a2045586e0b9c1b5378eaf3a5599d6f9acd13d"
     },
     {
       "path": "examples/03-projection-transform/parallel-perspective.ts",
@@ -211,7 +211,7 @@
     },
     {
       "path": "examples/03-projection-transform/README.md",
-      "sha256": "21b25d6444e1bafd10866f578d2bd8360a38d2cbbbabb55afb286733f2717561"
+      "sha256": "753f4bbdbf5cc60b72b1a28241d9dccfa3cdab12d62bd4c6a69ab9d7bcace734"
     },
     {
       "path": "examples/03-projection-transform/transform-matrix.ts",
@@ -363,7 +363,7 @@
     },
     {
       "path": "public-site/src/sessions/03-projection-transform.ts",
-      "sha256": "37559e86922247bf958beaaf16fdfab038dbd34b198f43816dda9c9537d5651a"
+      "sha256": "aedf5ff976d9e2d45c8ea59c4646ef35c60c0f622a68e2ef8d55ca5c80d0a637"
     },
     {
       "path": "public-site/src/style.css",
@@ -379,7 +379,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "34cd6d03e184228ff5c66c64282d441f32773f49a27e22b934602bc55eb3a26e"
+      "sha256": "bc9507e418ffae35b74d40f84ad56128ebed7bb36908887f8153754be0046228"
     },
     {
       "path": "scripts/alpha-blending.test.mjs",
@@ -395,7 +395,7 @@
     },
     {
       "path": "scripts/matrix-product-steps.test.mjs",
-      "sha256": "a41f87b75c339bc76f4bf955d00a65b19b2fcc95086cd3956be52652ba777201"
+      "sha256": "95ba2e9f913c74900bd8f34c00b1d18bd836129b21ef87b9f88fe88aface33e8"
     },
     {
       "path": "scripts/projection-transform.test.mjs",

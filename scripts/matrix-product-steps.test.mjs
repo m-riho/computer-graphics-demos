@@ -33,3 +33,21 @@ test('trace rejects invalid dimensions and nonfinite arithmetic without modifyin
  for(const [x,y] of [[[],b],[[[1],[2]],b],[[[1,2],[3]],b],[[[1,NaN],[3,4]],b],[[[Infinity,1],[2,3]],b], [a,[[1,2],[3]]]])assert.throws(()=>matrixProductTrace(x,y),RangeError)
  assert.throws(()=>matrixProductTrace([[1e308,1e308],[1,1]],[[2],[2]]),RangeError)
 })
+
+test('3x3 and 4x4 square products fill every column and advance to the next row',()=>{
+ const cases=[
+  [[[1,2,0],[0,1,1],[2,0,1]],[[2,0,1],[1,1,0],[0,2,1]],[4,2,1,1,3,1,4,2,3]],
+  [[[1,0,0,3],[0,1,0,-1],[0,0,1,2],[0,0,0,1]],[[0,-1,0,0],[1,0,0,0],[0,0,1,0],[0,0,0,1]],[0,-1,0,3,1,0,0,-1,0,0,1,2,0,0,0,1]],
+ ]
+ for(const [left,right,expected] of cases){
+  const n=left.length,trace=matrixProductTrace(left,right)
+  assert.deepEqual(trace.map(entry=>entry.sum),expected)
+  for(let i=0;i<n*n;i++){
+   assert.deepEqual([trace[i].row,trace[i].column],[Math.floor(i/n),i%n])
+   const frame=matrixProductFrame(trace,i*(n+2))
+   assert.equal(frame.entry,i);assert.equal(frame.committed,i);assert.equal(frame.visibleTerms,0)
+  }
+  const end=matrixProductFrame(trace,n*n*(n+2))
+  assert.equal(end.done,true);assert.equal(end.committed,n*n)
+ }
+})

@@ -17,11 +17,20 @@ export function runExample() {
   // w=0の方向には、第4列の移動量が足されません。
 
   const matrix2 = matrixProductTrace([[1, 2], [0, 1]], [[2, 0], [1, 1]])
+  const matrix3 = matrixProductTrace(
+    [[1, 2, 0], [0, 1, 1], [2, 0, 1]],
+    [[2, 0, 1], [1, 1, 0], [0, 2, 1]],
+  )
+  // 4×4の合成TR：右側の回転Rから、左側の平行移動Tへ。
+  const R4 = [[0, -1, 0, 0], [1, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+  const matrix4 = matrixProductTrace(T, R4)
   return {
     vector2: { result: vector2.map(entry => entry.sum), steps: vector2 },
     rotation3: rotation3.map(entry => entry.sum),
     translatedPoint: point.map(entry => entry.sum),
     unchangedDirection: direction.map(entry => entry.sum),
+    matrix3: matrix3.map(entry => ({ row: entry.row + 1, column: entry.column + 1, value: entry.sum })),
+    matrix4: matrix4.map(entry => ({ row: entry.row + 1, column: entry.column + 1, value: entry.sum })),
     matrix2: matrix2.map(entry => ({ row: entry.row + 1, column: entry.column + 1, value: entry.sum })),
   }
 }

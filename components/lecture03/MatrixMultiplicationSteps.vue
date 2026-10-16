@@ -2,11 +2,13 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { matrixProductTrace, matrixProductFrame } from '../../packages/cg-algorithms/src/matrix-product-steps.ts'
 
-const props = defineProps<{ preset: 'vector2' | 'rotation3' | 'translation4' | 'matrix2'; active: boolean }>()
+const props = defineProps<{ preset: 'vector2' | 'rotation3' | 'translation4' | 'matrix2' | 'matrix3' | 'matrix4'; active: boolean }>()
 const presets = {
   vector2: { left: [[1,2],[3,4]], right: [[2],[1]], leftName: 'A', rightName: 'p' },
   rotation3: { left: [[0,-1,0],[1,0,0],[0,0,1]], right: [[1],[2],[3]], leftName: 'R', rightName: 'p' },
   translation4: { left: [[1,0,0,3],[0,1,0,-1],[0,0,1,2],[0,0,0,1]], right: [[1],[2],[3],[1]], leftName: 'T', rightName: 'pₕ' },
+  matrix3: { left: [[1,2,0],[0,1,1],[2,0,1]], right: [[2,0,1],[1,1,0],[0,2,1]], leftName: 'A', rightName: 'B' },
+  matrix4: { left: [[1,0,0,3],[0,1,0,-1],[0,0,1,2],[0,0,0,1]], right: [[0,-1,0,0],[1,0,0,0],[0,0,1,0],[0,0,0,1]], leftName: 'T', rightName: 'R' },
   matrix2: { left: [[1,2],[0,1]], right: [[2,0],[1,1]], leftName: 'A', rightName: 'B' },
 }
 const direction = ref(false), cursor = ref(0), playing = ref(false)
