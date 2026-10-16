@@ -90,6 +90,14 @@
       "sha256": "a8528ec349d1df2cfdadc616438ba35240ea87b2fa9010f46b723682ee127e5f"
     },
     {
+      "path": "components/lecture03/MatrixMultiplicationSteps.vue",
+      "sha256": "e3306c6484e753d3800913d8bfce8ab4b6fc161d9bde8de6ca539fa820fe47a4"
+    },
+    {
+      "path": "components/lecture03/MatrixProductDemo.vue",
+      "sha256": "633dfcb7a166262fda0fbda338b46ad29a830f24353a3d898ba80196821023f2"
+    },
+    {
       "path": "components/lecture03/MatrixReadout.vue",
       "sha256": "b1d2ec9f4361e8f87845e3fde6ea8f60420d8da9ad81fcf69d3f6e84199109bc"
     },
@@ -190,6 +198,10 @@
       "sha256": "588ddf7ea7e17f8d22414064dcd858a7e7f936dd127e430ad4c10e9b7a7c060f"
     },
     {
+      "path": "examples/03-projection-transform/matrix-product.ts",
+      "sha256": "f3ad9e0501cfa62ca31ab6ff5cddfd6c628ef30f751314058a99ea2d54dff9b0"
+    },
+    {
       "path": "examples/03-projection-transform/parallel-perspective.ts",
       "sha256": "7dedb3b81dc829ad470c8c4a0553501ef0313cefabcf6a12f4166e8c2ae366ee"
     },
@@ -199,7 +211,7 @@
     },
     {
       "path": "examples/03-projection-transform/README.md",
-      "sha256": "f5022b26e625356bec24c44ebd7b77decf0b42655cefb52c7bf4d0f14ca0a7c7"
+      "sha256": "21b25d6444e1bafd10866f578d2bd8360a38d2cbbbabb55afb286733f2717561"
     },
     {
       "path": "examples/03-projection-transform/transform-matrix.ts",
@@ -219,7 +231,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "bc2005f551186949725bdc9b56c1f4a9f6f9a7f697fc13586cbcc05f5a16d8ce"
+      "sha256": "8fb2a861c2336790597279fddf110f47831bad5d723cdde0f81912a159e999d5"
     },
     {
       "path": "packages/cg-algorithms/package.json",
@@ -264,6 +276,10 @@
     {
       "path": "packages/cg-algorithms/src/linear-map2d.ts",
       "sha256": "b6a1828fdeee0ce3bd6a028101adb7ad6b95487549ee78fb6a5f05ef8cc5214a"
+    },
+    {
+      "path": "packages/cg-algorithms/src/matrix-product-steps.ts",
+      "sha256": "3b83be9268110c07bd819d98f8fda42fcd3d6239fbce48e18d2e6f8a343d0212"
     },
     {
       "path": "packages/cg-algorithms/src/matrix4.ts",
@@ -347,7 +363,7 @@
     },
     {
       "path": "public-site/src/sessions/03-projection-transform.ts",
-      "sha256": "18272dab9bcc6b5181443734a5436735aa162d93769f609bbeb0f9765b607590"
+      "sha256": "37559e86922247bf958beaaf16fdfab038dbd34b198f43816dda9c9537d5651a"
     },
     {
       "path": "public-site/src/style.css",
@@ -363,7 +379,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "3bb2c08d28e44bbd32543799bc5a36bfe0e335f8b246ea262040db9b3f017eea"
+      "sha256": "34cd6d03e184228ff5c66c64282d441f32773f49a27e22b934602bc55eb3a26e"
     },
     {
       "path": "scripts/alpha-blending.test.mjs",
@@ -376,6 +392,10 @@
     {
       "path": "scripts/linear-map2d.test.mjs",
       "sha256": "8662c82e7b42dee86ad88dfb63914c63bd3cfa786cf1b2a09f51fddb9f6efcb7"
+    },
+    {
+      "path": "scripts/matrix-product-steps.test.mjs",
+      "sha256": "a41f87b75c339bc76f4bf955d00a65b19b2fcc95086cd3956be52652ba777201"
     },
     {
       "path": "scripts/projection-transform.test.mjs",
