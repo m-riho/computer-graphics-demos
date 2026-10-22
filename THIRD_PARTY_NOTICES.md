@@ -30,3 +30,18 @@
 
 - W3C, Compositing and Blending Level 1, Simple alpha compositing: https://www.w3.org/TR/compositing-1/#simplealphacompositing
 - 不透明な背景へのsource-over合成を説明。図はHTML/CSSによる自作。前景・背景のsRGB符号値を重み付けする教材例で、線形光での計算とは区別。
+
+### モデリング教材（2026年10月23日・第4回）
+
+デモの立体・図・計算実装は本教材の自作です。外部モデル、過年度資料の画像、第三者のコードは配布していません。新しい3Dライブラリは追加せず、Vue/SVGと純粋TypeScriptで構成しています。
+
+方式の確認に用いた一次資料：
+
+- CGAL Halfedge Data Structures: https://doc.cgal.org/latest/HalfedgeDS/index.html
+- Blender Manual, Boolean Modifier: https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/booleans.html
+- Blender Manual, Bevel Modifier: https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html
+- Pixar OpenSubdiv, Subdivision Surfaces: https://opensubdiv.org/docs/subdivision_surfaces.html
+- Zorin, Schröder, Sweldens (1996), Interpolating Subdivision for Meshes with Arbitrary Topology: https://mrl.cs.nyu.edu/publications/interpolating-subdivision/butterfly.pdf
+- Zorin et al., Subdivision for Modeling and Animation, SIGGRAPH 2000 course notes: https://cs.nyu.edu/~dzorin/sig00course/coursenotes00.pdf
+
+教材上の範囲：Booleanは浮動小数点の教育用BSP、曲面Primitiveは多角形近似、Bevelは立方体用の構成です。Subdivisionは閉じた向きの整合したManifoldに限定し、境界・Crease拡張は含めません。Manifold検査は接続構造を調べ、自己交差や製造可能性までは保証しません。元資料の文・図やライブラリ実装の転載ではありません。

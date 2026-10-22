@@ -10,6 +10,8 @@
 
 現在の第3回（2026年10月16日）：平行・透視投影、点の投影、奥行きの描き方の発見、Cavalier/Cabinet、座標変換パイプライン、4×4行列、行列とベクトルの掛け算、基底の移り先と線形写像、変換順序、カメラと物体の変換。10テーマ・20ページです。発見教材の式・名称・コードは観察後に開く方式です。
 
+第4回（2026年10月23日）はモデリングその1です。Wireframe / Surface / Solid、Meshの接続、Half-edge、Manifold、Boolean / CSG、Sweep、Bevel / Fillet、4方式のSubdivision、Euler characteristicの9テーマ・18ページを用意しています。`#/sessions/04`から選択できます。
+
 ## ローカルで動かす
 
 Node.js 22.18以降（24 LTS推奨）とnpmを用意します。

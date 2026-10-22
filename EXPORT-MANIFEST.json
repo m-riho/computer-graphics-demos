@@ -126,6 +126,50 @@
       "sha256": "971673463e3a9203075fcef3afa7c6e7dc1465e2035cb71b63b864f630c5fa51"
     },
     {
+      "path": "components/lecture04/BevelFilletDemo.vue",
+      "sha256": "2cd8fccfba7a30ce94b3ad4144fcce5e47c8c840f9711208c20dcee32b85ac01"
+    },
+    {
+      "path": "components/lecture04/BooleanCSGDemo.vue",
+      "sha256": "8e80ceab187ce047ad4660faf4710ff083117576a692e989c560c611e5ad523b"
+    },
+    {
+      "path": "components/lecture04/EulerCharacteristicDemo.vue",
+      "sha256": "a79607e35c4ba7f73e6ed52197e76e4485f4656f97c6e15b3ee7d4ef2e012569"
+    },
+    {
+      "path": "components/lecture04/HalfEdgeDemo.vue",
+      "sha256": "aeca90b3d72b0f749139341f24ce3cf9ecb962470294219ed8c76632d0758d39"
+    },
+    {
+      "path": "components/lecture04/lecture04.css",
+      "sha256": "4aedb6f3393a58fa3e283ab7a16bed200710538a4958d8e2fc30f87318c40f7e"
+    },
+    {
+      "path": "components/lecture04/ManifoldDemo.vue",
+      "sha256": "7af9171d909fa0820dcaf7c426ef5814f584a10a7fea82d0e6055b4f8d55afbd"
+    },
+    {
+      "path": "components/lecture04/MeshExplorerDemo.vue",
+      "sha256": "6bc612597dc443606bccdce756fca992191ec2190821d89c612f79647ba8e1be"
+    },
+    {
+      "path": "components/lecture04/MeshView.vue",
+      "sha256": "ae5978e6b83112229b74404aa8b26707b95e187d8fe56a176f8486bbdc992179"
+    },
+    {
+      "path": "components/lecture04/RepresentationComparisonDemo.vue",
+      "sha256": "4a918ae38402c34dc6202ef5cc6abe5f85687b16c39f1d429cfe7d873fba3e53"
+    },
+    {
+      "path": "components/lecture04/SubdivisionLabDemo.vue",
+      "sha256": "5e68b5d13e637cea5ad0e054465b97e71ae609858817dc71dc6006df43facc61"
+    },
+    {
+      "path": "components/lecture04/SweepDemo.vue",
+      "sha256": "f14b1cd8cdee01340da973063186c5c8c6fd80e5ab6d62c7c32fd43550b919bc"
+    },
+    {
       "path": "examples/02-color-image/aliasing.ts",
       "sha256": "770cba2c340a901b741b5fb40c53fd6dd6e3dc9641474c8ab047666ea169e5b2"
     },
@@ -222,6 +266,50 @@
       "sha256": "8bba42a884093643dc1fa320dae9448d283d5f123e03cd44547b0ab12cf895e2"
     },
     {
+      "path": "examples/04-modeling/bevel.ts",
+      "sha256": "5c0ee9ba6c4fe9e60f3f41784212dbc7657d37b3b5d92486096e422882c31400"
+    },
+    {
+      "path": "examples/04-modeling/boolean-csg.ts",
+      "sha256": "294d23681d9191c0dde20b5f42d1f970e122a02e4a9381370ec2093f6b1e7348"
+    },
+    {
+      "path": "examples/04-modeling/euler-characteristic.ts",
+      "sha256": "db537028db5d2da4a07286a530783180eec22a48f093287e9cc19cb802a8ca3a"
+    },
+    {
+      "path": "examples/04-modeling/extrude.ts",
+      "sha256": "2cead1985f0c96f3fdd05c588d9de50814834962627e3f84e0c52766ea6d8640"
+    },
+    {
+      "path": "examples/04-modeling/half-edge.ts",
+      "sha256": "2551e7246be76e94e4cfbdc859b3c7c5983e8435c87e0278f8c6ab2a7762e064"
+    },
+    {
+      "path": "examples/04-modeling/manifold.ts",
+      "sha256": "bf0416c119e30fb2ea016406228e89b84260d1d9809f439ac4ad9cedd9c2b0d5"
+    },
+    {
+      "path": "examples/04-modeling/mesh-elements.ts",
+      "sha256": "b45e95677c118b1be421cbb643156a8b23ce12eb980b7f733c937bcced20af8b"
+    },
+    {
+      "path": "examples/04-modeling/README.md",
+      "sha256": "dbc25ac963b8117920bbcd877f0dd6192866db77ff7104383ac5c2b132a4fd3e"
+    },
+    {
+      "path": "examples/04-modeling/representation.ts",
+      "sha256": "ce2aeda1987bed9f1ba2eb9677879b967b162337259134c1d240f1df7b1682b3"
+    },
+    {
+      "path": "examples/04-modeling/revolve.ts",
+      "sha256": "840b12efd70882859356170b02757a03751bd2be086e1bcb72817334229d00f3"
+    },
+    {
+      "path": "examples/04-modeling/subdivision.ts",
+      "sha256": "9834cd94120a1cb7e741a5c404df180ba0046ba06b44ccba2d8cd764ecf84695"
+    },
+    {
       "path": "LICENSE",
       "sha256": "6d410e809e04ecb61ed590241d3eb7353ddb3beca01854ca7d9d156e8c7907f4"
     },
@@ -231,7 +319,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "8fb2a861c2336790597279fddf110f47831bad5d723cdde0f81912a159e999d5"
+      "sha256": "1b495d7372682b58a9f8be0f90fde6c2e5cb3916d8886b6aa5d1e75e046760dd"
     },
     {
       "path": "packages/cg-algorithms/package.json",
@@ -246,6 +334,10 @@
       "sha256": "a2c5fc2b58b054b0b4cde5e85fd907df10796ad9d18cbd69f81ffecf8f1f2e76"
     },
     {
+      "path": "packages/cg-algorithms/src/bevel.ts",
+      "sha256": "d3b763991b4e2fe75cb2120fbafcfc2ab51c9a08a4317b1ff5fea85f0bdefe2d"
+    },
+    {
       "path": "packages/cg-algorithms/src/camera.ts",
       "sha256": "2089bde44db72da5ec231118b7d4e9ed252a77ffbe9ae5d67e6c5cc4bdfe18d1"
     },
@@ -258,12 +350,24 @@
       "sha256": "15b9acdc958920b9bf1910be90e493c015516da1a7720dea33a9647a63237685"
     },
     {
+      "path": "packages/cg-algorithms/src/csg.ts",
+      "sha256": "a64cb9eb5e29fdc264fccd8f23fbfa352670e38e945c9d2b895409ff6f288612"
+    },
+    {
+      "path": "packages/cg-algorithms/src/euler-characteristic.ts",
+      "sha256": "0692d28db424a041e0ffd380b1428f3ed6738e8431e03788f5669cee3ba8dd13"
+    },
+    {
       "path": "packages/cg-algorithms/src/gamma.ts",
       "sha256": "9f08f039ea0829173b4740ea71924c73ae8eb5a790b96e8278e3db4268be6251"
     },
     {
       "path": "packages/cg-algorithms/src/geometry3d.ts",
       "sha256": "2e4002a7146d4d2484e0a3d3e63a28276282017287d1144bf192537a3ecdca35"
+    },
+    {
+      "path": "packages/cg-algorithms/src/half-edge.ts",
+      "sha256": "0045d43d826bd97b704945cc53694beb6c2c6584ce7e70b9a01569fbfaa93fec"
     },
     {
       "path": "packages/cg-algorithms/src/index.ts",
@@ -278,12 +382,20 @@
       "sha256": "b6a1828fdeee0ce3bd6a028101adb7ad6b95487549ee78fb6a5f05ef8cc5214a"
     },
     {
+      "path": "packages/cg-algorithms/src/manifold.ts",
+      "sha256": "4affcb782239e2dfbdc5fcdae30808e8e982520e9b24440643ee1216b89d1249"
+    },
+    {
       "path": "packages/cg-algorithms/src/matrix-product-steps.ts",
       "sha256": "3b83be9268110c07bd819d98f8fda42fcd3d6239fbce48e18d2e6f8a343d0212"
     },
     {
       "path": "packages/cg-algorithms/src/matrix4.ts",
       "sha256": "9aeb96711104e11d65bb3f2926551bac9ea5d918a93fbc16649a06d3836da52f"
+    },
+    {
+      "path": "packages/cg-algorithms/src/mesh.ts",
+      "sha256": "37a2e34a043fdf4adb4784b3ee7e2b5b13c9e6c03b9796ea70dc6efa03c3bf9e"
     },
     {
       "path": "packages/cg-algorithms/src/number.ts",
@@ -314,6 +426,14 @@
       "sha256": "d1c378f8a00d4f3c2d9ecacfd5eaff443f1a79c2fd17f0917b4c6c160fe604a5"
     },
     {
+      "path": "packages/cg-algorithms/src/subdivision.ts",
+      "sha256": "2e69743340470f834fa1ddfc65a1d18b040b4634552f3b78b27a717a56abeb3a"
+    },
+    {
+      "path": "packages/cg-algorithms/src/sweep.ts",
+      "sha256": "420e36c4ac6d6b55f241ea88df70295f1e3109bbc4fef7c3beac6bad4a57aa38"
+    },
+    {
       "path": "packages/cg-algorithms/src/tone-mapping.ts",
       "sha256": "b2a7682a74a7d9afede4ad816a0d807c7939b5b25af54098d34e243c86937315"
     },
@@ -331,7 +451,7 @@
     },
     {
       "path": "public-site/publish/THIRD_PARTY_NOTICES.md",
-      "sha256": "d78f3ef6dd43f342e4c8d492091f338e6889dfb1f8e093778fb6ecdb906f633f"
+      "sha256": "b15bee23059e9f7fc30d8fe8ab8d3f28864b76011fa27cdef153bf401413e223"
     },
     {
       "path": "public-site/publish/VUE-LICENSE.md",
@@ -355,7 +475,7 @@
     },
     {
       "path": "public-site/src/sessions.ts",
-      "sha256": "ece8e8d476d8b983ed12935200ffea5ffca9e18a950c19aa3c45acd1e14cdd48"
+      "sha256": "82bc75499690a76481bbeaa3d23ebc93e8f3be781fe06d879dafe9612de951bc"
     },
     {
       "path": "public-site/src/sessions/02-color-image.ts",
@@ -364,6 +484,10 @@
     {
       "path": "public-site/src/sessions/03-projection-transform.ts",
       "sha256": "aedf5ff976d9e2d45c8ea59c4646ef35c60c0f622a68e2ef8d55ca5c80d0a637"
+    },
+    {
+      "path": "public-site/src/sessions/04-modeling.ts",
+      "sha256": "c62cf6566b311795d30191d5161af23ac316033e7b703a537bdb31a34dcb4e84"
     },
     {
       "path": "public-site/src/style.css",
@@ -379,7 +503,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "bc9507e418ffae35b74d40f84ad56128ebed7bb36908887f8153754be0046228"
+      "sha256": "d8bee6cfca85bd5a192293446ab4529b5038fd30c1144dd1f5420122d895f1dd"
     },
     {
       "path": "scripts/alpha-blending.test.mjs",
@@ -396,6 +520,18 @@
     {
       "path": "scripts/matrix-product-steps.test.mjs",
       "sha256": "95ba2e9f913c74900bd8f34c00b1d18bd836129b21ef87b9f88fe88aface33e8"
+    },
+    {
+      "path": "scripts/modeling-mesh.test.mjs",
+      "sha256": "83aadfa4601d21d195a20805af6eebb816123682361b99870c632697511301c5"
+    },
+    {
+      "path": "scripts/modeling-operations.test.mjs",
+      "sha256": "b7592beb9770eee567d289548ed5005834348554f13b6e6952d62075153bd533"
+    },
+    {
+      "path": "scripts/modeling-subdivision.test.mjs",
+      "sha256": "dac153df0cf5c5dc02b27a9960d430be461aef0e7487869d876b0567bc32e7ab"
     },
     {
       "path": "scripts/projection-transform.test.mjs",
@@ -415,7 +551,7 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "d78f3ef6dd43f342e4c8d492091f338e6889dfb1f8e093778fb6ecdb906f633f"
+      "sha256": "b15bee23059e9f7fc30d8fe8ab8d3f28864b76011fa27cdef153bf401413e223"
     },
     {
       "path": "VUE-LICENSE.md",
