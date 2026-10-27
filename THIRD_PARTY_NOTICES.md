@@ -45,3 +45,11 @@
 - Zorin et al., Subdivision for Modeling and Animation, SIGGRAPH 2000 course notes: https://cs.nyu.edu/~dzorin/sig00course/coursenotes00.pdf
 
 教材上の範囲：Booleanは浮動小数点の教育用BSP、曲面Primitiveは多角形近似、Bevelは立方体用の構成です。Subdivisionは閉じた向きの整合したManifoldに限定し、境界・Crease拡張は含めません。Manifold検査は接続構造を調べ、自己交差や製造可能性までは保証しません。元資料の文・図やライブラリ実装の転載ではありません。
+
+### 自然物・複雑形状（2026年10月30日・第5回）
+
+11本の図形、領域分割、関数・規則・粒子の表示は自作の教育用実装です。公開モデルは自作トーラス・球・立方体。学生作品や原資料の画像は配布しません。描画はVueとCanvas/SVGで、新たな3Dライブラリは使用していません。
+
+Perlin Noiseは教員の [昨年度Python Notebook](https://gist.github.com/m-riho/db6d2f5fa92edddd69f883e7e1454d67) と [Ken Perlin, Improved Noise](https://cs.nyu.edu/~perlin/noise/) を参照。2Dの8方向単位勾配を使う教材版で、3D Improved Noiseの勾配集合とは異なります。NumPy RandomStateのMT19937とshuffleに対応する置換表をTypeScriptで生成し、Python版との数値一致を検証しています。画像や外部ライブラリのコードの転載はありません。
+
+4/8分木は有限解像度の二値Gridの階層表現。SDFは2D断面、Metaballは有限半径の影響和の等値線近似。Mandelbrot/Juliaは有限解像度・有限反復です。粒子は固定時間刻みの簡単な運動更新で、流体シミュレーションではありません。

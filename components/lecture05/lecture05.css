@@ -1,0 +1,32 @@
+/* 第5回：Slidevと公開サイトが共用する操作面。 */
+.l5d{--ink:#203649;--accent:#005bac;--rule:#cbdbea;--soft:#edf4fc;color:var(--ink);background:white;border:1px solid var(--rule);border-radius:10px;padding:12px;font-size:18px;line-height:1.4;box-sizing:border-box;max-width:100%;}
+.l5d *{box-sizing:border-box}
+.l5d button,.l5d select,.l5d input{font:inherit;color:inherit;max-width:100%}
+.l5d button,.l5d select,.l5d input[type=number],.l5d input[type=text]{border:1px solid #91afc8;border-radius:5px;background:#fff;padding:4px 8px}
+.l5d button{cursor:pointer}
+.l5d button:disabled{opacity:.5;cursor:default}
+.l5d button[aria-pressed=true]{background:#005bac;color:white}
+.l5d :focus-visible{outline:3px solid #c26100;outline-offset:2px}
+.l5d-controls{display:flex;flex-wrap:wrap;align-items:center;gap:7px 16px;margin-bottom:9px}
+.l5d-controls label{display:flex;align-items:center;gap:6px}
+.l5d input[type=range]{width:105px;accent-color:#005bac}
+.l5d input[type=number]{width:80px}
+.l5d-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.l5d-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.l5d figure{margin:0;min-width:0}
+.l5d figcaption{font-size:16px;margin:4px 0}
+.l5d p{font-size:inherit;line-height:1.4;margin:7px 0}
+.l5d h3{font-size:19px;margin:0 0 6px}
+.l5d-readout{font-variant-numeric:tabular-nums;background:#edf4fc;padding:6px 10px;border-radius:5px;margin-top:8px}
+.l5d-note{font-size:16px!important;line-height:1.4;margin:7px 0 0!important}
+.l5d-visual{width:100%;display:block;max-width:100%}
+.l5d svg{max-width:100%;display:block}
+.l5d svg text{font-family:inherit}
+.l5d canvas{max-width:100%;display:block;touch-action:none}
+.l5d table{font-size:15px!important;width:100%;border-collapse:collapse}
+.l5d td,.l5d th{padding:3px 6px!important;border-bottom:1px solid var(--rule)}
+.l5d pre{font-size:15px;white-space:pre-wrap;overflow:auto;max-height:140px;margin:4px 0}
+.l5d output{font-variant-numeric:tabular-nums}
+@media(max-width:700px){.site-demo .l5d-grid2,.site-demo .l5d-grid3{grid-template-columns:1fr}.l5d{font-size:16px}.l5d-controls{gap:8px}.l5d input[type=range]{width:100px}}
+@media(prefers-reduced-motion:reduce){.l5d *{animation:none!important;transition:none!important}}
+@media print{.l5d button,.l5d input,.l5d select{pointer-events:none}}

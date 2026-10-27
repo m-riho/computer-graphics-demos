@@ -170,6 +170,58 @@
       "sha256": "f14b1cd8cdee01340da973063186c5c8c6fd80e5ab6d62c7c32fd43550b919bc"
     },
     {
+      "path": "components/lecture05/CharacterRepresentationDemo.vue",
+      "sha256": "cd35398f20e92304da371170dbd530ed63aa77b44727b52d7831991f55a9256d"
+    },
+    {
+      "path": "components/lecture05/FractalExplorer.vue",
+      "sha256": "821ddf4b6a9debcb057f9bbbc5ff5d2d04ff9a2d47beb65e8d7303a3811cd449"
+    },
+    {
+      "path": "components/lecture05/IFSFernExplorer.vue",
+      "sha256": "58b5a29ff3ed56cd5cd1d173936934b89a15d3c624638bf495bc944e575d9498"
+    },
+    {
+      "path": "components/lecture05/lecture05.css",
+      "sha256": "91f1d0a7a6e3091fabbed1b3dbb992b9e3e5d6c616773649f305ad8e1252dcba"
+    },
+    {
+      "path": "components/lecture05/LSystemLab.vue",
+      "sha256": "e87c3fa1033a0df20b3d2114b6426a12e6cf945b916ebade4f00a27a33efac31"
+    },
+    {
+      "path": "components/lecture05/MetaballExplorer.vue",
+      "sha256": "b0ead391a91215df81924df4548092483d9cfc3679acc3d9a9c31247462971f1"
+    },
+    {
+      "path": "components/lecture05/MidpointDisplacementLab.vue",
+      "sha256": "bbbe89dcb776c978000b70e5bfb1d4973b062dbb396768a87bfcff553dbe6152"
+    },
+    {
+      "path": "components/lecture05/OctreeVoxelExplorer.vue",
+      "sha256": "6e2aa9ddaac29d0732be6fec8e95e67a2344bffa9268537f68e96fabdb1987cf"
+    },
+    {
+      "path": "components/lecture05/ParticleSystemLab.vue",
+      "sha256": "e3c197edcde73a52a69bca966a89e84b3738a16d81abf615be42f63eb8cc22dc"
+    },
+    {
+      "path": "components/lecture05/PerlinNoiseLab.vue",
+      "sha256": "9e54a9082ca2aa3ed6e16c706ffd96d09d70792a1e036eebfbd2651e64725f0b"
+    },
+    {
+      "path": "components/lecture05/QuadtreeTileExplorer.vue",
+      "sha256": "7cf55bff9996710c95f39100d0185ed6704e75229dc9cd63ed6f24bdb4a2d591"
+    },
+    {
+      "path": "components/lecture05/SDFBooleanExplorer.vue",
+      "sha256": "ac34c7a6a25abfa9a390cc0cf2be116046d2733bda014d2913ddf55bcad7f281"
+    },
+    {
+      "path": "components/lecture05/SpatialCanvas.vue",
+      "sha256": "0ac286284481534490bd5d05528c1b33ee99caad8e9ab3c26db0998e4c002946"
+    },
+    {
       "path": "examples/02-color-image/aliasing.ts",
       "sha256": "770cba2c340a901b741b5fb40c53fd6dd6e3dc9641474c8ab047666ea169e5b2"
     },
@@ -310,6 +362,54 @@
       "sha256": "9834cd94120a1cb7e741a5c404df180ba0046ba06b44ccba2d8cd764ecf84695"
     },
     {
+      "path": "examples/05-natural-modeling/fractal.ts",
+      "sha256": "6c11d9a0133a290bb244f094e303ed190a3e35fd323c46def719e2e28498652c"
+    },
+    {
+      "path": "examples/05-natural-modeling/ifs_fern.ts",
+      "sha256": "e8f99c8e37cac7b577be75c75136aa27b393ffda59550c01fa8e374b2bc6e487"
+    },
+    {
+      "path": "examples/05-natural-modeling/lsystem.ts",
+      "sha256": "2f555db871b1df23182ace11f36a5b1372b35d7c9097494d02d03fcd3590a08c"
+    },
+    {
+      "path": "examples/05-natural-modeling/metaball.ts",
+      "sha256": "0f38af9e5d8ed713deb2f15fdb9118b15b94be489cc2a36e25ce6751a6cebb2e"
+    },
+    {
+      "path": "examples/05-natural-modeling/midpoint_displacement.ts",
+      "sha256": "ed1906e6c3f19290cfe1debf35c3b004fa1fcf575ed5f6989a294f257ea6a505"
+    },
+    {
+      "path": "examples/05-natural-modeling/octree.ts",
+      "sha256": "e41db1c47e07d9a9895ef108e906dead77676b323e41eb039d3f66bf851043bd"
+    },
+    {
+      "path": "examples/05-natural-modeling/particle_system.ts",
+      "sha256": "36c92af2f4404d1ea068dcdba839903fe61a7d6000b13616b914c9ff43af871c"
+    },
+    {
+      "path": "examples/05-natural-modeling/perlin_noise.ts",
+      "sha256": "5fba8fa843ecd9ce15334bc98e314a7de5f7ed47932ed6ba753e662913a65710"
+    },
+    {
+      "path": "examples/05-natural-modeling/point_cloud.ts",
+      "sha256": "166fc08382edfa3631e164adfbf2b718f95f67c4c04a10653699982796eb2a60"
+    },
+    {
+      "path": "examples/05-natural-modeling/quadtree.ts",
+      "sha256": "4c6a294df9a1523da01cb319a730eac4c4202afe961653bb090140775406fd7f"
+    },
+    {
+      "path": "examples/05-natural-modeling/README.md",
+      "sha256": "31b12e3da0eed4077b32bb3e355b3c700bce749624fb067d5b1acc98d3e48d95"
+    },
+    {
+      "path": "examples/05-natural-modeling/sdf.ts",
+      "sha256": "1ee25f9a76aa8bf6411cad7dbf80150b6cfab321d534641ffc80a7bdd6621f44"
+    },
+    {
       "path": "LICENSE",
       "sha256": "6d410e809e04ecb61ed590241d3eb7353ddb3beca01854ca7d9d156e8c7907f4"
     },
@@ -319,7 +419,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "1b495d7372682b58a9f8be0f90fde6c2e5cb3916d8886b6aa5d1e75e046760dd"
+      "sha256": "61c3cdb6d0b42080a4bb19cda2bedcc4109442403040762075e313e673b1fbd0"
     },
     {
       "path": "packages/cg-algorithms/package.json",
@@ -398,6 +498,34 @@
       "sha256": "37a2e34a043fdf4adb4784b3ee7e2b5b13c9e6c03b9796ea70dc6efa03c3bf9e"
     },
     {
+      "path": "packages/cg-algorithms/src/natural-modeling.ts",
+      "sha256": "ec7848fbe3163e334057cea0685c262cfa70140ec49e1f3ee265d6de90c274c1"
+    },
+    {
+      "path": "packages/cg-algorithms/src/nature-fields.ts",
+      "sha256": "606dc9a13193982a443f7aa23391bdb39baee8e466a8365253ce590e5992d4a0"
+    },
+    {
+      "path": "packages/cg-algorithms/src/nature-fractals.ts",
+      "sha256": "e517b07beabfdb942a026c5c8f9713b7bf5da3a8a333dc93b6828664628b42ac"
+    },
+    {
+      "path": "packages/cg-algorithms/src/nature-noise.ts",
+      "sha256": "12d7ae212f984f70adb108db07db503b978d5c26abacaa28af30352dbfa34280"
+    },
+    {
+      "path": "packages/cg-algorithms/src/nature-particles.ts",
+      "sha256": "ee1620b5214e5bf4d6031f95653eefd4a0f1c07ee96dc48f8413aeaece593edf"
+    },
+    {
+      "path": "packages/cg-algorithms/src/nature-rules.ts",
+      "sha256": "e253c79c953c111a32306d6dca4ae439bc559036ebce455643f2a3aeacfcdecb"
+    },
+    {
+      "path": "packages/cg-algorithms/src/nature-spatial.ts",
+      "sha256": "51bda58ab23ce6363e2cc368d8eb6f38898a8ce36b1ff4d3b2263c0638074c37"
+    },
+    {
       "path": "packages/cg-algorithms/src/number.ts",
       "sha256": "89ee26f18ccde21c0a93533fcebd631b8b25a347880f2a4c7065f6f918ad69c6"
     },
@@ -451,7 +579,7 @@
     },
     {
       "path": "public-site/publish/THIRD_PARTY_NOTICES.md",
-      "sha256": "b15bee23059e9f7fc30d8fe8ab8d3f28864b76011fa27cdef153bf401413e223"
+      "sha256": "ceb2dd7f362fb0e12a6760fd9ee40253266e49a0726e46b0895c931cb26898e0"
     },
     {
       "path": "public-site/publish/VUE-LICENSE.md",
@@ -459,7 +587,7 @@
     },
     {
       "path": "public-site/src/App.vue",
-      "sha256": "953edf4bf26f0d8d3bd48ba997d9a242c57755ee5dcc97f872107ab109025792"
+      "sha256": "b15a624ffaadf2696c183ede23213f8288f97f948f6b3bff99d15a296777ae97"
     },
     {
       "path": "public-site/src/main.ts",
@@ -471,11 +599,11 @@
     },
     {
       "path": "public-site/src/session-model.ts",
-      "sha256": "e16b0164be14bad2a74b1bb75fefdd64ba3cbed542e87ce3746447ded3ef65cf"
+      "sha256": "1f06b32c3f4510792311e8e3ba7a386c11410cd43d06378f4694052f2d489fff"
     },
     {
       "path": "public-site/src/sessions.ts",
-      "sha256": "82bc75499690a76481bbeaa3d23ebc93e8f3be781fe06d879dafe9612de951bc"
+      "sha256": "c6f4c30e8de765d85175abfd1761ffe9cd07fe54ad2aa35466501cdaf7dd29d1"
     },
     {
       "path": "public-site/src/sessions/02-color-image.ts",
@@ -490,8 +618,12 @@
       "sha256": "c62cf6566b311795d30191d5161af23ac316033e7b703a537bdb31a34dcb4e84"
     },
     {
+      "path": "public-site/src/sessions/05-natural-modeling.ts",
+      "sha256": "16f7fab8ee0219648ebdbb8921c82e72e1f94e1a11e1a6d41f645a3339fa8e0b"
+    },
+    {
       "path": "public-site/src/style.css",
-      "sha256": "0831a80a0865403f8b852ca4db65f3c051bed3589f163c284037ad1739cb95c6"
+      "sha256": "3db2ea802b44299d668bd1f58dd41f3a30f64f9e27b788644b51e0902695568b"
     },
     {
       "path": "public-site/tsconfig.json",
@@ -503,7 +635,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "d8bee6cfca85bd5a192293446ab4529b5038fd30c1144dd1f5420122d895f1dd"
+      "sha256": "e5b9cf936f3bf7c32f9a1ef966361447908ca10352f0686863c6c7b6cb1e9ede"
     },
     {
       "path": "scripts/alpha-blending.test.mjs",
@@ -534,6 +666,38 @@
       "sha256": "dac153df0cf5c5dc02b27a9960d430be461aef0e7487869d876b0567bc32e7ab"
     },
     {
+      "path": "scripts/natural-modeling.test.mjs",
+      "sha256": "b20d96736ae7b6dbdfb2ce8977d9b053126d0868681a9711abb157914afbc22c"
+    },
+    {
+      "path": "scripts/nature-examples.test.mjs",
+      "sha256": "97ee0b25ca78ab55e65d9a4c36c0bb64832fcdeda3b82ac9b31323427ce7033c"
+    },
+    {
+      "path": "scripts/nature-fields.test.mjs",
+      "sha256": "8cd0a46cec0534aefa7506e1f52332a81cb0fbe3a4d630220d90ce416001a476"
+    },
+    {
+      "path": "scripts/nature-fractals.test.mjs",
+      "sha256": "a7684618bfd7dbee777a72bd42e0e620b8af79e4ddc2319fe4e4c30931eee755"
+    },
+    {
+      "path": "scripts/nature-noise.test.mjs",
+      "sha256": "7995d1d1858df871e951cff079aaa8092052f6054b02c94da1d09ac9e7fd468b"
+    },
+    {
+      "path": "scripts/nature-particles.test.mjs",
+      "sha256": "d9115be7042ad39615f951e1ce60649d2ed26185f9cc6f8cc43ea01511332f2d"
+    },
+    {
+      "path": "scripts/nature-rules.test.mjs",
+      "sha256": "4496a7149719f5c690aa341bacf76fcd1e26139141308a53361b52370bb59a2c"
+    },
+    {
+      "path": "scripts/nature-spatial.test.mjs",
+      "sha256": "d05ac3f54baa90f5f6a377a62e335046d8a02cb26e152188d764b1e1012f0c05"
+    },
+    {
       "path": "scripts/projection-transform.test.mjs",
       "sha256": "8dd64574c5530473bdb343c9240d572bbf90637c8d5538ed81356db1d3c26dfe"
     },
@@ -551,7 +715,7 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "b15bee23059e9f7fc30d8fe8ab8d3f28864b76011fa27cdef153bf401413e223"
+      "sha256": "ceb2dd7f362fb0e12a6760fd9ee40253266e49a0726e46b0895c931cb26898e0"
     },
     {
       "path": "VUE-LICENSE.md",

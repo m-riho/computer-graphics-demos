@@ -12,6 +12,8 @@
 
 第4回（2026年10月23日）はモデリングその1です。Wireframe / Surface / Solid、Meshの接続、Half-edge、Manifold、Boolean / CSG、Sweep、Bevel / Fillet、4方式のSubdivision、Euler characteristicの9テーマ・18ページを用意しています。`#/sessions/04`から選択できます。
 
+第5回（2026年10月30日）はモデリングその2です。同じ形の5表現、Quadtree、Octree、SDF、Metaball、Fractal、IFS、L-system、中点変位法、Perlin Noise、Particleの11テーマ・22ページを用意しています。`#/sessions/05` のStory A–Fから、データ表現・分割・関数・規則・Noise・時間変化を結び付けて学べます。教材コードは `examples/05-natural-modeling/` にあります。
+
 ## ローカルで動かす
 
 Node.js 22.18以降（24 LTS推奨）とnpmを用意します。

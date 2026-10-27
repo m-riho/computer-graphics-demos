@@ -2,6 +2,7 @@ import type {Component} from 'vue'
 
 export interface Topic {
   id:string
+  priority?:boolean
   title:string
   question:string
   purpose:string
@@ -24,6 +25,7 @@ export interface CourseSession {
   description:string
   date?:string
   topics:Topic[]
+  stories?:{title:string;description:string;topicIds:string[]}[]
 }
 
 /** 登録した回だけを公開する。ID重複や空ページを防ぎ、授業回順に表示する。 */
