@@ -155,7 +155,7 @@
     },
     {
       "path": "components/lecture04/MeshView.vue",
-      "sha256": "ae5978e6b83112229b74404aa8b26707b95e187d8fe56a176f8486bbdc992179"
+      "sha256": "1e57e6ea8769bd437bf542971e8d896b81087ffd0516d2e298c077fd1b635a44"
     },
     {
       "path": "components/lecture04/RepresentationComparisonDemo.vue",
@@ -195,7 +195,7 @@
     },
     {
       "path": "components/lecture05/MidpointDisplacementLab.vue",
-      "sha256": "bbbe89dcb776c978000b70e5bfb1d4973b062dbb396768a87bfcff553dbe6152"
+      "sha256": "84a2329724982fc20b83a72cee2c61d655b90ac1866dc7c0626af85d4fcc3aa1"
     },
     {
       "path": "components/lecture05/OctreeVoxelExplorer.vue",
@@ -379,7 +379,7 @@
     },
     {
       "path": "examples/05-natural-modeling/midpoint_displacement.ts",
-      "sha256": "ed1906e6c3f19290cfe1debf35c3b004fa1fcf575ed5f6989a294f257ea6a505"
+      "sha256": "1bf3e86cd97cf084daca51809a55101f69d021f531fb2c5c2b4395e8014bdcf0"
     },
     {
       "path": "examples/05-natural-modeling/octree.ts",
@@ -403,7 +403,7 @@
     },
     {
       "path": "examples/05-natural-modeling/README.md",
-      "sha256": "31b12e3da0eed4077b32bb3e355b3c700bce749624fb067d5b1acc98d3e48d95"
+      "sha256": "280af597155c041b03770fc75f90874c08655514db210f3f6b2b05dd6ae3d8e5"
     },
     {
       "path": "examples/05-natural-modeling/sdf.ts",
@@ -519,7 +519,7 @@
     },
     {
       "path": "packages/cg-algorithms/src/nature-rules.ts",
-      "sha256": "e253c79c953c111a32306d6dca4ae439bc559036ebce455643f2a3aeacfcdecb"
+      "sha256": "b68a4f5d2d21cfe48d416e0fc3d97c87a7b1cdf987e3e29f26eab3427cdc4f7b"
     },
     {
       "path": "packages/cg-algorithms/src/nature-spatial.ts",
@@ -619,7 +619,7 @@
     },
     {
       "path": "public-site/src/sessions/05-natural-modeling.ts",
-      "sha256": "16f7fab8ee0219648ebdbb8921c82e72e1f94e1a11e1a6d41f645a3339fa8e0b"
+      "sha256": "b1d5327664c9eaca46a45f01cdd27a0870e1a5dec3a59a934e1a4c931bfdc4b1"
     },
     {
       "path": "public-site/src/style.css",
@@ -635,7 +635,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "e5b9cf936f3bf7c32f9a1ef966361447908ca10352f0686863c6c7b6cb1e9ede"
+      "sha256": "b6813e7fe20fb1836f8f63abefb92f321243b39027151a5c3b28b6210d8f53db"
     },
     {
       "path": "scripts/alpha-blending.test.mjs",
@@ -691,7 +691,7 @@
     },
     {
       "path": "scripts/nature-rules.test.mjs",
-      "sha256": "4496a7149719f5c690aa341bacf76fcd1e26139141308a53361b52370bb59a2c"
+      "sha256": "ce2f7d0ef5b55b85552d035d10fd39f6306eb2435c5c5e7d0c266971d3b363cf"
     },
     {
       "path": "scripts/nature-spatial.test.mjs",

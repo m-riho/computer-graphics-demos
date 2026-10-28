@@ -57,3 +57,52 @@ export function midpointStages(iterations: number, seed: number, amplitude: numb
   }
   return stages
 }
+
+import type { Mesh, Vec3 } from './mesh.ts'
+export interface TriangleMidpointStage {
+  mesh: Mesh
+  strength: number
+  midpoints: { vertex: number; a: number; b: number; offset: number }[]
+}
+/**
+ * XZ平面の三角形を4分割し、辺の中点のY（高さ）だけを変位させる。
+ * 同じ辺の中点は1回だけ生成して共有する。面ごとに乱数を引くと亀裂が生じる。
+ * 閉じた立体の細分割ではなく、境界を持つ三角形の高さ場を作る教材。
+ */
+export function triangleMidpointStages(iterations: number, seed: number, amplitude: number, decay: number): TriangleMidpointStage[] {
+  const random = seededRandom(seed)
+  const stages: TriangleMidpointStage[] = [{
+    mesh: { vertices: [[-1.5, 0, -1], [0, 0, 1.5], [1.5, 0, -1]], faces: [[0, 1, 2]] },
+    strength: 0, midpoints: [],
+  }]
+  let strength = bounded(amplitude, 0, 2, .8)
+  const levels = Math.floor(bounded(iterations, 0, 5, 3))
+  const reduction = bounded(decay, 0, 1, .5)
+  for (let level = 0; level < levels; level++) {
+    const previous = stages[level].mesh
+    const vertices: Vec3[] = previous.vertices.map(v => [...v])
+    const faces: number[][] = []
+    const edgeMidpoints = new Map<string, number>()
+    const midpoints: TriangleMidpointStage['midpoints'] = []
+    function midpoint(a: number, b: number): number {
+      const key = a < b ? `${a}:${b}` : `${b}:${a}`
+      const existing = edgeMidpoints.get(key)
+      if (existing !== undefined) return existing
+      const u = previous.vertices[a], v = previous.vertices[b]
+      const offset = (random() * 2 - 1) * strength
+      const vertex = vertices.length
+      vertices.push([(u[0] + v[0]) / 2, (u[1] + v[1]) / 2 + offset, (u[2] + v[2]) / 2])
+      edgeMidpoints.set(key, vertex)
+      midpoints.push({ vertex, a, b, offset })
+      return vertex
+    }
+    for (const [a, b, c] of previous.faces) {
+      const ab = midpoint(a, b), bc = midpoint(b, c), ca = midpoint(c, a)
+      // 頂点の巡回方向を保って、1枚を4枚へ分割する。
+      faces.push([a, ab, ca], [ab, b, bc], [ca, bc, c], [ab, bc, ca])
+    }
+    stages.push({ mesh: { vertices, faces }, strength, midpoints })
+    strength *= reduction
+  }
+  return stages
+}

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, useId } from 'vue'
 import { clampFinite, meshEdges, validateMesh, type Mesh, type Vec3 } from '../../packages/cg-algorithms/src/mesh'
-const props=withDefaults(defineProps<{mesh:Mesh;wireframe?:boolean;surface?:boolean;originalMesh?:Mesh;originalVertices?:boolean;highlightVertices?:number[];highlightEdges?:number[];highlightFaces?:number[];height?:number;directedEdge?:[number,number]}>(),{wireframe:true,surface:true,originalVertices:false,height:260})
-const yaw=ref(32),pitch=ref(-22),zoom=ref(1),dragging=ref(false),markerId=`arrow-${useId()}`
+const props=withDefaults(defineProps<{mesh:Mesh;wireframe?:boolean;surface?:boolean;originalMesh?:Mesh;originalVertices?:boolean;highlightVertices?:number[];highlightEdges?:number[];highlightFaces?:number[];height?:number;initialYaw?:number;initialPitch?:number;initialZoom?:number;directedEdge?:[number,number]}>(),{wireframe:true,surface:true,originalVertices:false,height:260,initialYaw:32,initialPitch:-22,initialZoom:1})
+const yaw=ref(props.initialYaw),pitch=ref(props.initialPitch),zoom=ref(props.initialZoom),dragging=ref(false),markerId=`arrow-${useId()}`
 // View operations change only the projection, never the mesh data.
 const pointers=new Map<number,{x:number;y:number}>()
-function resetView(){yaw.value=32;pitch.value=-22;zoom.value=1}
+function resetView(){yaw.value=props.initialYaw;pitch.value=props.initialPitch;zoom.value=props.initialZoom}
 function rotate(dx:number,dy:number){
   yaw.value=((yaw.value+dx+180)%360+360)%360-180
   pitch.value=clampFinite(pitch.value+dy,-80,80,-22)

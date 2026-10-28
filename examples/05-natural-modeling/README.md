@@ -12,7 +12,7 @@
 | fractal.ts | 反復数 → 再帰分割／複素反復 → 件数・発散判定 |
 | ifs_fern.ts | Seed・点数 → 確率でアフィン変換 → シダの点列 |
 | lsystem.ts | Axiom・Rule → 書換えとStack → 枝の線分 |
-| midpoint_displacement.ts | Seed・振幅・減衰 → 中点の変位 → 高さ列 |
+| midpoint_displacement.ts | Seed・振幅・減衰 → 中点の変位 → 1D高さ列／三角形Mesh |
 | perlin_noise.ts | Seed・評価点 → 勾配／内積／Fade／補間 → Noise値 |
 | particle_system.ts | 発生・速度・寿命 → 時間更新と除去 → 粒子状態 |
 
@@ -25,3 +25,5 @@ node --experimental-strip-types --input-type=module -e "import {runExample} from
 図形は自作トーラス・球・立方体などを使用。学生作品や過年度の画像は含めません。描画はVueとCanvas/SVG、分割・生成・Noise・粒子更新は自前の教育用計算です。描画や反復には上限があります。
 
 Perlin Noiseは2D・8方向の単位勾配の教材版。NumPyのRandomStateに対応する置換表を使い、[昨年度Notebook](https://gist.github.com/m-riho/db6d2f5fa92edddd69f883e7e1454d67)の正しい計算例と一致します。符号付きのまま重ね合わせ、表示時だけ `(N+1)/2` を行います。
+
+中点変位法の三角形版は、XZ平面を4分割し、Y（高さ）を変位させます。各共有辺の中点を1つだけ生成するため亀裂が生じません。閉じた立体のSubdivisionではなく、境界を持つ高さ場の教材です。最大5段階・1,024面に制限しています。
