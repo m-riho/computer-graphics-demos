@@ -207,7 +207,7 @@
     },
     {
       "path": "components/lecture05/PerlinNoiseLab.vue",
-      "sha256": "9e54a9082ca2aa3ed6e16c706ffd96d09d70792a1e036eebfbd2651e64725f0b"
+      "sha256": "9ba60f9f63cd6e30c4ae6473373572a2ac065da809d80d2ff75a6d03eb67b069"
     },
     {
       "path": "components/lecture05/QuadtreeTileExplorer.vue",
@@ -390,8 +390,16 @@
       "sha256": "058c5dee6cd51432029d728ad115cf87a47250856b8d4e9e2ea76ec1e5370528"
     },
     {
+      "path": "examples/05-natural-modeling/perlin_clouds.ts",
+      "sha256": "b3b23b1a889468bb691460532aa1c57fdb47a3c1f8ec7424a6751f432a4e8c94"
+    },
+    {
       "path": "examples/05-natural-modeling/perlin_noise.ts",
       "sha256": "5fba8fa843ecd9ce15334bc98e314a7de5f7ed47932ed6ba753e662913a65710"
+    },
+    {
+      "path": "examples/05-natural-modeling/perlin_terrain.ts",
+      "sha256": "dfdedd89668e3ee1f99fe25ac7c830941920d302f708d504f9230809e7553c8b"
     },
     {
       "path": "examples/05-natural-modeling/point_cloud.ts",
@@ -403,7 +411,7 @@
     },
     {
       "path": "examples/05-natural-modeling/README.md",
-      "sha256": "280af597155c041b03770fc75f90874c08655514db210f3f6b2b05dd6ae3d8e5"
+      "sha256": "b672312ddc09b15a582b86f64a43c3bd4033dc65bd2cef7eca2b7c271158cee4"
     },
     {
       "path": "examples/05-natural-modeling/sdf.ts",
@@ -508,6 +516,10 @@
     {
       "path": "packages/cg-algorithms/src/nature-fractals.ts",
       "sha256": "e517b07beabfdb942a026c5c8f9713b7bf5da3a8a333dc93b6828664628b42ac"
+    },
+    {
+      "path": "packages/cg-algorithms/src/nature-noise-applications.ts",
+      "sha256": "5c9a6982d8b7e19ce604e3bb853db82430cd7ab0ad451ee4117b497af89254bb"
     },
     {
       "path": "packages/cg-algorithms/src/nature-noise.ts",
@@ -619,7 +631,7 @@
     },
     {
       "path": "public-site/src/sessions/05-natural-modeling.ts",
-      "sha256": "93c7b296b00091199f6dacb9f0a75f5f286fb2de07f1518c9c8f5c3b59fc3899"
+      "sha256": "c9aead3842196769697e89489c9d4870702acdc92fa172816e048b26c96cb33b"
     },
     {
       "path": "public-site/src/style.css",
@@ -671,7 +683,7 @@
     },
     {
       "path": "scripts/nature-examples.test.mjs",
-      "sha256": "97ee0b25ca78ab55e65d9a4c36c0bb64832fcdeda3b82ac9b31323427ce7033c"
+      "sha256": "5bb377c55c0892976f432d07e5b6d9ee2ecdb2929261cbad1a716bdbdc0458e1"
     },
     {
       "path": "scripts/nature-fields.test.mjs",
@@ -680,6 +692,10 @@
     {
       "path": "scripts/nature-fractals.test.mjs",
       "sha256": "a7684618bfd7dbee777a72bd42e0e620b8af79e4ddc2319fe4e4c30931eee755"
+    },
+    {
+      "path": "scripts/nature-noise-applications.test.mjs",
+      "sha256": "91d3af865b9b57d723e51b5e5ac15a5ecd37f6fb17a9ab6c0cb52550a0060aae"
     },
     {
       "path": "scripts/nature-noise.test.mjs",

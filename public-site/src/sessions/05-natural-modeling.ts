@@ -40,6 +40,11 @@ import Demo9 from '../../../components/lecture05/PerlinNoiseLab.vue'
 import example9 from '../../../examples/05-natural-modeling/perlin_noise.ts?raw'
 import {runExample as run9} from '../../../examples/05-natural-modeling/perlin_noise.ts'
 import core9 from '../../../packages/cg-algorithms/src/nature-noise.ts?raw'
+import terrainExample from '../../../examples/05-natural-modeling/perlin_terrain.ts?raw'
+import cloudExample from '../../../examples/05-natural-modeling/perlin_clouds.ts?raw'
+import {runExample as runTerrain} from '../../../examples/05-natural-modeling/perlin_terrain.ts'
+import {runExample as runClouds} from '../../../examples/05-natural-modeling/perlin_clouds.ts'
+import applicationsCore from '../../../packages/cg-algorithms/src/nature-noise-applications.ts?raw'
 import Demo10 from '../../../components/lecture05/ParticleSystemLab.vue'
 import example10 from '../../../examples/05-natural-modeling/particle_system.ts?raw'
 import {runExample as run10} from '../../../examples/05-natural-modeling/particle_system.ts'
@@ -54,9 +59,14 @@ const topics:Topic[]=[
 {"id": "ifs-fern", "title": "IFSでシダを生成する", "question": "4つの変換を選ぶだけでシダになる？", "purpose": "変換の選択・点の移動・反復からBarnsley fernを生成します。", "operation": "点数とSeedを変更し、少数点から形が現れる過程を観察します。", "observe": "次の点は現在の点にアフィン変換を適用した結果。同じSeedなら同じ点列です。", "explanation": "確率で4つの縮小アフィン変換を選び、p(k+1)=Aᵢp(k)+bᵢを繰り返します。", "think": "どの変換が茎や左右の小葉を作っているでしょうか？", "priority": false,demo:Demo6,example:example6,core:core6+'\n\n// 共通の基本計算\n'+sharedCore,coreName:'nature-fractals.ts / natural-modeling.ts',run:run6},
 {"id": "lsystem", "title": "L-system：文字列から枝へ", "question": "文字列の書換えが、どう枝分かれになる？", "purpose": "Axiom・Rule・反復から文字列を作り、Turtleの動きとStackを追います。", "operation": "プリセットや規則、角度、長さを変えます。Stepで描画命令を進めます。", "observe": "Fは前進、+／−は回転、[は位置と向きを保存、]は復元。授業の規則ではF数が5倍ずつ増えます。", "explanation": "全文字を同時に置換して次の世代を作り、Turtleが命令を順に読みます。長さの上限を設けています。", "think": "[ と ] がなければ、枝を描いた後に元の分岐へ戻れるでしょうか？", "priority": true,demo:Demo7,example:example7,core:core7+'\n\n// 共通の基本計算\n'+sharedCore,coreName:'nature-rules.ts / natural-modeling.ts',run:run7},
 {"id": "midpoint-displacement", "title": "中点変位で地形を作る", "question": "三角形を分割し、中点を上下にずらすと？", "purpose": "線分の1D断面と三角形の3D地形を切り替え、再帰分割と変位幅の減衰を確認します。", "operation": "Modeを選び、Iteration・Amplitude・Decay・Seedと途中段階を操作します。三角形はドラッグで回転できます。", "observe": "新しい高さは両端の平均＋乱数変位。Decayを変えると小さい凹凸の強さが変わります。", "explanation": "線分は2分割、三角形は各辺に中点を追加して4分割します。中点の高さを両端の平均＋乱数変位で求め、共有辺では同じ中点を再利用します。段階ごとに変位幅を減らし、Seedを固定すると再現できます。", "think": "Decayが大きいと、細部の起伏は強くなるでしょうか？", "priority": false,demo:Demo8,example:example8,core:core8+'\n\n// 共通の基本計算\n'+sharedCore,coreName:'nature-rules.ts / natural-modeling.ts',run:run8},
-{"id": "perlin-noise", "title": "Perlin Noiseのしくみと用途", "question": "同じNoiseを、明るさ・高さ・密度に使うと？", "purpose": "Random／Value／Perlinの比較から、勾配・内積・補間の計算まで追います。", "operation": "比較・Fractal Noise・計算過程を切り替えます。Seedや周波数を変更し、計算過程では点pをドラッグします。", "observe": "Perlinは格子の勾配と変位の内積を補間します。表示用の(N+1)/2は最後に1回だけです。", "explanation": "昨年度Python例の8方向の単位勾配と5次Fadeを継承。Seed 0、点(2.3,3.7)の値は−0.23926379です。", "think": "格子点だけを評価した場合と、格子間を評価した場合はどう違いますか？", "priority": true,demo:Demo9,example:example9,core:core9+'\n\n// 共通の基本計算\n'+sharedCore,coreName:'nature-noise.ts / natural-modeling.ts',run:run9},
+{"id": "perlin-noise", "title": "Perlin Noiseのしくみと用途", "question": "同じNoiseを、明るさ・高さ・密度に使うと？", "purpose": "Random／Value／Perlinの比較から、勾配・内積・補間の計算まで追います。", "operation": "B Fractal Noiseの用途でTerrain（山岳）とClouds（雲）を選べます。Seed・周波数・Octavesを変え、山は高さと回転、雲はしきい値と境界の柔らかさを操作します。Cでは点pをドラッグします。", "observe": "Perlinは格子の勾配と変位の内積を補間します。表示用の(N+1)/2は最後に1回だけです。", "explanation": "昨年度Python例の8方向の単位勾配と5次Fadeを継承。Seed 0、点(2.3,3.7)の値は−0.23926379です。", "think": "格子点だけを評価した場合と、格子間を評価した場合はどう違いますか？", "priority": true,demo:Demo9,example:example9,core:core9+'\n\n// 共通の基本計算\n'+sharedCore,coreName:'nature-noise.ts / natural-modeling.ts',run:run9},
 {"id": "particle-system", "title": "Particle：生成から消滅まで", "question": "点の状態を更新すると、炎・煙・雪に見える？", "purpose": "生成→更新→描画→除去と、各粒子の位置・速度・寿命を対応づけます。", "operation": "Fire・Smoke・Sparks・Fountain・Snowを選び、Play/PauseやStepで進めます。放出率・速度・重力・風・寿命などを変えます。", "observe": "Smokeは上昇しながら拡大し、薄くなって消えます。寿命を過ぎた粒子は除去。ConstantとNoiseの風を比べ、規則と見え方を対応づけます。", "explanation": "固定時間刻みで速度・位置・年齢を更新します。最大粒子数を制限した教育用シミュレーションです。Smokeは半透明粒子による簡略表現で、流体シミュレーションではありません。", "think": "放出率が同じで寿命だけ長くなると、生きている粒子数はどう変わりますか？", "priority": true,demo:Demo10,example:example10,core:core10+'\n\n// 共通の基本計算\n'+sharedCore,coreName:'nature-particles.ts / natural-modeling.ts',run:run10},
 ]
+// 応用サンプルも同じコードページから実行結果と共通計算を確認できる。
+topics[9].example += '\n\n// === 以下は別ファイルとして実行：perlin_terrain.ts ===\n' + terrainExample + '\n\n// === 以下は別ファイルとして実行：perlin_clouds.ts ===\n' + cloudExample
+topics[9].core += '\n\n// nature-noise-applications.ts\n' + applicationsCore
+topics[9].coreName += ' / nature-noise-applications.ts'
+topics[9].run = () => ({perlin:run9(),mountain:runTerrain(),clouds:runClouds()})
 // 粒子で使うNoiseも、コード版で中身を読めるようにする。
 topics[10].core += '\n\n// nature-noise.ts\n' + core9
 topics[10].coreName += ' / nature-noise.ts'

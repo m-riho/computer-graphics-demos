@@ -1,24 +1,27 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useId, watchEffect } from 'vue'
 import { independentNoise, noiseToGray, Perlin2D } from '../../packages/cg-algorithms/src/nature-noise'
-import type { Mesh } from '../../packages/cg-algorithms/src/mesh'
+import { sampleNoiseField, noiseTerrain, noiseClouds } from '../../packages/cg-algorithms/src/nature-noise-applications'
 import MeshView from '../lecture04/MeshView.vue'
 import './lecture05.css'
 const props=withDefaults(defineProps<{initialMode?:'compare'|'fractal'|'algorithm'}>(),{initialMode:'compare'})
-const mode=ref(props.initialMode),seed=ref(0),frequency=ref(4),octaves=ref(4),persistence=ref(.5),lacunarity=ref(2),mapping=ref<'Grayscale'|'Terrain'|'Density'>('Grayscale')
+const mode=ref(props.initialMode),seed=ref(0),frequency=ref(4),octaves=ref(4),persistence=ref(.5),lacunarity=ref(2),mapping=ref<'Grayscale'|'Terrain'|'Density'|'Clouds'>('Grayscale')
+const terrainHeight=ref(2.5),cloudThreshold=ref(.43),cloudSoftness=ref(.2)
 const px=ref(.3),py=ref(.7),dragging=ref(false),mounted=ref(false),randomCanvas=ref<HTMLCanvasElement>(),valueCanvas=ref<HTMLCanvasElement>(),perlinCanvas=ref<HTMLCanvasElement>(),fieldCanvas=ref<HTMLCanvasElement>()
 const marker=`noise-arrow-${useId()}`,noise=computed(()=>new Perlin2D(seed.value)),details=computed(()=>noise.value.details(2+px.value,3+py.value))
 const width=128,height=96
-const field=computed(()=>Array.from({length:width*height},(_,i)=>noise.value.fractal((i%width)/(width-1)*frequency.value,Math.floor(i/width)/(height-1)*frequency.value*.75,octaves.value,persistence.value,lacunarity.value)))
-const terrain=computed<Mesh>(()=>{
-  const vertices:Mesh['vertices']=[],faces:Mesh['faces']=[],nx=24,ny=18
-  for(let y=0;y<=ny;y++)for(let x=0;x<=nx;x++){
-    const index=Math.round(y/ny*(height-1))*width+Math.round(x/nx*(width-1))
-    vertices.push([x/nx*2-1,field.value[index]*1.5,y/ny*1.5-.75])
-  }
-  for(let y=0;y<ny;y++)for(let x=0;x<nx;x++){const a=y*(nx+1)+x,b=a+1,c=a+nx+1,d=c+1;faces.push([a,c,b],[b,c,d])}
-  return {vertices,faces}
-})
+const fieldOptions=computed(()=>({seed:seed.value,frequency:frequency.value,octaves:octaves.value,persistence:persistence.value,lacunarity:lacunarity.value}))
+const sampledField=computed(()=>sampleNoiseField({width,height,...fieldOptions.value}))
+const field=computed(()=>sampledField.value.values)
+const terrain=computed(()=>noiseTerrain(sampleNoiseField({width:49,height:37,...fieldOptions.value}),terrainHeight.value))
+function paintClouds(){
+  const canvas=fieldCanvas.value;if(!canvas)return
+  canvas.width=width;canvas.height=height
+  const context=canvas.getContext('2d');if(!context)return
+  const image=context.createImageData(width,height)
+  image.data.set(noiseClouds(sampledField.value,cloudThreshold.value,cloudSoftness.value))
+  context.putImageData(image,0,0)
+}
 function paint(canvas:HTMLCanvasElement|undefined,values:number[],density=false){
   if(!canvas)return
   canvas.width=width;canvas.height=height
@@ -38,7 +41,10 @@ watchEffect(()=>{
     paint(randomCanvas.value,Array.from({length:width*height},(_,i)=>independentNoise(i%width,Math.floor(i/width),s)))
     paint(valueCanvas.value,Array.from({length:width*height},(_,i)=>n.valueNoise((i%width)/(width-1)*f,Math.floor(i/width)/(height-1)*f*.75)))
     paint(perlinCanvas.value,Array.from({length:width*height},(_,i)=>n.sample((i%width)/(width-1)*f,Math.floor(i/width)/(height-1)*f*.75)))
-  }else if(mode.value==='fractal'&&mapping.value!=='Terrain')paint(fieldCanvas.value,field.value,mapping.value==='Density')
+  }else if(mode.value==='fractal'&&mapping.value!=='Terrain'){
+    if(mapping.value==='Clouds')paintClouds()
+    else paint(fieldCanvas.value,field.value,mapping.value==='Density')
+  }
 },{flush:'post'})
 function move(event:PointerEvent){
   if(!dragging.value)return
@@ -48,7 +54,7 @@ function move(event:PointerEvent){
 }
 function down(event:PointerEvent){dragging.value=true;(event.currentTarget as SVGSVGElement).setPointerCapture(event.pointerId);move(event)}
 function end(){dragging.value=false}
-function reset(){mode.value=props.initialMode;seed.value=0;frequency.value=4;octaves.value=4;persistence.value=.5;lacunarity.value=2;mapping.value='Grayscale';px.value=.3;py.value=.7}
+function reset(){mode.value=props.initialMode;seed.value=0;frequency.value=4;octaves.value=4;persistence.value=.5;lacunarity.value=2;mapping.value='Grayscale';terrainHeight.value=2.5;cloudThreshold.value=.43;cloudSoftness.value=.2;px.value=.3;py.value=.7}
 const corners=[[0,0],[1,0],[0,1],[1,1]]
 const fmt=(value:number)=>value.toFixed(3)
 </script>
@@ -73,13 +79,17 @@ const fmt=(value:number)=>value.toFixed(3)
         <label>Octaves {{ octaves }} <input v-model.number="octaves" type="range" min="1" max="8"/></label>
         <label>Persistence {{ persistence }} <input v-model.number="persistence" type="range" min="0" max="1" step=".05"/></label>
         <label>Lacunarity {{ lacunarity }} <input v-model.number="lacunarity" type="range" min="1" max="4" step=".1"/></label>
-        <label>用途 <select v-model="mapping"><option>Grayscale</option><option>Terrain</option><option>Density</option></select></label>
+        <label>用途 <select v-model="mapping"><option>Grayscale</option><option value="Terrain">Terrain（山岳）</option><option>Density</option><option value="Clouds">Clouds（雲）</option></select></label>
+      </div>
+      <div v-if="mapping==='Terrain'||mapping==='Clouds'" class="l5d-controls application-controls">
+        <label v-if="mapping==='Terrain'">山の高さ {{ terrainHeight }} <input v-model.number="terrainHeight" type="range" min="0" max="5" step=".1"/></label>
+        <template v-else><label>雲のしきい値 {{ cloudThreshold }} <input v-model.number="cloudThreshold" type="range" min="0" max="1" step=".01"/></label><label>境界の柔らかさ {{ cloudSoftness }} <input v-model.number="cloudSoftness" type="range" min=".02" max=".5" step=".01"/></label></template>
       </div>
       <div class="l5d-grid2 fractal-body">
-        <div class="field-view"><MeshView v-if="mapping==='Terrain'" :mesh="terrain" :height="195" :wireframe="false"/><canvas v-else ref="fieldCanvas" :aria-label="mapping==='Density'?'同じ場を点の出現確率にした密度表示':'重ね合わせた符号付きノイズの明るさ表示'"/></div>
-        <div><h3>同じ field → {{ mapping }}</h3><p>N = Σ aᵢ P(fᵢx, fᵢy) / Σ aᵢ</p><p>aᵢ₊₁ = aᵢ × Persistence<br/>fᵢ₊₁ = fᵢ × Lacunarity</p><div class="l5d-readout">{{ mapping==='Terrain'?'高さ = 1.5 × N':mapping==='Density'?'点の出現確率 = (N + 1) / 2':'明るさ = (N + 1) / 2' }}<br/>値は符号付きで加算する。</div><p class="l5d-note">表示用変換は最後に1回。最小値・最大値による再正規化はしない。</p></div>
+        <div class="field-view"><MeshView v-if="mapping==='Terrain'" :mesh="terrain" :height="240" :initial-pitch="25" :wireframe="false"/><canvas v-else ref="fieldCanvas" :class="{clouds:mapping==='Clouds'}" :aria-label="mapping==='Clouds'?'Perlinノイズの不透明度で描いた白い雲と青空':mapping==='Density'?'同じ場を点の出現確率にした密度表示':'重ね合わせた符号付きノイズの明るさ表示'"/></div>
+        <div><h3>同じ field → {{ mapping }}</h3><p>N = Σ aᵢ P(fᵢx, fᵢy) / Σ aᵢ</p><p>aᵢ₊₁ = aᵢ × Persistence<br/>fᵢ₊₁ = fᵢ × Lacunarity</p><div class="l5d-readout">{{ mapping==='Terrain'?`高さ = ${terrainHeight} × N`:mapping==='Clouds'?'g = (N + 1) / 2 → しきい値 → α':mapping==='Density'?'点の出現確率 = (N + 1) / 2':'明るさ = (N + 1) / 2' }}<br/>値は符号付きで加算する。</div><p v-if="mapping==='Clouds'" class="l5d-note">t = clamp((g − しきい値) / 柔らかさ, 0, 1)<br/>α = t²(3 − 2t)。白い雲を青空に重ねる。</p><p v-else class="l5d-note">表示用変換は最後に1回。最小値・最大値による再正規化はしない。</p></div>
       </div>
-      <p class="l5d-note">観察：Octavesを増やすと細部が加わる。用途を切り替えても元のfieldは同じ。</p>
+      <p class="l5d-note">{{ mapping==='Clouds'?'雲のしきい値を下げると雲が増える。2Dの模様であり、体積雲・流体計算ではない。':mapping==='Terrain'?'ドラッグで回転。高さ0では平面になる。高い周波数の細部は格子の解像度に制限される。':'観察：Octavesを増やすと細部が加わる。用途を切り替えてもノイズ関数は同じ。' }}</p>
     </template>
     <template v-else>
       <div class="l5d-controls"><label>s {{ px.toFixed(2) }} <input v-model.number="px" type="range" min=".001" max=".999" step=".001"/></label><label>t {{ py.toFixed(2) }} <input v-model.number="py" type="range" min=".001" max=".999" step=".001"/></label><span>cell (2, 3) · p = ({{ (2+px).toFixed(2) }}, {{ (3+py).toFixed(2) }})</span></div>
@@ -97,6 +107,6 @@ const fmt=(value:number)=>value.toFixed(3)
   </section>
 </template>
 <style scoped>
-.noise-lab .l5d-controls{gap:6px 12px}.noise-lab input[type=range]{width:83px}.noise-comparison canvas{width:100%;height:225px;image-rendering:pixelated;border:1px solid #b7c7d7}.noise-comparison h3{font-size:18px}.noise-comparison figcaption{font-size:17px}.field-view canvas{height:240px;width:100%;object-fit:contain;image-rendering:pixelated;background:#edf2f7}.algorithm-body svg{height:280px;width:100%;touch-action:none;cursor:crosshair}.noise-details table{font-size:16px!important}.noise-details p{margin:6px 0}.noise-details .l5d-readout{margin-top:5px}.fractal-body p{margin:8px 0}.fractal-body :deep(.mesh-view-controls){font-size:14px}.fractal-body :deep(.mesh-view-help){font-size:13px!important}
+.noise-lab .l5d-controls{gap:6px 12px}.noise-lab input[type=range]{width:83px}.noise-comparison canvas{width:100%;height:225px;image-rendering:pixelated;border:1px solid #b7c7d7}.noise-comparison h3{font-size:18px}.noise-comparison figcaption{font-size:17px}.field-view canvas{height:240px;width:100%;object-fit:contain;image-rendering:pixelated;background:#edf2f7}.field-view canvas.clouds{background:linear-gradient(#1566ae,#75b5e0);image-rendering:auto;width:min(100%,360px);height:auto;aspect-ratio:4/3;display:block;margin-inline:auto}.algorithm-body svg{height:280px;width:100%;touch-action:none;cursor:crosshair}.noise-details table{font-size:16px!important}.noise-details p{margin:6px 0}.noise-details .l5d-readout{margin-top:5px}.fractal-body p{margin:8px 0}.fractal-body :deep(.mesh-view-controls){font-size:14px}.fractal-body :deep(.mesh-view-help){font-size:13px!important}
 @media(max-width:700px){.noise-lab .l5d-grid2,.noise-lab .l5d-grid3{grid-template-columns:1fr}.noise-comparison canvas{height:180px}.noise-details table{font-size:14px!important}}
 </style>
