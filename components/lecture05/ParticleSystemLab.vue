@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { advanceParticles, createParticleState, particlePresets, type ParticleParameters } from '../../packages/cg-algorithms/src/nature-particles'
+import { computed, onBeforeUnmount, onMounted, ref, useId, watch } from 'vue'
+import { advanceParticles, createParticleState, particleAppearance, particlePresets, type ParticleParameters } from '../../packages/cg-algorithms/src/nature-particles'
 import './lecture05.css'
 const root=ref<HTMLElement>()
+const smokeGradientId=`smoke-${useId()}`
 const preset=ref<ParticleParameters['preset']>('Fire'),parameters=ref<ParticleParameters>({...particlePresets.Fire}),seed=ref(0),state=ref(createParticleState(0)),playing=ref(false),reducedMotion=ref(false),selectedId=ref<number|null>(null)
 let frame=0,lastTime=0,accumulator=0,motionQuery:MediaQueryList|undefined, visibilityObserver:IntersectionObserver|undefined
 const selected=computed(()=>state.value.particles.find(p=>p.id===selectedId.value)??state.value.particles[0])
+const rendered=computed(()=>state.value.particles.map(p=>({...p,...particleAppearance(p,preset.value)})))
+const selectedAppearance=computed(()=>selected.value?particleAppearance(selected.value,preset.value):null)
 function pause(){playing.value=false;cancelAnimationFrame(frame);frame=0;lastTime=0;accumulator=0}
 function step(){state.value=advanceParticles(state.value,parameters.value,1/30)}
 function tick(timestamp:number){
@@ -16,7 +19,7 @@ function tick(timestamp:number){
   frame=requestAnimationFrame(tick)
 }
 function toggle(){if(playing.value)pause();else if(!reducedMotion.value){playing.value=true;lastTime=0;frame=requestAnimationFrame(tick)}}
-function initialize(){pause();state.value=createParticleState(seed.value);selectedId.value=null;for(let i=0;i<45;i++)step()}
+function initialize(){pause();state.value=createParticleState(seed.value);selectedId.value=null;for(let i=0;i<(preset.value==='Smoke'?120:45);i++)step()}
 function choosePreset(){parameters.value={...particlePresets[preset.value]};initialize()}
 function reset(){preset.value='Fire';parameters.value={...particlePresets.Fire};seed.value=0;initialize()}
 function motionChange(){reducedMotion.value=motionQuery?.matches??false;if(reducedMotion.value)pause()}
@@ -39,20 +42,21 @@ for(let i=0;i<45;i++)step()
       <label>発生 / s {{ parameters.emissionRate }} <input v-model.number="parameters.emissionRate" type="range" min="0" max="200"/></label>
       <label>初速 {{ parameters.initialVelocity }} <input v-model.number="parameters.initialVelocity" type="range" min="0" max="220"/></label>
       <label>Spread {{ parameters.spread }}° <input v-model.number="parameters.spread" type="range" min="0" max="90"/></label>
-      <label>Gravity {{ parameters.gravity }} <input v-model.number="parameters.gravity" type="range" min="-100" max="200"/></label>
+      <label>{{ preset==='Smoke'?'上下加速度':'Gravity' }} {{ parameters.gravity }} <input v-model.number="parameters.gravity" type="range" min="-100" max="200"/></label>
       <label>Wind {{ parameters.wind }} <input v-model.number="parameters.wind" type="range" min="-100" max="100"/></label>
       <label>Life {{ parameters.lifetime }}s <input v-model.number="parameters.lifetime" type="range" min=".2" max="8" step=".1"/></label>
       <label>Size {{ parameters.size }} <input v-model.number="parameters.size" type="range" min="1" max="12"/></label>
     </div>
     <div class="l5d-grid2 particle-body">
       <svg viewBox="0 0 600 280" class="l5d-visual" role="img" aria-label="粒子の運動。丸をクリックすると粒子状態を表示。">
+        <defs><radialGradient :id="smokeGradientId"><stop offset="0" stop-color="#cbd5e1" stop-opacity="1"/><stop offset=".45" stop-color="#cbd5e1" stop-opacity=".7"/><stop offset="1" stop-color="#cbd5e1" stop-opacity="0"/></radialGradient></defs>
         <rect width="600" height="280" rx="8" fill="#162a3d"/><line x1="0" y1="267" x2="600" y2="267" stroke="#8295a7" stroke-dasharray="6 5"/>
-        <circle v-for="particle in state.particles" :key="particle.id" :cx="particle.x" :cy="particle.y" :r="particle.size" :fill="particle.color" :opacity="Math.max(.1,1-particle.age/particle.lifetime)" :stroke="selected?.id===particle.id?'white':'none'" stroke-width="2" @click="selectedId=particle.id"/>
-        <text x="14" y="25" fill="white" style="font-size:18px">{{ playing?'再生中':'一時停止' }} · {{ state.particles.length }} particles</text><text x="14" y="49" fill="#ccdeee" style="font-size:16px">life 0 → 寿命：透明度が下がる</text>
+        <circle v-for="particle in rendered" :key="particle.id" :cx="particle.x" :cy="particle.y" :r="particle.radius" :fill="preset==='Smoke'?`url(#${smokeGradientId})`:particle.color" :opacity="particle.opacity" :stroke="(preset==='Smoke'?selectedId:selected?.id)===particle.id?'white':'none'" stroke-width="2" @click="selectedId=particle.id"/>
+        <text x="14" y="25" fill="white" style="font-size:18px">{{ playing?'再生中':'一時停止' }} · {{ state.particles.length }} particles</text><text x="14" y="49" fill="#ccdeee" style="font-size:16px">{{ preset==='Smoke'?'Smoke：上昇・拡大・フェード':'life 0 → 寿命：透明度が下がる' }}</text>
       </svg>
-      <div class="particle-data"><h3>Generate → Update → Render → Remove</h3><div>t = {{ state.time.toFixed(2) }} s · dt = 1/30 s</div><div class="l5d-readout">このstep：生成 {{ state.generated }} / 更新・描画 {{ state.particles.length }} / 削除 {{ state.removed }}</div><p>v ← v + a Δt<br/>p ← p + v Δt · age ← age + Δt<br/>age ≥ lifetime → 削除</p><div v-if="selected" class="selected">粒子 #{{ selected.id }} · age {{ selected.age.toFixed(2) }}/{{ selected.lifetime.toFixed(1) }}s<br/>p = ({{ selected.x.toFixed(1) }}, {{ selected.y.toFixed(1) }})<br/>v = ({{ selected.vx.toFixed(1) }}, {{ selected.vy.toFixed(1) }}) · size {{ selected.size }}</div><div v-else>粒子なし。発生数を増やしてStep。</div></div>
+      <div class="particle-data"><h3>Generate → Update → Render → Remove</h3><div>t = {{ state.time.toFixed(2) }} s · dt = 1/30 s</div><div class="l5d-readout">このstep：生成 {{ state.generated }} / 更新・描画 {{ state.particles.length }} / 削除 {{ state.removed }}</div><p>v ← v + a Δt<br/>p ← p + v Δt · age ← age + Δt<br/>age ≥ lifetime → 削除</p><div v-if="selected" class="selected">粒子 #{{ selected.id }} · age {{ selected.age.toFixed(2) }}/{{ selected.lifetime.toFixed(1) }}s<br/>p = ({{ selected.x.toFixed(1) }}, {{ selected.y.toFixed(1) }})<br/>v = ({{ selected.vx.toFixed(1) }}, {{ selected.vy.toFixed(1) }}) · 半径 {{ selectedAppearance?.radius.toFixed(1) }}<br v-if="preset==='Smoke'"/><span v-if="preset==='Smoke'">中心のα = {{ selectedAppearance?.opacity.toFixed(2) }}</span></div><div v-else>粒子なし。発生数を増やしてStep。</div></div>
     </div>
-    <p class="l5d-note">{{ reducedMotion?'動きを減らす設定：Stepで進められます。':'観察：Noiseの風は位置と時刻で変化する。' }} 寿命・サイズ・初速は新しく生まれる粒子に適用。最大1,200粒。</p>
+    <p class="l5d-note">{{ reducedMotion?'動きを減らす設定：Stepで進められます。':preset==='Smoke'?'煙：上昇する半透明粒子を拡大して薄くする簡略表現（流体計算ではありません）。':'観察：Noiseの風は位置と時刻で変化する。' }} 寿命・サイズ・初速は新しく生まれる粒子に適用。最大1,200粒。</p>
   </section>
 </template>
 <style scoped>

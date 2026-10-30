@@ -203,7 +203,7 @@
     },
     {
       "path": "components/lecture05/ParticleSystemLab.vue",
-      "sha256": "e3c197edcde73a52a69bca966a89e84b3738a16d81abf615be42f63eb8cc22dc"
+      "sha256": "419b2fb40593a6190102d65d4a4055ffb8461febb200520a3f9b479a9aadeef9"
     },
     {
       "path": "components/lecture05/PerlinNoiseLab.vue",
@@ -387,7 +387,7 @@
     },
     {
       "path": "examples/05-natural-modeling/particle_system.ts",
-      "sha256": "36c92af2f4404d1ea068dcdba839903fe61a7d6000b13616b914c9ff43af871c"
+      "sha256": "058c5dee6cd51432029d728ad115cf87a47250856b8d4e9e2ea76ec1e5370528"
     },
     {
       "path": "examples/05-natural-modeling/perlin_noise.ts",
@@ -515,7 +515,7 @@
     },
     {
       "path": "packages/cg-algorithms/src/nature-particles.ts",
-      "sha256": "ee1620b5214e5bf4d6031f95653eefd4a0f1c07ee96dc48f8413aeaece593edf"
+      "sha256": "73f8630c6825a67ef6976be037b887983f22e3d6730acf4ee6367b6360a1c1b3"
     },
     {
       "path": "packages/cg-algorithms/src/nature-rules.ts",
@@ -619,7 +619,7 @@
     },
     {
       "path": "public-site/src/sessions/05-natural-modeling.ts",
-      "sha256": "b1d5327664c9eaca46a45f01cdd27a0870e1a5dec3a59a934e1a4c931bfdc4b1"
+      "sha256": "93c7b296b00091199f6dacb9f0a75f5f286fb2de07f1518c9c8f5c3b59fc3899"
     },
     {
       "path": "public-site/src/style.css",
@@ -687,7 +687,7 @@
     },
     {
       "path": "scripts/nature-particles.test.mjs",
-      "sha256": "d9115be7042ad39615f951e1ce60649d2ed26185f9cc6f8cc43ea01511332f2d"
+      "sha256": "8fae0de71df9eb4bd21e46bd17c645996d8e74d7245af9ce8a8017d0b572fb06"
     },
     {
       "path": "scripts/nature-rules.test.mjs",

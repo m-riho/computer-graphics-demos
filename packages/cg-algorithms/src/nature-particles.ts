@@ -1,10 +1,12 @@
 import { seededRandom } from './natural-modeling.ts'
 import { Perlin2D } from './nature-noise.ts'
 export type Particle = { id: number; x: number; y: number; vx: number; vy: number; age: number; lifetime: number; size: number; color: string }
-export type ParticleParameters = { emissionRate: number; initialVelocity: number; spread: number; gravity: number; wind: number; windMode: 'constant' | 'noise'; lifetime: number; size: number; preset: 'Fire' | 'Sparks' | 'Fountain' | 'Snow' }
+export type ParticleParameters = { emissionRate: number; initialVelocity: number; spread: number; gravity: number; wind: number; windMode: 'constant' | 'noise'; lifetime: number; size: number; preset: 'Fire' | 'Sparks' | 'Fountain' | 'Snow' | 'Smoke' }
 export type ParticleState = { particles: Particle[]; time: number; carry: number; rng: number; nextId: number; generated: number; removed: number }
 export const particlePresets: Record<ParticleParameters['preset'], ParticleParameters> = {
   Fire: { preset: 'Fire', emissionRate: 100, initialVelocity: 75, spread: 24, gravity: -15, wind: 0, windMode: 'noise', lifetime: 2, size: 5 },
+  // 画面のyは下向き。負の加速度で浮力を近似し、Noiseの風で煙を揺らす。
+  Smoke: { preset: 'Smoke', emissionRate: 32, initialVelocity: 36, spread: 22, gravity: -5, wind: 16, windMode: 'noise', lifetime: 5, size: 10 },
   Sparks: { preset: 'Sparks', emissionRate: 60, initialVelocity: 150, spread: 65, gravity: 90, wind: 0, windMode: 'constant', lifetime: 2.3, size: 2 },
   Fountain: { preset: 'Fountain', emissionRate: 80, initialVelocity: 160, spread: 18, gravity: 110, wind: 0, windMode: 'constant', lifetime: 3, size: 3 },
   Snow: { preset: 'Snow', emissionRate: 45, initialVelocity: 25, spread: 30, gravity: 5, wind: 12, windMode: 'noise', lifetime: 6, size: 4 },
@@ -30,7 +32,17 @@ export function advanceParticles(state: ParticleState, p: ParticleParameters, de
     const speed = bound(p.initialVelocity, 0, 220, 100) * (.8 + .4 * draw()), snow = p.preset === 'Snow'
     particles.push({ id: nextId++, x: snow ? draw() * 600 : 300 + (draw() - .5) * 12, y: snow ? 5 : 265,
       vx: Math.sin(angle) * speed, vy: (snow ? 1 : -1) * Math.cos(angle) * speed,
-      age: 0, lifetime, size: bound(p.size, 1, 12, 4), color: p.preset === 'Fire' ? '#fb923c' : p.preset === 'Sparks' ? '#fde047' : p.preset === 'Snow' ? '#f1f5f9' : '#38bdf8' })
+      age: 0, lifetime, size: bound(p.size, 1, 12, 4), color: p.preset === 'Smoke' ? '#cbd5e1' : p.preset === 'Fire' ? '#fb923c' : p.preset === 'Sparks' ? '#fde047' : p.preset === 'Snow' ? '#f1f5f9' : '#38bdf8' })
   }
   return { particles, time: state.time + dt, carry: carry - Math.floor(carry), rng, nextId, generated, removed: state.particles.length + generated - particles.length }
+}
+
+/** 寿命に対する年齢から描画値を作る。sizeは発生時の半径として保持する。 */
+export function particleAppearance(particle: Particle, preset: ParticleParameters['preset']): { radius: number; opacity: number } {
+  const life = Math.max(0, Math.min(1, particle.age / particle.lifetime))
+  if (preset === 'Smoke') {
+    // 煙の拡散を半径の増加で、希薄化を不透明度の減少で簡略表現する。
+    return { radius: particle.size * (1 + 2.5 * life), opacity: .45 * (1 - life) ** 1.5 }
+  }
+  return { radius: particle.size, opacity: Math.max(.1, 1 - life) }
 }
