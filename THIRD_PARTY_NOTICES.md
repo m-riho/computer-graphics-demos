@@ -53,3 +53,7 @@
 Perlin Noiseは教員の [昨年度Python Notebook](https://gist.github.com/m-riho/db6d2f5fa92edddd69f883e7e1454d67) と [Ken Perlin, Improved Noise](https://cs.nyu.edu/~perlin/noise/) を参照。2Dの8方向単位勾配を使う教材版で、3D Improved Noiseの勾配集合とは異なります。NumPy RandomStateのMT19937とshuffleに対応する置換表をTypeScriptで生成し、Python版との数値一致を検証しています。画像や外部ライブラリのコードの転載はありません。
 
 4/8分木は有限解像度の二値Gridの階層表現。SDFは2D断面、Metaballは有限半径の影響和の等値線近似。Mandelbrot/Juliaは有限解像度・有限反復です。粒子は固定時間刻みの簡単な運動更新で、流体シミュレーションではありません。
+
+### 可視判定（2026年11月13日・第6回）
+
+サンプルは三角形・球・柱体から生成した自作の図です。画素中心・境界の取り扱いは [Microsoftのラスタライズ規則](https://learn.microsoft.com/en-us/windows/win32/direct3d11/d3d10-graphics-programming-guide-rasterizer-stage-rules) を参照。深度は小さい方を手前とし、等深度の比較は独立した教材で扱います。半透明は第2回のsource-over合成を使用します。
