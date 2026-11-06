@@ -1,6 +1,7 @@
 import { defineAsyncComponent } from 'vue'
 
 export const visibilityDemos = {
+  'wave-surface': { title: '波面を線で描くと、奥の線はどう見えるか', component: defineAsyncComponent(() => import('./WaveSurface.vue')) },
   'back-face-culling': { title: '面の向きと裏面除去', component: defineAsyncComponent(() => import('./CullingExplorer.vue')) },
   'painter': { title: '描く順番で変わる可視面', component: defineAsyncComponent(() => import('./PainterExplorer.vue')) },
   'triangle-rasterization': { title: '三角形が覆う画素を探す', component: defineAsyncComponent(() => import('./RasterLab.vue')) },

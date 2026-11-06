@@ -23,7 +23,22 @@ import { runExample as run6 } from '../../../examples/06-visibility/raster-vs-ra
 import labsExample7 from '../../../examples/06-visibility/transparency-depth.ts?raw'
 import { runExample as run7 } from '../../../examples/06-visibility/transparency-depth.ts'
 
+import waveSource from '../../../packages/cg-algorithms/src/visibility-wave.ts?raw'
+import waveExample from '../../../examples/06-visibility/wave-surface.ts?raw'
+import { runExample as runWave } from '../../../examples/06-visibility/wave-surface.ts'
+
 const topics: Topic[] = [
+  {
+    id: 'wave-surface', title: visibilityDemos['wave-surface'].title, priority: false,
+    question: '手前の峰に重なった奥の線は、どこまで見えるでしょうか。',
+    purpose: '同じ波面を使って、すべての断面線と隠線消去後の線を比べます。',
+    operation: '隠れた線の表示を切り替え、角度や断面数を動かします。',
+    observe: 'ある峰の後ろを目で追い、線が途切れる場所を比べましょう。',
+    explanation: '奥から順に、隣の断面までの帯を背景色で塗ってから手前の断面線を描きます。',
+    think: '見下ろす角度を大きくすると、手前の峰が隠す範囲はどう変わるでしょうか。',
+    demo: visibilityDemos['wave-surface'].component, example: waveExample, run: runWave,
+    coreName: 'visibility-wave.ts', core: waveSource,
+  },
   {
     title: visibilityDemos['back-face-culling'].title,
     id: "back-face-culling",
@@ -140,7 +155,7 @@ const topics: Topic[] = [
 
 export const session06: CourseSession = {
   id: '06', number: 6, date: '2026年11月13日', title: 'レンダリングその1',
-  description: '同じ画素に複数の面が重なるとき、どれが見えるか。面の向き、描画順、深度、一次レイを8つの実験で比べます。',
+  description: '同じ画素に複数の面が重なるとき、どれが見えるか。面の向き、描画順、深度、一次レイを9つの実験で比べます。',
   topics,
   stories: [
     { title: '描く順番で解けるか', description: '交差する面を順番に塗り、深度バッファと一次レイの結果に照らし合わせます。', topicIds: ['painter', 'z-buffer', 'raster-vs-ray'] },

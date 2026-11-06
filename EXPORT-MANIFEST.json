@@ -231,7 +231,7 @@
     },
     {
       "path": "components/visibility/demos.ts",
-      "sha256": "f445e7e9faa9149a0054294665515567901f75648acc1f1d5c44a7d982069735"
+      "sha256": "48661f1a19c1c080365dd2181e86ea8dbeffd55fad97d4e7a4c980079ccee277"
     },
     {
       "path": "components/visibility/FaceGrid.vue",
@@ -260,6 +260,10 @@
     {
       "path": "components/visibility/TransparencyLab.vue",
       "sha256": "3d4992b4b900a75ad24ce3d84e836e5285d019d35a104be74805c5ce45daae18"
+    },
+    {
+      "path": "components/visibility/WaveSurface.vue",
+      "sha256": "2b067d557098270907b039f598fd5c2e2bdd88bf70992049ccc01e20739884dd"
     },
     {
       "path": "components/visibility/ZBufferExplorer.vue",
@@ -490,6 +494,10 @@
       "sha256": "5259950096246e1b1f6ad6c41f4c5be93d4001adee9a6df59883ad75195c546e"
     },
     {
+      "path": "examples/06-visibility/wave-surface.ts",
+      "sha256": "370b30088a4f1356246f0121076f5a4e63d230e6a7c1c7a82b00adf1e8e13ff7"
+    },
+    {
       "path": "examples/06-visibility/z-buffer.ts",
       "sha256": "c43ae6f2c8fd869c99d7ee53a1654651a79ef569cdbf2b8c7c7d44fe492d2840"
     },
@@ -678,6 +686,10 @@
       "sha256": "b30fd86fa49ffa65f7b70898f507e1e7489b777c4d958330c0576c8bda72db46"
     },
     {
+      "path": "packages/cg-algorithms/src/visibility-wave.ts",
+      "sha256": "6b1cf9be692cd535fcf6b498f05ebc41e49b568fe7cfd081db9506688a39761e"
+    },
+    {
       "path": "public-site/index.html",
       "sha256": "767f455e6405472aab5a77e949b17ef7baf6d5d0a3d9256e64ad8bdb29fc6075"
     },
@@ -731,7 +743,7 @@
     },
     {
       "path": "public-site/src/sessions/06-visibility.ts",
-      "sha256": "4be30a95d04bcec6947e32d2b6b807f5972e1747dedef39292a8af5f8476b046"
+      "sha256": "4d77a290475bc27597cbb81673db00bc198d583c3d1827c24a209fca36662c9c"
     },
     {
       "path": "public-site/src/style.css",
