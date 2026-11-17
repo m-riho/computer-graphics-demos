@@ -14,6 +14,14 @@ export function directionFromAngles(polar: number, azimuth = 0): ShadingVector {
   const p=polar*Math.PI/180,a=azimuth*Math.PI/180
   return [Math.sin(p)*Math.sin(a),Math.cos(p),Math.sin(p)*Math.cos(a)]
 }
+/** R = Ry(yaw) Rx(pitch), in WebGL column-major order; angles are degrees.
+ * A pure rotation applies equally to positions, vertex normals and face normals.
+ */
+export function shadingObjectRotation(pitch: number, yaw: number): number[] {
+  const x=pitch*Math.PI/180,y=yaw*Math.PI/180
+  const cx=Math.cos(x),sx=Math.sin(x),cy=Math.cos(y),sy=Math.sin(y)
+  return [cy,0,-sy,sy*sx,cx,cy*sx,sy*cx,-sx,cy*cx]
+}
 export const srgbToLinear = (value: number) => value <= .04045 ? value/12.92 : ((value+.055)/1.055)**2.4
 export const linearToSrgb = (value: number) => value <= .0031308 ? 12.92*value : 1.055*value**(1/2.4)-.055
 export function linearColor(hex: string): ShadingVector {
@@ -36,6 +44,25 @@ export function createShadingSphere(subdivisions=3): ShadingMesh {
     for(const v of [a!,b!,c!]) {positions.push(...v);normals.push(...v);faceNormals.push(...n);centroids.push(...center)}
   }
   return {positions:new Float32Array(positions),normals:new Float32Array(normals),faceNormals:new Float32Array(faceNormals),centroids:new Float32Array(centroids)}
+}
+/** Line segments for the normal overlay. Flat uses a face's centroid and
+ * outward face normal; Gouraud/Phong use the normals attached to its vertices.
+ * Offset the start slightly outwards to avoid depth fighting with the surface.
+ */
+export function createShadingNormalLines(mesh: ShadingMesh, kind: 'face'|'vertex'): Float32Array {
+  const lines:number[]=[],seen=new Set<string>()
+  const stride=kind==='face'?9:3
+  for(let i=0;i<mesh.positions.length;i+=stride) {
+    const origin=Array.from((kind==='face'?mesh.centroids:mesh.positions).slice(i,i+3))
+    const normal=Array.from((kind==='face'?mesh.faceNormals:mesh.normals).slice(i,i+3))
+    if(kind==='vertex') {
+      const key=origin.map(x=>x.toFixed(5)).join(',')
+      if(seen.has(key)) continue
+      seen.add(key)
+    }
+    lines.push(...origin.map((x,k)=>x+.004*normal[k]!),...origin.map((x,k)=>x+.15*normal[k]!))
+  }
+  return new Float32Array(lines)
 }
 /** AO = obscured cosine-weighted hemisphere fraction, finite radius 2 world units.
  * Rays intersect a unit sphere and (optionally) the plane Y=-1. It is independent

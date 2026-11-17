@@ -235,7 +235,7 @@
     },
     {
       "path": "components/shading/ClassicExplorer.vue",
-      "sha256": "a4b5fae3f0444ed19a8a31e6d999d2dae7096d6c24a4866f8fa221daedae1e43"
+      "sha256": "9d550f8cdc54c5531c1921186ac2e1ed3bc21807c87b7293cb0818d2de0e9056"
     },
     {
       "path": "components/shading/ClassicPointLight.vue",
@@ -251,11 +251,11 @@
     },
     {
       "path": "components/shading/shading-renderer.ts",
-      "sha256": "450d7d86931d20bb7df5837a6f6eb874d7921d7c2ba9988ba7c7d28d34dc9e55"
+      "sha256": "1338bb2c5bd27c89bc2888a91e4fd5032c2cc430380814da647d178fa32f42a7"
     },
     {
       "path": "components/shading/ShadingScene.vue",
-      "sha256": "3846d2a43643eebd4532a36585ec43095c47d237ee032f17babd4adc8268960f"
+      "sha256": "ec5f213552672658905a17946f6cca7fc6ef4cb3291e25b0a7ad85cc0af8b60d"
     },
     {
       "path": "components/visibility/CompareExplorer.vue",
@@ -747,11 +747,11 @@
     },
     {
       "path": "packages/cg-algorithms/src/shading-geometry.ts",
-      "sha256": "2b1fdaf6390976b3d85f9c21c26e1ceb6417a69db2a7294235c94d347e13b360"
+      "sha256": "277d1c3178e0154137c579634592db86358853fcf98d90fa32ecdc3e96e0c567"
     },
     {
       "path": "packages/cg-algorithms/src/shading-gpu.ts",
-      "sha256": "59fb8c4db359cb4aaee54cf08941c1e73b8d0c6b232a453ef7d75122dcd12db8"
+      "sha256": "b71b38fb350fc9e523acb43fec8f5c823009cda59b726178f638e24ef962463e"
     },
     {
       "path": "packages/cg-algorithms/src/subdivision.ts",
@@ -959,7 +959,7 @@
     },
     {
       "path": "scripts/shading-renderer.test.mjs",
-      "sha256": "5fa928ad640aeb112f9ac23b5acabe58b53743bd15ddd43505eaa258d212dcc4"
+      "sha256": "b383503e6502d383fd27132777845e241c13cda571e437cc9ac28c0c689f44a4"
     },
     {
       "path": "scripts/visibility-depth.test.mjs",

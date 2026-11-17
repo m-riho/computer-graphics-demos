@@ -1,4 +1,4 @@
-import { ambientOcclusion, createShadingSphere, crossShading, directionFromAngles, linearColor, normalizeShading, type ShadingVector } from '../../packages/cg-algorithms/src/shading-geometry'
+import { createShadingNormalLines, shadingObjectRotation, ambientOcclusion, createShadingSphere, crossShading, directionFromAngles, linearColor, normalizeShading, type ShadingVector } from '../../packages/cg-algorithms/src/shading-geometry'
 import { shadingVertexShader, shadingFragmentShader } from '../../packages/cg-algorithms/src/shading-gpu'
 export type ShadingSettings = Record<string,number|string|boolean>
 /** Small WebGL 1 renderer, no external engine. Orthographic V is constant. */
@@ -27,8 +27,8 @@ export function createShadingRenderer(canvas: HTMLCanvasElement) {
   const attributes=['aPosition','aNormal','aFaceNormal','aSurface'].map(name=>gl.getAttribLocation(program,name))
   for(let i=0;i<4;i++) buffers.push(gl.createBuffer()!)
   let geometryKey='',data:number[][]=[],surfaceCount=0,wireStart=0,wireCount=0,normalStart=0,normalCount=0
-  function updateGeometry(subdivisions:number,floor:boolean,secondSphere:boolean) {
-    const key=`${subdivisions}:${floor}:${secondSphere}`
+  function updateGeometry(subdivisions:number,floor:boolean,secondSphere:boolean,normalKind:'face'|'vertex') {
+    const key=`${subdivisions}:${floor}:${secondSphere}:${normalKind}`
     if(key===geometryKey) return
     geometryKey=key
     const sphere=createShadingSphere(subdivisions)
@@ -61,12 +61,8 @@ export function createShadingRenderer(canvas: HTMLCanvasElement) {
     // Floor wireframe uses a coarser grid for legibility.
     if(floor)for(let j=-3;j<=3;j+=.5) {lineVertex([j,-.997,-3]);lineVertex([j,-.997,3]);lineVertex([-3,-.997,j]);lineVertex([3,-.997,j])}
     wireCount=p.length/3-wireStart;normalStart=p.length/3
-    const seen=new Set<string>()
-    for(let i=0;i<sphere.positions.length;i+=3) {
-      const v=Array.from(sphere.positions.slice(i,i+3)) as ShadingVector,key=v.map(x=>x.toFixed(5)).join(',')
-      if(seen.has(key))continue
-      seen.add(key);lineVertex(v.map(x=>x*1.004) as ShadingVector);lineVertex(v.map(x=>x*1.15) as ShadingVector)
-    }
+    const normalLines=createShadingNormalLines(sphere,normalKind)
+    for(let i=0;i<normalLines.length;i+=3) lineVertex(Array.from(normalLines.slice(i,i+3)) as ShadingVector)
     normalCount=p.length/3-normalStart
     data.forEach((values,i)=>{gl.bindBuffer(gl.ARRAY_BUFFER,buffers[i]!);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(values),gl.STATIC_DRAW)})
   }
@@ -74,7 +70,7 @@ export function createShadingRenderer(canvas: HTMLCanvasElement) {
     const number=(key:string,fallback:number)=> typeof settings[key]==='number'&&Number.isFinite(settings[key])?settings[key] as number:fallback
     const bool=(key:string,fallback:boolean)=>typeof settings[key]==='boolean'?settings[key] as boolean:fallback
     const floor=bool('floor',false),subdivisions=Math.max(0,Math.min(3,Math.round(number('subdivisions',3))))
-    gl.useProgram(program);updateGeometry(subdivisions,floor,bool('secondSphere',false))
+    gl.useProgram(program);updateGeometry(subdivisions,floor,bool('secondSphere',false),model==='flat'?'face':'vertex')
     const dpr=Math.min(window.devicePixelRatio||1,2),width=Math.max(1,Math.round(canvas.clientWidth*dpr)),height=Math.max(1,Math.round(canvas.clientHeight*dpr))
     if(canvas.width!==width||canvas.height!==height) {canvas.width=width;canvas.height=height}
     gl.viewport(0,0,width,height);gl.clearColor(.035,.055,.09,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT)
@@ -86,6 +82,7 @@ export function createShadingRenderer(canvas: HTMLCanvasElement) {
     const targetY=floor?-.35:0
     const matrix=new Float32Array([right[0]*sx,up[0]*sy,-view[0]/10,0,right[1]*sx,up[1]*sy,-view[1]/10,0,right[2]*sx,up[2]*sy,-view[2]/10,0,-right[1]*targetY*sx,-up[1]*targetY*sy,view[1]*targetY/10,1])
     gl.uniformMatrix4fv(uniform('uMatrix'),false,matrix)
+    gl.uniformMatrix3fv(uniform('uObjectRotation'),false,shadingObjectRotation(number('objectPitch',0),number('objectYaw',0)))
     data.forEach((_,i)=>{const location=attributes[i]!;if(location<0)return;gl.bindBuffer(gl.ARRAY_BUFFER,buffers[i]!);gl.enableVertexAttribArray(location);gl.vertexAttribPointer(location,i===3?2:3,gl.FLOAT,false,0,0)})
     const models:Record<string,number>={visible:0,wireframe:0,lambert:1,'oren-nayar':2,phong:3,'blinn-phong':4,flat:4,gouraud:4,smooth:4,'cook-torrance':5,pbr:6,ambient:7}
     integer('uModel',models[model]??1);integer('uInterpolation',model==='flat'?1:model==='gouraud'?2:0)
