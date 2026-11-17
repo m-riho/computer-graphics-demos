@@ -3,6 +3,8 @@ import type {Component} from 'vue'
 export interface Topic {
   id:string
   priority?:boolean
+  slideReference?:string
+  studyMode?:string
   title:string
   question:string
   purpose:string

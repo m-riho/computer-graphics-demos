@@ -57,3 +57,12 @@ Perlin Noiseは教員の [昨年度Python Notebook](https://gist.github.com/m-ri
 ### 可視判定（2026年11月13日・第6回）
 
 サンプルは三角形・球・柱体から生成した自作の図です。画素中心・境界の取り扱いは [Microsoftのラスタライズ規則](https://learn.microsoft.com/en-us/windows/win32/direct3d11/d3d10-graphics-programming-guide-rasterizer-stage-rules) を参照。深度は小さい方を手前とし、等深度の比較は独立した教材で扱います。半透明は第2回のsource-over合成を使用します。
+
+### 反射と材質（2026年11月20日・第7回）
+
+13本のデモはTypeScript/SVG/WebGLによる自作です。外部写真・原資料画像・実測材質データを含みません。照明は線形RGBで計算し、表示時にsRGBへ変換します。
+
+- 微小面・NDF・Smith遮蔽：[PBRT 4e, Roughness Using Microfacet Theory](https://pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory)
+- 誘電体Fresnel：[PBRT 4e, Dielectric BSDF](https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF)
+
+Phong/Blinn–Phongは経験的ローブと照明式。Oren–Nayarは簡略式。PBRは等方的な単一散乱モデルで、ガラスは反射成分のみ。AOは有限距離での形状交差を標本化し、Ambient成分にだけ可視率を掛けます。UIのRoughnessはα=Roughness²へ変換し、理想デルタ鏡面を避ける下限を設けます。

@@ -222,6 +222,42 @@
       "sha256": "0ac286284481534490bd5d05528c1b33ee99caad8e9ab3c26db0998e4c002946"
     },
     {
+      "path": "components/shading/AdvancedExplorer.vue",
+      "sha256": "8a019af52b154f3de9e73fd9166da20475d712ae45fb5f38d0cd5a191fa5f619"
+    },
+    {
+      "path": "components/shading/AdvancedPlot.vue",
+      "sha256": "9450ed7c48c1807df437efcbf9b72e92f5e64de7da65eb55c2ce15bfbb9c8f5f"
+    },
+    {
+      "path": "components/shading/catalog.ts",
+      "sha256": "7cfaa146c5939a436e9092e528d8bbc9c2fc2b5811f9c43a6e8f15dfed2369b2"
+    },
+    {
+      "path": "components/shading/ClassicExplorer.vue",
+      "sha256": "a4b5fae3f0444ed19a8a31e6d999d2dae7096d6c24a4866f8fa221daedae1e43"
+    },
+    {
+      "path": "components/shading/ClassicPointLight.vue",
+      "sha256": "173a5333ad2638ca63022a7592703f79627d8f2e2e4e28ff8977c0ac0825df16"
+    },
+    {
+      "path": "components/shading/ClassicVectors.vue",
+      "sha256": "36fefdbb54d54885a5ddc5a92453425df4b7736ec37751df008b58d27235f4a9"
+    },
+    {
+      "path": "components/shading/shading-registry.ts",
+      "sha256": "a978a590e313c6e08f5601f3ab23b72f4e94bf88c9b00fb53ec6cd8767c6aca2"
+    },
+    {
+      "path": "components/shading/shading-renderer.ts",
+      "sha256": "450d7d86931d20bb7df5837a6f6eb874d7921d7c2ba9988ba7c7d28d34dc9e55"
+    },
+    {
+      "path": "components/shading/ShadingScene.vue",
+      "sha256": "3846d2a43643eebd4532a36585ec43095c47d237ee032f17babd4adc8268960f"
+    },
+    {
       "path": "components/visibility/CompareExplorer.vue",
       "sha256": "394512c3358c665126c9845b3aaf38fc696e4c471cc644e28fe8b389d18d4e25"
     },
@@ -502,6 +538,58 @@
       "sha256": "c43ae6f2c8fd869c99d7ee53a1654651a79ef569cdbf2b8c7c7d44fe492d2840"
     },
     {
+      "path": "examples/07-shading/ambient-components.ts",
+      "sha256": "3fe243dcd9b9ae6bedf9f787baec242e6aeae88097509f357cd2789375f6d70b"
+    },
+    {
+      "path": "examples/07-shading/brdf-lobe.ts",
+      "sha256": "45e10c93964f81b3a17555c051c237ceb72b46ed85e75ef660e60b80b201f596"
+    },
+    {
+      "path": "examples/07-shading/cook-torrance.ts",
+      "sha256": "01e9e718a5b078e8cc32b70ecac3e5945872af54ab33f2b03a9024d27ac3c41e"
+    },
+    {
+      "path": "examples/07-shading/fresnel.ts",
+      "sha256": "1079a61aaae78365924fe56c6624e3a393b9e90eac28d5f5a6b8181306ed1db6"
+    },
+    {
+      "path": "examples/07-shading/lambert.ts",
+      "sha256": "34eb6c34b4a1b61099788948d71f85f6fda599a85fd4dcf52e45a691ce0fadde"
+    },
+    {
+      "path": "examples/07-shading/microfacet-ndf.ts",
+      "sha256": "e615b070fe02dbf0a3beebe08d8ed33850f45ba6398084ac6515de404ccebfe9"
+    },
+    {
+      "path": "examples/07-shading/oren-nayar.ts",
+      "sha256": "45c3d922d781e9f59a07495126d4c780fc49fe7b058a3b9ceebe227731da0388"
+    },
+    {
+      "path": "examples/07-shading/phong-blinn.ts",
+      "sha256": "16a20fe83bd1821f5607be5c3aaf905e192e485ac46d7c4d2dd8baa62d04dd35"
+    },
+    {
+      "path": "examples/07-shading/point-light.ts",
+      "sha256": "9483eed3811c96e1c2017f6a156ed6602d7fc5341996b41857e98e8422c9ee96"
+    },
+    {
+      "path": "examples/07-shading/principled.ts",
+      "sha256": "13573978d034fc052c1a51e27842b1dc65526ee99f4a9b80b55ca318988ce686"
+    },
+    {
+      "path": "examples/07-shading/rendering-equation.ts",
+      "sha256": "33bc0eb4be8670846298c2379f1274fc0aa964acc300b4252d886e4d63986a92"
+    },
+    {
+      "path": "examples/07-shading/shading-comparison.ts",
+      "sha256": "3381c84d23caf70b2335d6ece4bad3145583fde95f1b25edadd8a1b897c42a9a"
+    },
+    {
+      "path": "examples/07-shading/visibility-shading.ts",
+      "sha256": "1ac59a7666e1de82743cee2330653a23b2f0bc031431f050d3aa3db4fb08c779"
+    },
+    {
       "path": "LICENSE",
       "sha256": "6d410e809e04ecb61ed590241d3eb7353ddb3beca01854ca7d9d156e8c7907f4"
     },
@@ -511,7 +599,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "35cc8ea5d02bd813ed92ed9d19485877c305483b65c463ceb466440446ae282c"
+      "sha256": "94e44ff3b1a2e3200dd206aad5634651653f6bbc3d1999755605b1754892a359"
     },
     {
       "path": "packages/cg-algorithms/package.json",
@@ -650,6 +738,22 @@
       "sha256": "d1c378f8a00d4f3c2d9ecacfd5eaff443f1a79c2fd17f0917b4c6c160fe604a5"
     },
     {
+      "path": "packages/cg-algorithms/src/shading-advanced.ts",
+      "sha256": "239f19b45872f7844e0a4cbae74385c7c9e81ae55cbc72ada2d0f260506cebf9"
+    },
+    {
+      "path": "packages/cg-algorithms/src/shading-classic.ts",
+      "sha256": "d5ad5e849bb740da4e89dc3853e189936483056383a638cbbf22ebd5986db377"
+    },
+    {
+      "path": "packages/cg-algorithms/src/shading-geometry.ts",
+      "sha256": "2b1fdaf6390976b3d85f9c21c26e1ceb6417a69db2a7294235c94d347e13b360"
+    },
+    {
+      "path": "packages/cg-algorithms/src/shading-gpu.ts",
+      "sha256": "59fb8c4db359cb4aaee54cf08941c1e73b8d0c6b232a453ef7d75122dcd12db8"
+    },
+    {
       "path": "packages/cg-algorithms/src/subdivision.ts",
       "sha256": "2e69743340470f834fa1ddfc65a1d18b040b4634552f3b78b27a717a56abeb3a"
     },
@@ -699,7 +803,7 @@
     },
     {
       "path": "public-site/publish/THIRD_PARTY_NOTICES.md",
-      "sha256": "149e0acc640dd3376952a3a18604a0e56a69c3a9f142853fcd038c1f65e5123d"
+      "sha256": "0546bee4d0fa7a525fe20d0e8d9cee298f474025b9da07f7ba55f93cbdbeb586"
     },
     {
       "path": "public-site/publish/VUE-LICENSE.md",
@@ -707,7 +811,7 @@
     },
     {
       "path": "public-site/src/App.vue",
-      "sha256": "b15a624ffaadf2696c183ede23213f8288f97f948f6b3bff99d15a296777ae97"
+      "sha256": "2b807622f130143fac0d888ad778ae9b0efee2bf6b8f198d15c86b74941e4f1b"
     },
     {
       "path": "public-site/src/main.ts",
@@ -719,11 +823,11 @@
     },
     {
       "path": "public-site/src/session-model.ts",
-      "sha256": "1f06b32c3f4510792311e8e3ba7a386c11410cd43d06378f4694052f2d489fff"
+      "sha256": "b603c5cfe1168dc3957789b41eff7c3b999a5815835af8c64fbf9b5ca5c3c184"
     },
     {
       "path": "public-site/src/sessions.ts",
-      "sha256": "d81d73266ea76679678c87a80699ecef42875f4a06458ddc81777d1d5c75e0f8"
+      "sha256": "cc391c129f07faf710a2f13e301aeaaba64c07c3739a3d6b9d866ce22ea365b9"
     },
     {
       "path": "public-site/src/sessions/02-color-image.ts",
@@ -744,6 +848,10 @@
     {
       "path": "public-site/src/sessions/06-visibility.ts",
       "sha256": "4d77a290475bc27597cbb81673db00bc198d583c3d1827c24a209fca36662c9c"
+    },
+    {
+      "path": "public-site/src/sessions/07-shading.ts",
+      "sha256": "23e2aba107e2a6a7dce7ed0fd62cad48f691a30251cd9d99d99484c5b6670a54"
     },
     {
       "path": "public-site/src/style.css",
@@ -842,6 +950,18 @@
       "sha256": "57aaeb2bdef18865f33316697e9fb5083ec86c7015d8ce0bbe859afebcf23fbd"
     },
     {
+      "path": "scripts/shading-advanced.test.mjs",
+      "sha256": "a0f7750695eb4a8476908de1d1693859dd6ea2ca8ad61a1380ceb2465613d308"
+    },
+    {
+      "path": "scripts/shading-classic.test.mjs",
+      "sha256": "e535b71548c9476d9183f94a476c776dc6bd507aac130993c52cb61fd71e4bac"
+    },
+    {
+      "path": "scripts/shading-renderer.test.mjs",
+      "sha256": "5fa928ad640aeb112f9ac23b5acabe58b53743bd15ddd43505eaa258d212dcc4"
+    },
+    {
       "path": "scripts/visibility-depth.test.mjs",
       "sha256": "274a468f66b86583d53ab43e3c1bc271e29bad84ba5990174bcc653528232186"
     },
@@ -855,7 +975,7 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "149e0acc640dd3376952a3a18604a0e56a69c3a9f142853fcd038c1f65e5123d"
+      "sha256": "0546bee4d0fa7a525fe20d0e8d9cee298f474025b9da07f7ba55f93cbdbeb586"
     },
     {
       "path": "VUE-LICENSE.md",
