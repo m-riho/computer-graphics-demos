@@ -235,7 +235,7 @@
     },
     {
       "path": "components/shading/ClassicExplorer.vue",
-      "sha256": "9d550f8cdc54c5531c1921186ac2e1ed3bc21807c87b7293cb0818d2de0e9056"
+      "sha256": "b5c4607ad04bafe07d14cf3ef7375f1c06222f478c68ff6a005fb97f3deeca68"
     },
     {
       "path": "components/shading/ClassicPointLight.vue",
@@ -243,7 +243,7 @@
     },
     {
       "path": "components/shading/ClassicVectors.vue",
-      "sha256": "36fefdbb54d54885a5ddc5a92453425df4b7736ec37751df008b58d27235f4a9"
+      "sha256": "a9845cac0e612e0970da8d7b0490e67b2688311d7f7cd6daf0a20ee840de199d"
     },
     {
       "path": "components/shading/shading-registry.ts",
@@ -255,7 +255,7 @@
     },
     {
       "path": "components/shading/ShadingScene.vue",
-      "sha256": "ec5f213552672658905a17946f6cca7fc6ef4cb3291e25b0a7ad85cc0af8b60d"
+      "sha256": "69937d31d188a7eab78ddc80c55caf45919aaf0c53c56f80f9a3f754a0825988"
     },
     {
       "path": "components/visibility/CompareExplorer.vue",

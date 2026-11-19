@@ -52,7 +52,7 @@ onBeforeUnmount(()=>{cancelAnimationFrame(frame);observer?.disconnect();renderer
 <template>
   <div class="shading-scene" :data-model="model">
     <canvas ref="canvas" role="img" :class="{rotatable,dragging}" :tabindex="rotatable?0:undefined"
-      :aria-label="`${model}：照明モデルの WebGL 描画${rotatable?'。ドラッグまたは矢印キーで3つの物体を同時に回転。Homeキーで向きを戻す。':''}`"
+      :aria-label="`${model}：照明モデルの WebGL 描画${rotatable?'。ドラッグまたは矢印キーで物体を回転。Homeキーで向きを戻す。':''}`"
       @pointerdown="startRotation" @pointermove="moveRotation" @pointerup="endRotation" @pointercancel="endRotation" @lostpointercapture="endRotation" @keydown="keyRotation" />
     <p v-if="error" class="shading-error" role="alert">{{ error }}</p>
   </div>

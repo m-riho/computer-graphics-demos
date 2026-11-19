@@ -7,12 +7,13 @@ import { lambert, orenNayar, pointIlluminance, specularTerms, combineLighting } 
 
 const props = defineProps<{topic:string}>()
 const teacher = ref(false)
+const canRotateObject = computed(() => ['lambert','phong-blinn','shading-comparison'].includes(props.topic))
 const showExplanation = ref(true)
 const defaults = () => ({lightAngle:35,viewAngle:55,azimuth:180,objectPitch:0,objectYaw:0,kd:.7,ks:.65,intensity:1,exponent:20,blinnExponent:80,sigma:45,distance:1,ambient:.2,red:255,green:244,blue:222,subdivisions:1,mode:'lambert',sameExponent:false,wireframe:false,normals:false,ambientOn:true,diffuseOn:true,specularOn:true,comparison:false})
 const s = reactive(defaults())
 const information: Record<string,{title:string;goal:string;prediction:string;observation:string;explanation:string}> = {
   'visibility-shading': {title:'Visibility / Shading Explorer',goal:'可視面の決定と、見えている面の明るさの計算を区別する。',prediction:'視点を固定したまま光源を動かすと、輪郭と明るさはそれぞれどう変わる？',observation:'Visible SurfaceとDiffuseを切り替え、光源方向だけを変えて比較する。次に視点を動かす。',explanation:'Visibilityは幾何形状と視点から、手前にある面を決める。Shadingはその面の法線・材質・光源・視点から色を計算する。Wireframeはメッシュの辺を表示し、裏側の線は深度比較で隠す。Visible Surfaceは同じ深度比較で手前の面を塗りつぶす。'},
-  lambert: {title:'Lambert Reflection Explorer',goal:'単位法線Nと光源方向Lの内積を、拡散反射の明るさと結び付ける。',prediction:'光源を正面から60°傾けると、線形の反射光量は何倍になる？',observation:'0°→60°→90°→120°を順に選ぶ。内積が負になっても、明るさは負にならない。',explanation:'同じ光が斜めに当たると広い面積に分散するので、単位面積当たりの光量はcos θで減る。数値は球の頂点N=(0,1,0)での値。球全体では画素ごとの法線で計算する。'},
+  lambert: {title:'Lambert Reflection Explorer',goal:'単位法線Nと光源方向Lの内積を、拡散反射の明るさと結び付ける。',prediction:'光源を正面から60°傾けると、線形の反射光量は何倍になる？',observation:'0°→60°→90°→120°を順に選ぶ。内積が負になっても、明るさは負にならない。',explanation:'同じ光が斜めに当たると広い面積に分散するので、単位面積当たりの光量はcos θで減る。数値はワールド座標の基準法線N=(0,1,0)に対する値。球全体では画素ごとの法線で計算する。'},
   'point-light': {title:'Point Light Explorer',goal:'点光源の距離と入射角を分けて操作し、照度の逆二乗則を理解する。',prediction:'光源までの距離を2倍、3倍にすると、表面点の照度はそれぞれ何倍になる？',observation:'距離1・2・3のプリセットは角度0°、放射強度1に固定する。照度1、1/4、1/9を比較する。',explanation:'放射強度Jが一定の点光源では、光が広がる面積は距離の二乗に比例する。ここでは遮蔽のない1個の表面点を計算する。位置は距離・天頂角・方位角で指定し、P=(0,0,0)、N=(0,1,0)。'},
   'oren-nayar': {title:'Lambert / Oren–Nayar Explorer',goal:'粗い拡散面の反射が、粗さと入射・出射方向の組に依存することを理解する。',prediction:'σ=0のときは？ σ=45°で、視点を光源側から反対側へ回すとどうなる？',observation:'θL=θV=60°、σ=45°で方位差0°・90°・180°を選び、0.63166・0.33713・0.33713を確認する。',explanation:'講義付録の簡略モデルを使用。σは小面の傾斜角の標準偏差で、計算前にラジアンへ変換する。相互反射は省く。数値は球の頂点で、正面入射時のLambert放射輝度を1とした相対値。MicrofacetのαやPBRのRoughnessとは別の量。'},
   'phong-blinn': {title:'Phong / Blinn–Phong Explorer',goal:'反射ベクトルRとハーフベクトルHを使う2種類の鏡面モデルを比較する。',prediction:'n=m=20ならハイライトの幅も同じ？ Blinnの指数を4倍にするとどうなる？',observation:'同じ指数とn=20・m=80を比較する。光源固定で視点を20°動かし、R·VとN·Hの変化を見る。',explanation:'N・L・Vは単位ベクトル。R=2(N·L)N−L、H=normalize(L+V)。ここでは照明モデルのみを比較し、両方とも画素ごとに評価する。Phong Reflection Modelと、法線を補間するPhong Shadingは別の概念。経験的鏡面式であり、正規化されたBRDFではない。'},
@@ -48,7 +49,7 @@ const controls = computed<Control[]>(() => {
   if (props.topic==='phong-blinn') items.push({key:'blinnExponent',label:'Blinn–Phong指数 m',min:1,max:800,step:1,disabled:s.sameExponent},{key:'ks',label:'鏡面係数 ks',min:0,max:1,step:.01})
   if (props.topic==='ambient-components') items.push({key:'ambient',label:'Ambient強度 ka Iambient',min:0,max:1,step:.01},{key:'kd',label:'Diffuse係数 kd',min:0,max:1,step:.01},{key:'ks',label:'Specular係数 ks',min:0,max:1,step:.01})
   if (props.topic==='lambert') for (const [key,label] of [['red','光源色 R'],['green','光源色 G'],['blue','光源色 B']] as const) items.push({key,label,min:0,max:255,step:1})
-  if (props.topic==='shading-comparison') items.push(
+  if (canRotateObject.value) items.push(
     {key:'objectPitch',label:'物体のX軸回転',min:-180,max:180,step:.1,unit:'°'},
     {key:'objectYaw',label:'物体のY軸回転',min:-180,max:180,step:.1,unit:'°'})
   return items
@@ -84,13 +85,13 @@ const number = (value:number) => value.toFixed(5)
         <label v-for="control in controls" :key="control.key" class="range-control"><span>{{ control.label }} <output>{{ control.key==='blinnExponent'&&s.sameExponent?m:Number(s[control.key]).toFixed(control.step<1?2:0) }}{{ control.unit }}</output></span><input v-model.number="s[control.key]" type="range" :min="control.min" :max="control.max" :step="control.step" :aria-label="control.label" :disabled="control.disabled" /></label>
         <div v-if="topic==='lambert'" class="color-swatch"><span :style="{background:lightColor}" />光源色 {{ lightColor }} <small>sRGB入力</small></div>
         <label v-if="topic==='phong-blinn'" class="check-control"><input v-model="s.sameExponent" type="checkbox" />同じ指数を使用する（m = n）</label>
-        <template v-if="topic==='visibility-shading'||topic==='shading-comparison'"><label class="check-control"><input v-model="s.wireframe" type="checkbox" />ワイヤーフレームを重ねる</label></template>
+        <template v-if="topic==='visibility-shading'||canRotateObject"><label class="check-control"><input v-model="s.wireframe" type="checkbox" />ワイヤーフレームを重ねる</label></template>
         <label v-if="topic==='shading-comparison'" class="check-control"><input v-model="s.normals" type="checkbox" />法線を表示</label>
         <template v-if="topic==='ambient-components'">
           <label class="check-control"><input v-model="s.ambientOn" type="checkbox" />Ambient</label><label class="check-control"><input v-model="s.diffuseOn" type="checkbox" />Diffuse</label><label class="check-control"><input v-model="s.specularOn" type="checkbox" />Specular</label>
           <label class="check-control"><input v-model="s.comparison" type="checkbox" />Ambient / AO 比較モード</label>
         </template>
-        <button v-if="topic==='shading-comparison'" type="button" class="reset" @click="resetRotation">物体の向きだけを戻す</button>
+        <button v-if="canRotateObject" type="button" class="reset" @click="resetRotation">物体の向きだけを戻す</button>
         <button type="button" class="reset" @click="reset">初期状態に戻す</button>
         <p class="coordinate-note">天頂角は+Yから測定。方位角0°は+Z、90°は+X。球の半径は1。</p>
       </aside>
@@ -105,17 +106,18 @@ const number = (value:number) => value.toFixed(5)
           <template v-else-if="topic==='ambient-components'"><button type="button" @click="preset({diffuseOn:false,specularOn:false})">Ambientのみ</button><button type="button" @click="preset({ambientOn:false,specularOn:false})">Diffuseのみ</button><button type="button" @click="preset({ambientOn:false,diffuseOn:false})">Specularのみ</button><button type="button" @click="preset({})">3成分を合成</button><button type="button" @click="preset({comparison:true,diffuseOn:false,specularOn:false,ambient:.5})">Ambient と AO</button></template>
           <template v-else><button type="button" @click="preset({mode:'visible'})">可視面だけ</button><button type="button" @click="preset({mode:'lambert',lightAngle:75})">同じ視点・斜めの光</button><button type="button" @click="preset({mode:'phong',viewAngle:35})">鏡面反射を追加</button></template>
         </div>
-        <p v-if="topic==='shading-comparison'" class="rotation-help">どれか1つの球をドラッグ（タッチ操作も可）すると、3つが同時に回転します。光源と視点は固定したまま比較できます。矢印キーでも回転、Homeキーで向きをリセット。回転順序はX軸 → Y軸です。</p>
+        <p v-if="canRotateObject" class="rotation-help">{{ cards.length===1?'球をドラッグすると回転します。':`どれか1つの球をドラッグすると、${cards.length}つが同時に回転します。` }}タッチ操作も可。光源と視点は固定したまま比較できます。矢印キーでも回転、Homeキーで向きをリセット。回転順序はX軸 → Y軸です。</p>
+        <p v-if="topic==='lambert'||topic==='phong-blinn'" class="rotation-help">滑らかな球は回転しても見た目がほぼ同じです。「ワイヤーフレームを重ねる」でメッシュの回転を確認できます。数式欄とベクトル図は、ワールド座標の基準法線 N=(0,1,0) に対する計算です。</p>
         <ClassicPointLight v-if="topic==='point-light'" :distance="s.distance" :angle="s.lightAngle" :intensity="s.intensity" :azimuth="s.azimuth" />
         <div v-else class="scene-cards" :class="{'three-cards':cards.length===3}">
-          <figure v-for="card in cards" :key="card.model+(card.extra.ao?'ao':'')"><figcaption>{{ card.label }}</figcaption><ShadingScene :model="card.model" :settings="{...settings,...card.extra}" :rotatable="topic==='shading-comparison'" @rotate="rotateObject" @reset-rotation="resetRotation" /></figure>
+          <figure v-for="card in cards" :key="card.model+(card.extra.ao?'ao':'')"><figcaption>{{ card.label }}</figcaption><ShadingScene :model="card.model" :settings="{...settings,...card.extra}" :rotatable="canRotateObject" @rotate="rotateObject" @reset-rotation="resetRotation" /></figure>
         </div>
         <p v-if="topic==='shading-comparison' && s.normals" class="rotation-help">黄色の線：Flatは各面の中心から出る面法線、Gouraud / Phongは各頂点の法線。Phongの照明計算では、この頂点法線を補間して画素ごとの法線を求めます。</p>
         <div class="calculation" aria-live="polite">
-          <template v-if="topic==='lambert'"><strong>球の頂点：N·L = {{ number(Math.cos(s.lightAngle*Math.PI/180)) }}</strong><p>I<sub>d</sub> = k<sub>d</sub> I<sub>L</sub> max(0, N·L) = <b>{{ number(lambert(s.lightAngle,s.kd,s.intensity)) }}</b></p><small>数値は光源色を掛ける前の係数。RGB色は線形RGBへ変換してから乗算。</small></template>
+          <template v-if="topic==='lambert'"><strong>基準法線 N=(0,1,0)：N·L = {{ number(Math.cos(s.lightAngle*Math.PI/180)) }}</strong><p>I<sub>d</sub> = k<sub>d</sub> I<sub>L</sub> max(0, N·L) = <b>{{ number(lambert(s.lightAngle,s.kd,s.intensity)) }}</b></p><small>数値は光源色を掛ける前の係数。RGB色は線形RGBへ変換してから乗算。</small></template>
           <template v-else-if="topic==='point-light'"><strong>E = J max(0, N·L) / r² = {{ number(pointIlluminance(s.distance,s.lightAngle,s.intensity)) }} W/m²</strong><p>同じ角度・強度で r = 1 m と比べる距離係数：1 / r² = {{ number(1/(s.distance*s.distance)) }}</p></template>
           <template v-else-if="topic==='oren-nayar'"><strong>球の頂点の相対反射光：Lambert {{ number(lambert(s.lightAngle)) }} ／ Oren–Nayar {{ number(orenNayar(s.lightAngle,s.viewAngle,s.azimuth,s.sigma)) }}</strong><p>I<sub>rel</sub> = cos θ<sub>L</sub> [A + B max(0, cos Δφ) sin a tan b]</p><p>A = 1 − 0.5 σ²/(σ² + 0.33), B = 0.45 σ²/(σ² + 0.09)</p><small>a = max(θL, θV), b = min(θL, θV)、σはラジアン。k<sub>d</sub> I<sub>L</sub> = 1。</small></template>
-          <template v-else-if="topic==='phong-blinn'"><strong>球の頂点：Phong {{ number(spec.phong) }} ／ Blinn–Phong {{ number(spec.blinn) }}</strong><p>I<sub>s,Phong</sub> = k<sub>s</sub> I<sub>L</sub> max(0, R·V)<sup>n</sup>　(R·V = {{ number(spec.rDotV) }})</p><p>I<sub>s,Blinn</sub> = k<sub>s</sub> I<sub>L</sub> max(0, N·H)<sup>m</sup>　(N·H = {{ number(spec.nDotH) }})</p><small>形状を見やすくするため、球には共通の拡散係数0.15を追加。数値は鏡面項だけ。</small></template>
+          <template v-else-if="topic==='phong-blinn'"><strong>基準法線 N=(0,1,0)：Phong {{ number(spec.phong) }} ／ Blinn–Phong {{ number(spec.blinn) }}</strong><p>I<sub>s,Phong</sub> = k<sub>s</sub> I<sub>L</sub> max(0, R·V)<sup>n</sup>　(R·V = {{ number(spec.rDotV) }})</p><p>I<sub>s,Blinn</sub> = k<sub>s</sub> I<sub>L</sub> max(0, N·H)<sup>m</sup>　(N·H = {{ number(spec.nDotH) }})</p><small>形状を見やすくするため、球には共通の拡散係数0.15を追加。数値は鏡面項だけ。</small></template>
           <template v-else-if="topic==='shading-comparison'"><strong>各球 {{ (20*4**s.subdivisions).toLocaleString() }} 三角形 · 同一の形状・カメラ・照明</strong><p>Gouraud：C = Σ w<sub>i</sub> C<sub>i</sub>　／　Phong：N = normalize(Σ w<sub>i</sub> N<sub>i</sub>) → 照明計算</p><small>w<sub>i</sub>は三角形内の補間重み。輪郭の多角形らしさは、照明の補間だけでは消えない。</small></template>
           <template v-else-if="topic==='ambient-components'"><strong>球の頂点・AO適用前：I = I<sub>a</sub> + I<sub>d</sub> + I<sub>s</sub> = {{ number(terms.total) }}</strong><div class="component-values"><span>Ambient {{ number(terms.ambient) }}</span><span>Diffuse {{ number(terms.diffuse) }}</span><span>Specular {{ number(terms.specular) }}</span></div><p>I<sub>ambient,AO</sub> = k<sub>a</sub> I<sub>ambient</sub> (1 − A)</p><p>I<sub>s</sub> = k<sub>s</sub> I<sub>L</sub> max(0, N·H)<sup>m</sup>（Blinn–Phong）</p><small>各成分の数値は材質色を掛ける前。AOの遮蔽率は球・床の各位置で異なる。</small></template>
           <template v-else><strong>{{ s.mode==='visible'||s.mode==='wireframe'?'光源方向は、面の可視判定や形状を変えない。':'画素ごとの法線から拡散・鏡面反射を計算。' }}</strong><p>可視性 = f(幾何形状, 視点)　／　色 = f(法線, 光源, 視点, 材質)</p></template>
