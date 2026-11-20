@@ -1011,7 +1011,7 @@
     },
     {
       "path": "scripts/shading-disney.test.mjs",
-      "sha256": "797eaef5669f8c957fe2995411ca522e06d42f9e8479a411e6da3e069309f4d4"
+      "sha256": "5857f7058dc9c4aa7a39a5e74efc80b1fe0726f728fb6542f6d76e7a930e7f1d"
     },
     {
       "path": "scripts/shading-incidence.test.mjs",
