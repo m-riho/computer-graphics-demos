@@ -235,11 +235,11 @@
     },
     {
       "path": "components/shading/catalog.ts",
-      "sha256": "505779e331442f1e7f1e4834967921e06f1193e9db1a6b78efa6896c273765dc"
+      "sha256": "910e817f7d6a6bd7e7393419321dd380aa1a42f0e5f055c8eefd14f40b2adfe4"
     },
     {
       "path": "components/shading/ClassicExplorer.vue",
-      "sha256": "0d3b094f55481ab4038bc9ebbd33a491fd7ad1342e44870a56356853c1c97052"
+      "sha256": "c30e31e79b5ff0eb910ac2cbd7a9586f08969d16d55ca474e009a3d69e99665f"
     },
     {
       "path": "components/shading/ClassicPointLight.vue",
@@ -262,8 +262,16 @@
       "sha256": "cb19a87876bf6c47df9ed447b82c3193968fe0c0979487314414b2dec7b084c7"
     },
     {
+      "path": "components/shading/LightMaterialExplorer.vue",
+      "sha256": "ece229ff676d1f5a7124ade798b4322c9c3078241f934afabd4d6214b8b099a3"
+    },
+    {
+      "path": "components/shading/OrenPointComparison.vue",
+      "sha256": "b7424f96c24cb752c51ca7c731f2d0e3f526f6fb89c3d5a48afc763c05df5100"
+    },
+    {
       "path": "components/shading/shading-registry.ts",
-      "sha256": "938511cc30a5549df6e45cbe2e216742ace54190e836de0551096ad747136918"
+      "sha256": "c6ad76004248c93323ede6d00993088fdb05bb60af536a893f392e6bf2283c45"
     },
     {
       "path": "components/shading/shading-renderer.ts",
@@ -272,6 +280,10 @@
     {
       "path": "components/shading/ShadingScene.vue",
       "sha256": "22e4f07a0d00f9b494f9c2cfe12e6ee55bab6c3853cf93e344e6174ecda366a2"
+    },
+    {
+      "path": "components/shading/SphereNormalsExplorer.vue",
+      "sha256": "54e7cace62b5e8af864000b8d96364fc6ca3a3054e7e388e3d39ff0bf75d858d"
     },
     {
       "path": "components/visibility/CompareExplorer.vue",
@@ -586,6 +598,10 @@
       "sha256": "34eb6c34b4a1b61099788948d71f85f6fda599a85fd4dcf52e45a691ce0fadde"
     },
     {
+      "path": "examples/07-shading/light-material-color.ts",
+      "sha256": "cc2dc8dbe2eb5f59a93cf58918920ded8fea1dc46dd917b28244c977ec18eccb"
+    },
+    {
       "path": "examples/07-shading/linear-interpolation.ts",
       "sha256": "615aeb767a81f54b1cc438e6fa1b70ef0814056c599d75e0bfd8fed0ef49c4ec"
     },
@@ -595,7 +611,7 @@
     },
     {
       "path": "examples/07-shading/oren-nayar.ts",
-      "sha256": "45c3d922d781e9f59a07495126d4c780fc49fe7b058a3b9ceebe227731da0388"
+      "sha256": "e4fbe8e803fd3815daa27e37a0a1f1a6c1325aa374822dea273ee5340d80a6d4"
     },
     {
       "path": "examples/07-shading/phong-blinn.ts",
@@ -620,6 +636,10 @@
     {
       "path": "examples/07-shading/shading-comparison.ts",
       "sha256": "3381c84d23caf70b2335d6ece4bad3145583fde95f1b25edadd8a1b897c42a9a"
+    },
+    {
+      "path": "examples/07-shading/sphere-normals.ts",
+      "sha256": "9fb2dab65881defdc5965dc0881bb9a1dfeb81a68d76985bd0d7e20a3baf79b9"
     },
     {
       "path": "examples/07-shading/visibility-shading.ts",
@@ -806,6 +826,14 @@
       "sha256": "dcfb3a25030ba0958eb397db321a470367ba8c47ef3d651c616b316a609192fa"
     },
     {
+      "path": "packages/cg-algorithms/src/shading-light-color.ts",
+      "sha256": "8f4ce518dbebe598bf99711d59727c3e724aaab11594b4d063904408c4f194e4"
+    },
+    {
+      "path": "packages/cg-algorithms/src/shading-sphere-normals.ts",
+      "sha256": "9a9ec0bce55fa09f8e067df9b3b7280efef1440b021794b370fab87f4bb219d8"
+    },
+    {
       "path": "packages/cg-algorithms/src/subdivision.ts",
       "sha256": "2e69743340470f834fa1ddfc65a1d18b040b4634552f3b78b27a717a56abeb3a"
     },
@@ -903,7 +931,7 @@
     },
     {
       "path": "public-site/src/sessions/07-shading.ts",
-      "sha256": "032c5c323079d9018069ed977935a88bf73afdf77b1ce80e0bbeb78711f0b6d6"
+      "sha256": "45085cb471f77a2eb618b31e19fd50ddaf5d51b500b7a47df42ee5af716c8688"
     },
     {
       "path": "public-site/src/style.css",
@@ -1022,8 +1050,16 @@
       "sha256": "7ad535e978c7fa0daf062ede8d25d7cfa8d79af89bae3b5f90a813fe47b31d23"
     },
     {
+      "path": "scripts/shading-light-color.test.mjs",
+      "sha256": "ce0266efa1ece47aa9cd0764953d71feca90108657d8e99b2cc15f6c06fdecf2"
+    },
+    {
       "path": "scripts/shading-renderer.test.mjs",
       "sha256": "b383503e6502d383fd27132777845e241c13cda571e437cc9ac28c0c689f44a4"
+    },
+    {
+      "path": "scripts/shading-sphere-normals.test.mjs",
+      "sha256": "8db8f23973c3cfbae6279f682b53ae6eecdd5fd7c0920d5f4f8f98be3079a1eb"
     },
     {
       "path": "scripts/visibility-depth.test.mjs",

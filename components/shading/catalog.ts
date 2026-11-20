@@ -47,17 +47,17 @@ export const shadingCatalog = [
   },
   {
     "id": "oren-nayar",
-    "title": "粗い拡散面を見比べる",
+    "title": "LambertとOren–Nayarの拡散反射を比べる",
     "english": "Lambert / Oren–Nayar Explorer",
     "number": "D04",
     "priority": false,
     "studyMode": "オンデマンド",
     "slideReference": "第7回 p.27–30・95（115枚版）",
-    "launchPage": 30,
+    "launchPage": 28,
     "question": "光源の近くから粗い面を見ると、Lambert面と同じ明るさでしょうか。",
     "purpose": "粗さと入射・出射方向による拡散反射の変化を調べます。",
-    "operation": "σ=0で一致を確かめ、60°・60°・σ=45°で方位差を変えます。",
-    "observe": "方位差0°では約0.63、90°と180°では約0.34になります。",
+    "operation": "粗さ・光源・視点をスライダーで変更。σ=0で一致を確かめ、視点の自動往復で固定点の明るさを比較します。",
+    "observe": "固定点のLambertは一定。Oren–Nayarは60°・60°・σ=45°のとき、方位差0°で約0.63、90°と180°で約0.34です。",
     "explanation": "講義の簡略Oren–Nayar式を用い、σは計算時にラジアンへ変換します。"
   },
   {
@@ -269,6 +269,36 @@ export const shadingCatalog = [
     "operation": "プリセットを選び、数値スライダーとRGB入力を変更します。比較用の材質を保存して一つずつ動かします。",
     "observe": "金属度1では拡散・Sheenは消えます。SheenやClearcoatが0なら、それらの色・鋭さを変えても結果は変わりません。",
     "explanation": "Disney 2012型のBRDFを自作スタジオ環境で表示。Subsurfaceは局所近似で透過は扱いません。計算は線形RGB、表示は露出とトーンマッピング後にsRGBへ変換します。"
+  },
+  {
+    "id": "light-material-color",
+    "title": "光源色と物体色で、見える色が変わる",
+    "english": "Light / Material Color Explorer",
+    "number": "D19",
+    "priority": true,
+    "studyMode": "授業内",
+    "launchPage": 26,
+    "slideReference": "第7回 p.25–26（115枚版）",
+    "question": "赤い材質に青色光を当てると、何色の光が返るでしょうか。",
+    "purpose": "光源と材質のRGB成分の積を、白色光との比較で確かめます。",
+    "operation": "光源と物体のRGBスライダーを変更し、プリセットや角度で比較します。",
+    "observe": "届いていない成分は反射できません。赤を反射する材質でも、赤い光がなければ赤は返りません。",
+    "explanation": "線形RGBで材質×光源×強度×max(0,N·L)を計算し、sRGBに変換して表示します。鏡面・環境光・間接光は含めません。"
+  },
+  {
+    "id": "sphere-normals",
+    "title": "球面には全ての方向の法線がある",
+    "english": "Sphere / Circle Normals Explorer",
+    "number": "D20",
+    "priority": true,
+    "studyMode": "授業内",
+    "launchPage": 21,
+    "slideReference": "第7回 p.21・23–25（115枚版）",
+    "question": "球が材質や照明の見本によく使われるのはなぜでしょうか。",
+    "purpose": "円周と球面を対応付け、点の位置と外向き法線、見える半球の関係を観察します。",
+    "operation": "円周上の点と断面の向きをスライダーで変更。球をドラッグして視点を回し、裏側の透過表示も切り替えます。",
+    "observe": "円周一周で断面内の全方向、断面も回すと球面の全方向。視点だけ変えても選択点の法線と拡散反射は変わりません。",
+    "explanation": "球の中心C、半径r、表面点Pに対してN=(P−C)/r。正投影で見える側はN·V>0。表示した矢印は無数にある法線の有限個の例です。"
   }
 ] as const
 export type ShadingDemoId = typeof shadingCatalog[number]['id']

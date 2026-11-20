@@ -44,21 +44,27 @@ import disneyCore from '../../../packages/cg-algorithms/src/shading-disney.ts?ra
 import disneyGpu from '../../../packages/cg-algorithms/src/shading-disney-gpu.ts?raw'
 import example17 from '../../../examples/07-shading/disney-brdf.ts?raw'
 import { runExample as run17 } from '../../../examples/07-shading/disney-brdf.ts'
-const examples = [example0,example1,example2,example3,example4,example5,example6,example7,example8,example9,example10,example11,example12,example13,example14,example15,example16,example17]
-const runs = [run0,run1,run2,run3,run4,run5,run6,run7,run8,run9,run10,run11,run12,run13,run14,run15,run16,run17]
+import lightColorCore from '../../../packages/cg-algorithms/src/shading-light-color.ts?raw'
+import example18 from '../../../examples/07-shading/light-material-color.ts?raw'
+import { runExample as run18 } from '../../../examples/07-shading/light-material-color.ts'
+import normalsCore from '../../../packages/cg-algorithms/src/shading-sphere-normals.ts?raw'
+import example19 from '../../../examples/07-shading/sphere-normals.ts?raw'
+import { runExample as run19 } from '../../../examples/07-shading/sphere-normals.ts'
+const examples = [example0,example1,example2,example3,example4,example5,example6,example7,example8,example9,example10,example11,example12,example13,example14,example15,example16,example17,example18,example19]
+const runs = [run0,run1,run2,run3,run4,run5,run6,run7,run8,run9,run10,run11,run12,run13,run14,run15,run16,run17,run18,run19]
 export const session07: CourseSession = {
  id:'07', number:7, date:'2026年11月20日', title:'レンダリングその2：Shading / BRDF / PBR',
- description:'数式のどの部分を変えると、見た目のどこが変わるか。18の実験で、照明・反射・補間・材質を結び付けます。',
+ description:'数式のどの部分を変えると、見た目のどこが変わるか。20の実験で、照明・反射・補間・材質を結び付けます。',
  topics: shadingDemos.map((d,i)=>({
   id:d.id,title:d.title,priority:d.priority,studyMode:d.studyMode,slideReference:d.slideReference,
   purpose:d.purpose,question:d.question,operation:d.operation,observe:d.observe,
   explanation:d.explanation,think:d.question,
   demo:d.component,demoProps:{topic:d.id},example:examples[i],run:runs[i],
-  coreName:d.id==='disney-brdf'?'shading-disney.ts / shading-disney-gpu.ts / shading-geometry.ts':d.id.endsWith('-interpolation')?'shading-interpolation.ts / shading-geometry.ts':d.id==='beam-footprint'?'shading-incidence.ts':'shading-classic.ts / shading-advanced.ts / shading-geometry.ts / shading-gpu.ts',
-  core:d.id==='disney-brdf'?disneyCore+'\n\n'+disneyGpu+'\n\n'+geometryCore:d.id.endsWith('-interpolation')?interpolationCore+'\n\n'+geometryCore:d.id==='beam-footprint'?incidenceCore:classicCore+'\n\n'+advancedCore+'\n\n'+geometryCore+'\n\n'+gpuCore,
+  coreName:d.id==='sphere-normals'?'shading-sphere-normals.ts / shading-geometry.ts':d.id==='light-material-color'?'shading-light-color.ts / shading-geometry.ts':d.id==='disney-brdf'?'shading-disney.ts / shading-disney-gpu.ts / shading-geometry.ts':d.id.endsWith('-interpolation')?'shading-interpolation.ts / shading-geometry.ts':d.id==='beam-footprint'?'shading-incidence.ts':'shading-classic.ts / shading-advanced.ts / shading-geometry.ts / shading-gpu.ts',
+  core:d.id==='sphere-normals'?normalsCore+'\n\n'+geometryCore:d.id==='light-material-color'?lightColorCore+'\n\n'+geometryCore:d.id==='disney-brdf'?disneyCore+'\n\n'+disneyGpu+'\n\n'+geometryCore:d.id.endsWith('-interpolation')?interpolationCore+'\n\n'+geometryCore:d.id==='beam-footprint'?incidenceCore:classicCore+'\n\n'+advancedCore+'\n\n'+geometryCore+'\n\n'+gpuCore,
  })),
  stories:[
-  {title:'一つの面を照らす',description:'光源・法線・視線のどれを変えるかを区別します。',topicIds:['visibility-shading','beam-footprint','lambert','point-light','ambient-components']},
+  {title:'一つの面を照らす',description:'光源・法線・視線のどれを変えるかを区別します。',topicIds:['visibility-shading','sphere-normals','beam-footprint','lambert','light-material-color','point-light','ambient-components']},
   {title:'方向と補間を見比べる',description:'反射モデルと照明を計算する場所を分けて考えます。',topicIds:['oren-nayar','phong-blinn','linear-interpolation','gouraud-interpolation','phong-interpolation','shading-comparison','brdf-lobe']},
   {title:'微小面から材質、光の合計へ',description:'D・F・Gから反射と入射光の寄与を組み立てます。',topicIds:['microfacet-ndf','fresnel','cook-torrance','principled','disney-brdf','rendering-equation']},
  ],
