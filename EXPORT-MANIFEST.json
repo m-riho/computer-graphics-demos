@@ -235,7 +235,7 @@
     },
     {
       "path": "components/shading/catalog.ts",
-      "sha256": "2827b3e342bc179c0e056ef06e900e552b4ca6bd55f20381b1d281969ff36343"
+      "sha256": "505779e331442f1e7f1e4834967921e06f1193e9db1a6b78efa6896c273765dc"
     },
     {
       "path": "components/shading/ClassicExplorer.vue",
@@ -250,12 +250,20 @@
       "sha256": "a9845cac0e612e0970da8d7b0490e67b2688311d7f7cd6daf0a20ee840de199d"
     },
     {
+      "path": "components/shading/disney-renderer.ts",
+      "sha256": "75632169f8dc122723b836bb1f6a66dd73d5fa37bc8786cdea3801709c0b3467"
+    },
+    {
+      "path": "components/shading/DisneyBRDFExplorer.vue",
+      "sha256": "7ad6ad7e2b4b06e56246d408740c2a5da17015f0c4a88d2bbe2dd8f15c5fef4b"
+    },
+    {
       "path": "components/shading/InterpolationExplorer.vue",
       "sha256": "cb19a87876bf6c47df9ed447b82c3193968fe0c0979487314414b2dec7b084c7"
     },
     {
       "path": "components/shading/shading-registry.ts",
-      "sha256": "a7c6c337a013f7587033bcf40680f094be3b3bf1d00f35296ebffc31b73e0146"
+      "sha256": "938511cc30a5549df6e45cbe2e216742ace54190e836de0551096ad747136918"
     },
     {
       "path": "components/shading/shading-renderer.ts",
@@ -263,7 +271,7 @@
     },
     {
       "path": "components/shading/ShadingScene.vue",
-      "sha256": "69937d31d188a7eab78ddc80c55caf45919aaf0c53c56f80f9a3f754a0825988"
+      "sha256": "22e4f07a0d00f9b494f9c2cfe12e6ee55bab6c3853cf93e344e6174ecda366a2"
     },
     {
       "path": "components/visibility/CompareExplorer.vue",
@@ -562,6 +570,10 @@
       "sha256": "01e9e718a5b078e8cc32b70ecac3e5945872af54ab33f2b03a9024d27ac3c41e"
     },
     {
+      "path": "examples/07-shading/disney-brdf.ts",
+      "sha256": "8c4cfa9076729904bf9b779d0ad96440c1a4bb4f88ee6d66cf2dc11014147cea"
+    },
+    {
       "path": "examples/07-shading/fresnel.ts",
       "sha256": "1079a61aaae78365924fe56c6624e3a393b9e90eac28d5f5a6b8181306ed1db6"
     },
@@ -770,6 +782,14 @@
       "sha256": "d5ad5e849bb740da4e89dc3853e189936483056383a638cbbf22ebd5986db377"
     },
     {
+      "path": "packages/cg-algorithms/src/shading-disney-gpu.ts",
+      "sha256": "326dfec33bfdec461d6db41329076fec3d7417ed419cc23532e7541a6923232a"
+    },
+    {
+      "path": "packages/cg-algorithms/src/shading-disney.ts",
+      "sha256": "0ae1a458e4d1309a47f84a55e3716e38ea3f83f817eb4d2ff9e79d4e60ce695e"
+    },
+    {
       "path": "packages/cg-algorithms/src/shading-geometry.ts",
       "sha256": "277d1c3178e0154137c579634592db86358853fcf98d90fa32ecdc3e96e0c567"
     },
@@ -883,7 +903,7 @@
     },
     {
       "path": "public-site/src/sessions/07-shading.ts",
-      "sha256": "48e8daee50e776e6aa2b65f2eec99f89f351591ec5833265dade19e61753ac85"
+      "sha256": "032c5c323079d9018069ed977935a88bf73afdf77b1ce80e0bbeb78711f0b6d6"
     },
     {
       "path": "public-site/src/style.css",
@@ -988,6 +1008,10 @@
     {
       "path": "scripts/shading-classic.test.mjs",
       "sha256": "e535b71548c9476d9183f94a476c776dc6bd507aac130993c52cb61fd71e4bac"
+    },
+    {
+      "path": "scripts/shading-disney.test.mjs",
+      "sha256": "797eaef5669f8c957fe2995411ca522e06d42f9e8479a411e6da3e069309f4d4"
     },
     {
       "path": "scripts/shading-incidence.test.mjs",

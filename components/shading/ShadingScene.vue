@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { createShadingRenderer, type ShadingSettings } from './shading-renderer'
+import { createDisneyRenderer } from './disney-renderer'
 const props=withDefaults(defineProps<{model:string;settings?:ShadingSettings;rotatable?:boolean}>(),{settings:()=>({}),rotatable:false})
 const emit=defineEmits<{rotate:[dx:number,dy:number];resetRotation:[]}>()
 const canvas=ref<HTMLCanvasElement>(),error=ref('')
@@ -40,7 +41,7 @@ function schedule() {if(!frame)frame=requestAnimationFrame(draw)}
 function lost(event:Event) {event.preventDefault();error.value='WebGL コンテキストが失われました。復旧を待っています。'}
 function restored() {renderer?.dispose(false);initialize()}
 function initialize() {
-  try {renderer=createShadingRenderer(canvas.value!);error.value='';schedule()} catch(e) {error.value=e instanceof Error?e.message:String(e)}
+  try {renderer=(props.model==='disney-brdf'?createDisneyRenderer:createShadingRenderer)(canvas.value!);error.value='';schedule()} catch(e) {error.value=e instanceof Error?e.message:String(e)}
 }
 onMounted(()=>{
   initialize();observer=new ResizeObserver(schedule);observer.observe(canvas.value!)
