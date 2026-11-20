@@ -24,42 +24,45 @@ export function createShadingRenderer(canvas: HTMLCanvasElement) {
   const f=(name:string,v:number)=>gl.uniform1f(uniform(name),v)
   const integer=(name:string,v:number)=>gl.uniform1i(uniform(name),v)
   const vec=(name:string,v:number[])=>gl.uniform3fv(uniform(name),v)
-  const attributes=['aPosition','aNormal','aFaceNormal','aSurface'].map(name=>gl.getAttribLocation(program,name))
-  for(let i=0;i<4;i++) buffers.push(gl.createBuffer()!)
+  const attributes=['aPosition','aNormal','aFaceNormal','aSurface','aRotationCenter'].map(name=>gl.getAttribLocation(program,name))
+  for(let i=0;i<attributes.length;i++) buffers.push(gl.createBuffer()!)
   let geometryKey='',data:number[][]=[],surfaceCount=0,wireStart=0,wireCount=0,normalStart=0,normalCount=0
   function updateGeometry(subdivisions:number,floor:boolean,secondSphere:boolean,normalKind:'face'|'vertex') {
     const key=`${subdivisions}:${floor}:${secondSphere}:${normalKind}`
     if(key===geometryKey) return
     geometryKey=key
     const sphere=createShadingSphere(subdivisions)
-    data=[Array.from(sphere.positions),Array.from(sphere.normals),Array.from(sphere.faceNormals),[]]
-    const p=data[0]!,n=data[1]!,fn=data[2]!,surface=data[3]!
+    data=[Array.from(sphere.positions),Array.from(sphere.normals),Array.from(sphere.faceNormals),[],new Array(sphere.positions.length).fill(0)]
+    const p=data[0]!,n=data[1]!,fn=data[2]!,surface=data[3]!,centers=data[4]!
+    const secondCenter:ShadingVector=[.8,-.35,.35]
     for(let i=0;i<p.length;i+=3) surface.push(ambientOcclusion(p.slice(i,i+3) as ShadingVector,n.slice(i,i+3) as ShadingVector,floor),0)
     if(secondSphere) {
       // A second object makes depth ordering visible in the D01 comparison.
       for(let i=0;i<sphere.positions.length;i+=3) {
         const v=Array.from(sphere.positions.slice(i,i+3))
-        p.push(v[0]!*.65+.8,v[1]!*.65-.35,v[2]!*.65+.35)
+        p.push(...v.map((value,k)=>value*.65+secondCenter[k]!));centers.push(...secondCenter)
         n.push(...Array.from(sphere.normals.slice(i,i+3)));fn.push(...Array.from(sphere.faceNormals.slice(i,i+3)));surface.push(0,0)
       }
     }
     if(floor) {
       const steps=32,size=3
-      const vertex=(x:number,z:number)=>{p.push(x,-1,z);n.push(0,1,0);fn.push(0,1,0);surface.push(ambientOcclusion([x,-1,z],[0,1,0],true),1)}
+      const vertex=(x:number,z:number)=>{p.push(x,-1,z);n.push(0,1,0);fn.push(0,1,0);surface.push(ambientOcclusion([x,-1,z],[0,1,0],true),1);centers.push(0,0,0)}
       for(let x=0;x<steps;x++)for(let z=0;z<steps;z++) {
         const a=-size+x*size*2/steps,b=-size+z*size*2/steps,d=size*2/steps
         vertex(a,b);vertex(a,b+d);vertex(a+d,b);vertex(a+d,b);vertex(a,b+d);vertex(a+d,b+d)
       }
     }
     surfaceCount=p.length/3;wireStart=surfaceCount
-    const lineVertex=(v:ShadingVector)=>{p.push(...v);n.push(0,1,0);fn.push(0,1,0);surface.push(0,0)}
+    const lineVertex=(v:ShadingVector,center:ShadingVector=[0,0,0],floorSurface=false)=>{p.push(...v);n.push(0,1,0);fn.push(0,1,0);surface.push(0,floorSurface?1:0);centers.push(...center)}
     for(let i=0;i<sphere.positions.length;i+=9)for(const [a,b]of [[0,3],[3,6],[6,0]])for(const j of [a!,b!]) lineVertex(Array.from(sphere.positions.slice(i+j,i+j+3)).map(v=>v*1.002) as ShadingVector)
     if(secondSphere) for(let i=0;i<sphere.positions.length;i+=9)for(const [a,b]of [[0,3],[3,6],[6,0]])for(const j of [a!,b!]) {
       const v=Array.from(sphere.positions.slice(i+j,i+j+3))
-      lineVertex([v[0]!*.652+.8,v[1]!*.652-.35,v[2]!*.652+.35])
+      lineVertex(v.map((value,k)=>value*.652+secondCenter[k]!) as ShadingVector,secondCenter)
     }
     // Floor wireframe uses a coarser grid for legibility.
-    if(floor)for(let j=-3;j<=3;j+=.5) {lineVertex([j,-.997,-3]);lineVertex([j,-.997,3]);lineVertex([-3,-.997,j]);lineVertex([3,-.997,j])}
+    if(floor)for(let j=-3;j<=3;j+=.5) {
+      for(const v of [[j,-.997,-3],[j,-.997,3],[-3,-.997,j],[3,-.997,j]]) lineVertex(v as ShadingVector,[0,0,0],true)
+    }
     wireCount=p.length/3-wireStart;normalStart=p.length/3
     const normalLines=createShadingNormalLines(sphere,normalKind)
     for(let i=0;i<normalLines.length;i+=3) lineVertex(Array.from(normalLines.slice(i,i+3)) as ShadingVector)
@@ -85,6 +88,7 @@ export function createShadingRenderer(canvas: HTMLCanvasElement) {
     gl.uniformMatrix3fv(uniform('uObjectRotation'),false,shadingObjectRotation(number('objectPitch',0),number('objectYaw',0)))
     data.forEach((_,i)=>{const location=attributes[i]!;if(location<0)return;gl.bindBuffer(gl.ARRAY_BUFFER,buffers[i]!);gl.enableVertexAttribArray(location);gl.vertexAttribPointer(location,i===3?2:3,gl.FLOAT,false,0,0)})
     const models:Record<string,number>={visible:0,wireframe:0,lambert:1,'oren-nayar':2,phong:3,'blinn-phong':4,flat:4,gouraud:4,smooth:4,'cook-torrance':5,pbr:6,ambient:7}
+    integer('uRotateScene',bool('rotateScene',false)?1:0)
     integer('uModel',models[model]??1);integer('uInterpolation',model==='flat'?1:model==='gouraud'?2:0)
     integer('uNdf',settings.ndf==='beckmann'?1:0)
     integer('uComponent',({d:1,f:2,g:3,brdf:4} as Record<string,number>)[String(settings.component)]??0)

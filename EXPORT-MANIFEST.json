@@ -230,12 +230,16 @@
       "sha256": "9450ed7c48c1807df437efcbf9b72e92f5e64de7da65eb55c2ce15bfbb9c8f5f"
     },
     {
+      "path": "components/shading/BeamFootprintExplorer.vue",
+      "sha256": "92628d4fd9cfce7f0edc66d19fbc82748296df712ef2cf21df41a435311f48fb"
+    },
+    {
       "path": "components/shading/catalog.ts",
-      "sha256": "7cfaa146c5939a436e9092e528d8bbc9c2fc2b5811f9c43a6e8f15dfed2369b2"
+      "sha256": "2827b3e342bc179c0e056ef06e900e552b4ca6bd55f20381b1d281969ff36343"
     },
     {
       "path": "components/shading/ClassicExplorer.vue",
-      "sha256": "b5c4607ad04bafe07d14cf3ef7375f1c06222f478c68ff6a005fb97f3deeca68"
+      "sha256": "0d3b094f55481ab4038bc9ebbd33a491fd7ad1342e44870a56356853c1c97052"
     },
     {
       "path": "components/shading/ClassicPointLight.vue",
@@ -246,12 +250,16 @@
       "sha256": "a9845cac0e612e0970da8d7b0490e67b2688311d7f7cd6daf0a20ee840de199d"
     },
     {
+      "path": "components/shading/InterpolationExplorer.vue",
+      "sha256": "cb19a87876bf6c47df9ed447b82c3193968fe0c0979487314414b2dec7b084c7"
+    },
+    {
       "path": "components/shading/shading-registry.ts",
-      "sha256": "a978a590e313c6e08f5601f3ab23b72f4e94bf88c9b00fb53ec6cd8767c6aca2"
+      "sha256": "a7c6c337a013f7587033bcf40680f094be3b3bf1d00f35296ebffc31b73e0146"
     },
     {
       "path": "components/shading/shading-renderer.ts",
-      "sha256": "1338bb2c5bd27c89bc2888a91e4fd5032c2cc430380814da647d178fa32f42a7"
+      "sha256": "de963b8ca0812b21b66b08a54f3c50f4550df459c2fbbf07b63687767e3341a2"
     },
     {
       "path": "components/shading/ShadingScene.vue",
@@ -542,6 +550,10 @@
       "sha256": "3fe243dcd9b9ae6bedf9f787baec242e6aeae88097509f357cd2789375f6d70b"
     },
     {
+      "path": "examples/07-shading/beam-footprint.ts",
+      "sha256": "a55adb33c704fbba33b2f0a5d3cc9fde1708af390ea176d7baa32e4a9182b098"
+    },
+    {
       "path": "examples/07-shading/brdf-lobe.ts",
       "sha256": "45e10c93964f81b3a17555c051c237ceb72b46ed85e75ef660e60b80b201f596"
     },
@@ -554,8 +566,16 @@
       "sha256": "1079a61aaae78365924fe56c6624e3a393b9e90eac28d5f5a6b8181306ed1db6"
     },
     {
+      "path": "examples/07-shading/gouraud-interpolation.ts",
+      "sha256": "e5fa95bc9cc765e6a5af42f6b9ab1fc7ea9bb5c320e47c948889660241779840"
+    },
+    {
       "path": "examples/07-shading/lambert.ts",
       "sha256": "34eb6c34b4a1b61099788948d71f85f6fda599a85fd4dcf52e45a691ce0fadde"
+    },
+    {
+      "path": "examples/07-shading/linear-interpolation.ts",
+      "sha256": "615aeb767a81f54b1cc438e6fa1b70ef0814056c599d75e0bfd8fed0ef49c4ec"
     },
     {
       "path": "examples/07-shading/microfacet-ndf.ts",
@@ -568,6 +588,10 @@
     {
       "path": "examples/07-shading/phong-blinn.ts",
       "sha256": "16a20fe83bd1821f5607be5c3aaf905e192e485ac46d7c4d2dd8baa62d04dd35"
+    },
+    {
+      "path": "examples/07-shading/phong-interpolation.ts",
+      "sha256": "e5fa95bc9cc765e6a5af42f6b9ab1fc7ea9bb5c320e47c948889660241779840"
     },
     {
       "path": "examples/07-shading/point-light.ts",
@@ -751,7 +775,15 @@
     },
     {
       "path": "packages/cg-algorithms/src/shading-gpu.ts",
-      "sha256": "b71b38fb350fc9e523acb43fec8f5c823009cda59b726178f638e24ef962463e"
+      "sha256": "8cc29ab0f9a6e2f3ef86955def206cf05c885046a2f9c5e1118e91c55fa989a7"
+    },
+    {
+      "path": "packages/cg-algorithms/src/shading-incidence.ts",
+      "sha256": "8798c8c576e9300934fcfa2cc5a62b17da9fe29f9ad66bf5d97c25e23b5e3708"
+    },
+    {
+      "path": "packages/cg-algorithms/src/shading-interpolation.ts",
+      "sha256": "dcfb3a25030ba0958eb397db321a470367ba8c47ef3d651c616b316a609192fa"
     },
     {
       "path": "packages/cg-algorithms/src/subdivision.ts",
@@ -851,7 +883,7 @@
     },
     {
       "path": "public-site/src/sessions/07-shading.ts",
-      "sha256": "23e2aba107e2a6a7dce7ed0fd62cad48f691a30251cd9d99d99484c5b6670a54"
+      "sha256": "48e8daee50e776e6aa2b65f2eec99f89f351591ec5833265dade19e61753ac85"
     },
     {
       "path": "public-site/src/style.css",
@@ -956,6 +988,14 @@
     {
       "path": "scripts/shading-classic.test.mjs",
       "sha256": "e535b71548c9476d9183f94a476c776dc6bd507aac130993c52cb61fd71e4bac"
+    },
+    {
+      "path": "scripts/shading-incidence.test.mjs",
+      "sha256": "49e07d4fb960f04eba3915ad903bb1e49fafc6e7b36e1ee3e5c11ad7f9cac130"
+    },
+    {
+      "path": "scripts/shading-interpolation.test.mjs",
+      "sha256": "7ad535e978c7fa0daf062ede8d25d7cfa8d79af89bae3b5f90a813fe47b31d23"
     },
     {
       "path": "scripts/shading-renderer.test.mjs",

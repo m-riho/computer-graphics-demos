@@ -88,19 +88,26 @@ attribute vec3 aPosition;
 attribute vec3 aNormal;
 attribute vec3 aFaceNormal;
 attribute vec2 aSurface;
+attribute vec3 aRotationCenter;
 uniform mat4 uMatrix;
 uniform mat3 uObjectRotation;
+uniform int uRotateScene;
 uniform int uInterpolation;
 varying vec3 vNormal;
 varying vec3 vColor;
 varying vec2 vSurface;
 ${shadingLightingGLSL}
 void main() {
-  gl_Position=uMatrix*vec4(uObjectRotation*aPosition,1.0);
-  vNormal=uObjectRotation*aNormal;
+  // Visibility can rotate the whole scene; other demos rotate around object centers.
+  mat3 rotation=mat3(1.0);
+  if(uRotateScene==1 || aSurface.y<0.5) rotation=uObjectRotation;
+  vec3 center=uRotateScene==1?vec3(0.0):aRotationCenter;
+  vec3 position=rotation*(aPosition-center)+center;
+  gl_Position=uMatrix*vec4(position,1.0);
+  vNormal=rotation*aNormal;
   vSurface=aSurface;
   // Flat duplicates each face's constant normal; Gouraud evaluates at each vertex.
-  vColor=illumination(uObjectRotation*(uInterpolation==1?aFaceNormal:aNormal),aSurface.x,aSurface.y);
+  vColor=illumination(rotation*(uInterpolation==1?aFaceNormal:aNormal),aSurface.x,aSurface.y);
 }
 `
 export const shadingFragmentShader = `

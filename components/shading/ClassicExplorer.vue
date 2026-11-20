@@ -7,7 +7,7 @@ import { lambert, orenNayar, pointIlluminance, specularTerms, combineLighting } 
 
 const props = defineProps<{topic:string}>()
 const teacher = ref(false)
-const canRotateObject = computed(() => ['lambert','phong-blinn','shading-comparison'].includes(props.topic))
+const canRotateObject = computed(() => ['visibility-shading','lambert','phong-blinn','shading-comparison'].includes(props.topic))
 const showExplanation = ref(true)
 const defaults = () => ({lightAngle:35,viewAngle:55,azimuth:180,objectPitch:0,objectYaw:0,kd:.7,ks:.65,intensity:1,exponent:20,blinnExponent:80,sigma:45,distance:1,ambient:.2,red:255,green:244,blue:222,subdivisions:1,mode:'lambert',sameExponent:false,wireframe:false,normals:false,ambientOn:true,diffuseOn:true,specularOn:true,comparison:false})
 const s = reactive(defaults())
@@ -58,7 +58,7 @@ const lightColor = computed(() => '#'+[s.red,s.green,s.blue].map(v=>Math.round(v
 const m = computed(() => s.sameExponent?s.exponent:s.blinnExponent)
 const spec = computed(() => specularTerms(s.lightAngle,s.viewAngle,s.azimuth,s.exponent,m.value,s.ks,s.intensity))
 const terms = computed(() => combineLighting({ambient:s.ambient,diffuse:lambert(s.lightAngle,s.kd,s.intensity),specular:specularTerms(s.lightAngle,s.viewAngle,s.azimuth,s.exponent,s.exponent,s.ks,s.intensity).blinn,ambientOn:s.ambientOn,diffuseOn:s.diffuseOn,specularOn:s.specularOn,occlusion:0}))
-const settings = computed<Record<string,number|string|boolean>>(() => ({lightAngle:s.lightAngle,viewAngle:s.viewAngle,objectPitch:s.objectPitch,objectYaw:s.objectYaw,lightAzimuth:0,viewAzimuth:s.azimuth,kd:s.kd,ks:s.ks,intensity:s.intensity,exponent:s.exponent,sigma:s.sigma,ambient:props.topic==='ambient-components'?s.ambient:0,ambientOn:s.ambientOn,diffuseOn:s.diffuseOn,specularOn:s.specularOn,subdivisions:props.topic==='shading-comparison'?s.subdivisions:3,wireframe:s.wireframe,normals:s.normals,baseColor:props.topic==='lambert'?'#ffffff':'#82bee8',lightColor:props.topic==='lambert'?lightColor.value:'#ffffff'}))
+const settings = computed<Record<string,number|string|boolean>>(() => ({lightAngle:s.lightAngle,viewAngle:s.viewAngle,objectPitch:s.objectPitch,objectYaw:s.objectYaw,rotateScene:props.topic==='visibility-shading',lightAzimuth:0,viewAzimuth:s.azimuth,kd:s.kd,ks:s.ks,intensity:s.intensity,exponent:s.exponent,sigma:s.sigma,ambient:props.topic==='ambient-components'?s.ambient:0,ambientOn:s.ambientOn,diffuseOn:s.diffuseOn,specularOn:s.specularOn,subdivisions:props.topic==='shading-comparison'?s.subdivisions:3,wireframe:s.wireframe,normals:s.normals,baseColor:props.topic==='lambert'?'#ffffff':'#82bee8',lightColor:props.topic==='lambert'?lightColor.value:'#ffffff'}))
 type SceneCard = {label:string;model:string;extra:Record<string,number|string|boolean>}
 const cards = computed((): SceneCard[] => {
   if (props.topic==='oren-nayar') return [{label:'Lambert',model:'lambert',extra:{}},{label:'Oren–Nayar',model:'oren-nayar',extra:{}}]
@@ -106,7 +106,8 @@ const number = (value:number) => value.toFixed(5)
           <template v-else-if="topic==='ambient-components'"><button type="button" @click="preset({diffuseOn:false,specularOn:false})">Ambientのみ</button><button type="button" @click="preset({ambientOn:false,specularOn:false})">Diffuseのみ</button><button type="button" @click="preset({ambientOn:false,diffuseOn:false})">Specularのみ</button><button type="button" @click="preset({})">3成分を合成</button><button type="button" @click="preset({comparison:true,diffuseOn:false,specularOn:false,ambient:.5})">Ambient と AO</button></template>
           <template v-else><button type="button" @click="preset({mode:'visible'})">可視面だけ</button><button type="button" @click="preset({mode:'lambert',lightAngle:75})">同じ視点・斜めの光</button><button type="button" @click="preset({mode:'phong',viewAngle:35})">鏡面反射を追加</button></template>
         </div>
-        <p v-if="canRotateObject" class="rotation-help">{{ cards.length===1?'球をドラッグすると回転します。':`どれか1つの球をドラッグすると、${cards.length}つが同時に回転します。` }}タッチ操作も可。光源と視点は固定したまま比較できます。矢印キーでも回転、Homeキーで向きをリセット。回転順序はX軸 → Y軸です。</p>
+        <p v-if="canRotateObject" class="rotation-help">{{ topic==='visibility-shading'?'ドラッグすると、2つの球と板が一緒に回転します。':cards.length===1?'球をドラッグすると回転します。':`どれか1つの球をドラッグすると、${cards.length}つが同時に回転します。` }}タッチ操作も可。光源と視点は固定したまま比較できます。矢印キーでも回転、Homeキーで向きをリセット。回転順序はX軸 → Y軸です。</p>
+        <p v-if="topic==='visibility-shading'" class="rotation-help">球と板の位置関係を保ち、シーン全体を原点のまわりに回転します。Wireframe表示で板の向きと前後関係を確認できます。板の裏側は裏面除去で表示しません。</p>
         <p v-if="topic==='lambert'||topic==='phong-blinn'" class="rotation-help">滑らかな球は回転しても見た目がほぼ同じです。「ワイヤーフレームを重ねる」でメッシュの回転を確認できます。数式欄とベクトル図は、ワールド座標の基準法線 N=(0,1,0) に対する計算です。</p>
         <ClassicPointLight v-if="topic==='point-light'" :distance="s.distance" :angle="s.lightAngle" :intensity="s.intensity" :azimuth="s.azimuth" />
         <div v-else class="scene-cards" :class="{'three-cards':cards.length===3}">
